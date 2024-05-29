@@ -49,6 +49,14 @@ private:
     // vector<vector<Card>> cardsPlayed;
 };
 
+class Battle
+{
+public:
+private:
+    // Province *province;
+    vector<Player> *players;
+};
+
 class Game
 {
 public:
