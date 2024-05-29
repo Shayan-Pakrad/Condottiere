@@ -49,6 +49,34 @@ private:
     // vector<vector<Card>> cardsPlayed;
 };
 
+class Game
+{
+public:
+    void addPlayer(Player player) // Player adder function
+    {
+        players.push_back(player);
+    }
+
+    Player findYoungestPlayer() // Return the youngest player
+    {
+
+        Player youngestPlayer = players[0];
+
+        for (int i = 1; i < players.size(); i++)
+        {
+            if (players[i].getAge() < youngestPlayer.getAge())
+            {
+                youngestPlayer = players[i];
+            }
+        }
+
+        return youngestPlayer;
+    }
+
+private:
+    vector<Player> players; // List of game players
+};
+
 int main()
 {
     return 0;
