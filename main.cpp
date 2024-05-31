@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <array>
 
 using namespace std;
 
@@ -20,7 +21,8 @@ public:
         {
             while (true)
             {
-                cout << "Age is invalid input another : ";
+                cout << "Age is invalid " << endl
+                     << "You cannot be UNBORN --- (Enter a positive number for age ) : ";
                 cin >> age;
                 if (age > 0)
                 {
@@ -33,7 +35,7 @@ public:
 
     int getAge() { return age; } // Age getter function
 
-    string getName() { return name; } // Name gatter function
+    string getName() { return name; } // Name getter function
 
     int getTotalScore() { return totalScore; } // Total score getter function
 
@@ -82,9 +84,22 @@ public:
     }
 
 private:
-    vector<Player> players; // List of game players
+    vector<Player> players; // List of the game players
 };
 
+
+class Map {
+public:
+private:   
+    array<array<Province, 14>, 14> provinces; //Adjacency matrix for revealing bordering provinces (by 0 and 1 )
+};
+
+
+
+class Province {
+private: 
+    array<string, 14> provinceName {"BELLA" ,"CALINE","ENNA","ATELA","PLADACI","BORGE","DIMASE","MORINA","OLIVADI","ROLLO","TALMONE","ARMENTO","LIA","ELINIA" };//one dimensional matrix for declaring provinces name 
+};
 int main()
 {
     return 0;
