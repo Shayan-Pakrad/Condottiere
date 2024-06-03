@@ -90,15 +90,35 @@ private:
 
 class Map {
 public:
+
 private:   
-    array<array<Province, 14>, 14> provinces; //Adjacency matrix for revealing bordering provinces (by 0 and 1 )
+    array<Province, 14> provinces;
+    array<array<int, 14>, 14> boardingProvinces; //Adjacency matrix for revealing bordering provinces (by 0 and 1 )
+
 };
 
 
 
 class Province {
+public:
+
+
+    void setname (string n ) { 
+        name = n ; 
+    }
+
+
+    string getname () {
+        return name ; 
+    }
+
+
+    Province(): conquared(false) {}
+
+
 private: 
-    array<string, 14> provinceName {"BELLA" ,"CALINE","ENNA","ATELA","PLADACI","BORGE","DIMASE","MORINA","OLIVADI","ROLLO","TALMONE","ARMENTO","LIA","ELINIA" };//one dimensional matrix for declaring provinces name 
+    string name;
+    bool conquared;
 };
 int main()
 {
