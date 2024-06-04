@@ -56,10 +56,11 @@ private:
 class Player
 {
 public:
-    Player(string name, int age) // constructor
+    Player(string name, int age, string color) // constructor
     {
         // Set player name
         this->name = name;
+        this->color = color;
 
         // Set player age
         if (age > 0)
@@ -86,6 +87,8 @@ public:
 
     string getName() { return name; } // Name getter function
 
+    string getColor() { return color; } // Color getter function
+
     int getTotalScore() { return totalScore; } // Total score getter function
 
     void setTotalScore(int score) { totalScore = score; } // Total score setter function
@@ -104,6 +107,7 @@ private:
     string name;
     int age;
     int totalScore; // Total score of the cards player has played in a battle
+    string color;
 
     vector<Province> conqueredProvinces;
     // vector<Card> cardsInHand;
@@ -121,31 +125,36 @@ private:
 class Game
 {
 public:
-
-    void initPlayers() {
+    void initPlayers()
+    {
 
         // Get number of players
         cout << "Number of players : ";
         int numberOfPlayers;
         cin >> numberOfPlayers;
 
-        for (int i = 0; i < numberOfPlayers; i++) {
+        for (int i = 0; i < numberOfPlayers; i++)
+        {
             // Get player name
-            cout << "Player " << i+1 << " name : ";
+            cout << "Player " << i + 1 << " name : ";
             string name;
             cin >> name;
 
             // Get player age
-            cout << "Player " << i+1 << " age : ";
+            cout << "Player " << i + 1 << " age : ";
             int age;
             cin >> age;
 
+            // Get player color
+            cout << "Player " << i + 1 << " color : ";
+            string color;
+            cin >> color;
+
             // Add new player to players list
-            Player player{name, age};
+            Player player{name, age, color};
             players.push_back(player);
         }
     }
-
 
     void addPlayer(Player player) // Player adder function
     {
