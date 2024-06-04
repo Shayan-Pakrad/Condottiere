@@ -46,7 +46,7 @@ private:
     int age;
     int totalScore; // Total score of the cards player has played in a battle
 
-    // vector<Province> seizedProvinces;
+    vector<Province> conqueredProvinces;
     // vector<Card> cardsInHand;
     // vector<vector<Card>> cardsPlayed;
 };
@@ -119,7 +119,7 @@ private:
 class Province
 {
 public:
-    Province() : conquared(false) {}
+    Province() : conquered(false) {}
 
     void setName(string n)
     {
@@ -133,7 +133,7 @@ public:
 
 private:
     string name;
-    bool conquared;
+    bool conquered;
 };
 int main()
 {
