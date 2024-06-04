@@ -121,6 +121,32 @@ private:
 class Game
 {
 public:
+
+    void initPlayers() {
+
+        // Get number of players
+        cout << "Number of players : ";
+        int numberOfPlayers;
+        cin >> numberOfPlayers;
+
+        for (int i = 0; i < numberOfPlayers; i++) {
+            // Get player name
+            cout << "Player " << i+1 << " name : ";
+            string name;
+            cin >> name;
+
+            // Get player age
+            cout << "Player " << i+1 << " age : ";
+            int age;
+            cin >> age;
+
+            // Add new player to players list
+            Player player{name, age};
+            players.push_back(player);
+        }
+    }
+
+
     void addPlayer(Player player) // Player adder function
     {
         players.push_back(player);
