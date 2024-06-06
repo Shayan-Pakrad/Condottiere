@@ -125,6 +125,14 @@ private:
 class Game
 {
 public:
+    Game() { startGame(); }
+
+    void startGame()
+    {
+        initPlayers();
+        sortPlayers();
+    }
+
     void initPlayers()
     {
 
@@ -161,20 +169,22 @@ public:
         players.push_back(player);
     }
 
-    Player findYoungestPlayer() // Return the youngest player
+    void sortPlayers() // Sort players vector based on their age
     {
+        int n = players.size();
 
-        Player youngestPlayer = players[0];
-
-        for (int i = 1; i < players.size(); i++)
+        for (int i = 0; i < n - 1; i++)
         {
-            if (players[i].getAge() < youngestPlayer.getAge())
+            for (int j = 0; j < n - i - 1; j++)
             {
-                youngestPlayer = players[i];
+                if (players[j].getAge() > players[j + 1].getAge())
+                {
+                    Player temp = players[j];
+                    players[j] = players[j + 1];
+                    players[j + 1] = temp;
+                }
             }
         }
-
-        return youngestPlayer;
     }
 
 private:
