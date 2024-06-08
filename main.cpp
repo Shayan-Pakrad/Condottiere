@@ -6,26 +6,9 @@
 #include "Map.h"
 #include "Player.h"
 #include "Battle.h"
+#include "Card.h"
 
 using namespace std;
-
-
-class Card {
-    public : 
-    void setPoint(int p ) { 
-        point = p ; 
-    }
-    int getPoint(){
-        return point ; 
-    }
-
-    private : 
-        int point ; 
-        array <string , 7>Mercenary{"y1","y2","y3","y4","y5","y6","y10"};
-        array <string , 7>Special{"ZEMESTAN","BAHAR","TABL-ZAN","SHIR-ZAN","SHAH-DOKHT","MATARSAK","PARCHAMDAR"};// ina ro bayad file file konim 
-    
-    
-};
 
 class Game
 {
