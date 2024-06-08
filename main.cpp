@@ -47,6 +47,47 @@ public:
             }}
     {
     }
+    bool provinceOwnerDesignative (){
+        for (int i = 0; i < 14; i++)
+        {
+            for (size_t j = 0; j < 14; j++)
+            {
+                for (int k = 0; k < 14; k++)
+                {
+                    if (i==1&&j==1&&k==1)
+                    {
+                        return true ; //   shayan in function hanooz kamel ni      baadan bayad ye fekri raje be case 4 ostani bokonam  
+                    }
+                    else {
+                        return false ; 
+                    }
+                    
+                }
+                
+            }
+            
+        }
+        
+    }
+
+
+enum Province {//Shayan in enume injoorie ke syntaxesh mesle شی classe     yani  agara benevisi province.(PLADACI) miad tooye matrix adjacency    4 ro dar nazar migire   (n-1) 
+    BELLA = 0,
+    CALINE,
+    ENNA,
+    ATELA,
+    PLADACI,
+    BORGE,
+    DIMASE,
+    MORINA,
+    OLIVIA,
+    ROLLO,
+    TALMONE,
+    ARMENTO,
+    LIA,
+    ELINA,
+    PROVINCE_COUNT 
+};
 
 private:
     array<Province, 14> provinces;
@@ -117,9 +158,24 @@ private:
 class Battle
 {
 public:
+    void setPoint(int p ) { 
+        point = p ; 
+    }
+    int getPoint(){
+        return point ; 
+    }
+
 private:
+    int point ; 
     Province *province;
     vector<Player> *players;
+};
+class Card {
+    private : 
+        array <string , 7>Mercenary{"y1","y2","y3","y4","y5","y6","y10"};
+        array <string , 7>Special{"ZEMESTAN","BAHAR","TABL-ZAN","SHIR-ZAN","SHAH-DOKHT","MATARSAK","PARCHAMDAR"};
+    public : 
+    
 };
 
 class Game
