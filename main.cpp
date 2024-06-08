@@ -173,8 +173,9 @@ private:
 class Card {
     private : 
         array <string , 7>Mercenary{"y1","y2","y3","y4","y5","y6","y10"};
-        array <string , 7>Special{"ZEMESTAN","BAHAR","TABL-ZAN","SHIR-ZAN","SHAH-DOKHT","MATARSAK","PARCHAMDAR"};
+        array <string , 7>Special{"ZEMESTAN","BAHAR","TABL-ZAN","SHIR-ZAN","SHAH-DOKHT","MATARSAK","PARCHAMDAR"};// ina ro bayad file file konim 
     public : 
+    
     
 };
 
