@@ -6,6 +6,8 @@
 
 class Card {
 public:
+    // Constructor
+    Card();
     // Member functions
     void setPoint(int p);
     int getPoint() const;
