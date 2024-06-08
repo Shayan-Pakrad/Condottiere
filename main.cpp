@@ -3,78 +3,9 @@
 #include <array>
 
 #include "Province.h"
+#include "Map.h"
 
 using namespace std;
-
-class Map
-{
-public:
-    /*BELLA = 1   CALINE =2   ENNA = 3   ATELA = 4   PLADACI = 5   BORGE = 6   DIMASE = 7   MORINA = 8   OLIVIA = 9   ROLLO = 10   TALMONE = 11   ARMENTO = 12   LIA = 13   ELINE = 14               (These are the number of maps in order(in matrix they are n - 1 )) */
-    Map() : boarderingProvinces{{
-                // Initialize the adjacency matrix with specific borders
-                /*BELLA*/ {0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0},
-                /*CALINE*/ {1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0},
-                /*ENNA*/ {0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0},
-                /*ATELA*/ {0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0},
-                /*PLADACI*/ {1, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0},
-                /*BORGE*/ {1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0},
-                /*DIMASE*/ {0, 0, 1, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0},
-                /*MORINA*/ {0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0},
-                /*OLIVIA*/ {0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 0},
-                /*ROLLO*/ {0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1},
-                /*TALMONE*/ {0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1},
-                /*ARMENTO*/ {0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 1, 0},
-                /*LIA*/ {0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0},
-                /*ELINA*/ {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0},
-            }}
-    {
-    }
-    bool provinceOwnerDesignative (){
-        for (int i = 0; i < 14; i++)
-        {
-            for (size_t j = 0; j < 14; j++)
-            {
-                for (int k = 0; k < 14; k++)
-                {
-                    if (i==1&&j==1&&k==1)
-                    {
-                        return true ; //   shayan in function hanooz kamel ni      baadan bayad ye fekri raje be case 4 ostani bokonam  
-                    }
-                    else {
-                        return false ; 
-                    }
-                    
-                }
-                
-            }
-            
-        }
-        
-    }
-
-
-enum Province {//Shayan in enume injoorie ke syntaxesh mesle شی classe     yani  agara benevisi province.(PLADACI) miad tooye matrix adjacency    4 ro dar nazar migire   (n-1) 
-    BELLA = 0,
-    CALINE,
-    ENNA,
-    ATELA,
-    PLADACI,
-    BORGE,
-    DIMASE,
-    MORINA,
-    OLIVIA,
-    ROLLO,
-    TALMONE,
-    ARMENTO,
-    LIA,
-    ELINA,
-    PROVINCE_COUNT 
-};
-
-private:
-    array<Province, 14> provinces;
-    array<array<int, 14>, 14> boarderingProvinces; // Adjacency matrix for revealing bordering provinces (by 0 and 1 )  the default value of the matrix elements is 0
-};
 
 class Player
 {
