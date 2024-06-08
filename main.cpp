@@ -2,27 +2,9 @@
 #include <vector>
 #include <array>
 
+#include "Province.h"
+
 using namespace std;
-
-class Province
-{
-public:
-    Province() : conquered(false) {}
-
-    void setName(string n)
-    {
-        name = n;
-    }
-
-    string getName()
-    {
-        return name;
-    }
-
-private:
-    string name;
-    bool conquered;
-};
 
 class Map
 {
