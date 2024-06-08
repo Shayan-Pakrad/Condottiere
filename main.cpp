@@ -4,69 +4,9 @@
 
 #include "Province.h"
 #include "Map.h"
+#include "Player.h"
 
 using namespace std;
-
-class Player
-{
-public:
-    Player(string name, int age, string color) // constructor
-    {
-        // Set player name
-        this->name = name;
-        this->color = color;
-
-        // Set player age
-        if (age > 0)
-        {
-            this->age = age;
-        }
-        else
-        {
-            while (true)
-            {
-                cout << "Age is invalid " << endl
-                     << "You cannot be UNBORN --- (Enter a positive number for age ) : ";
-                cin >> age;
-                if (age > 0)
-                {
-                    this->age = age;
-                    break;
-                }
-            }
-        }
-    }
-
-    int getAge() { return age; } // Age getter function
-
-    string getName() { return name; } // Name getter function
-
-    string getColor() { return color; } // Color getter function
-
-    int getTotalScore() { return totalScore; } // Total score getter function
-
-    void setTotalScore(int score) { totalScore = score; } // Total score setter function
-
-    void addProvince(Province province) // Add province to conqueredProvinces
-    {
-        conqueredProvinces.push_back(province);
-    }
-
-    int getProvincesNumber() // Return number of conqueredProvinces
-    {
-        return conqueredProvinces.size();
-    }
-
-private:
-    string name;
-    int age;
-    int totalScore; // Total score of the cards player has played in a battle
-    string color;
-
-    vector<Province> conqueredProvinces;
-    // vector<Card> cardsInHand;
-    // vector<vector<Card>> cardsPlayed;
-};
 
 class Battle
 {
