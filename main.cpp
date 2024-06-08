@@ -5,17 +5,11 @@
 #include "Province.h"
 #include "Map.h"
 #include "Player.h"
+#include "Battle.h"
 
 using namespace std;
 
-class Battle
-{
-public:
-    
-private:
-    Province *province;
-    vector<Player> *players;
-};
+
 class Card {
     public : 
     void setPoint(int p ) { 
