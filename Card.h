@@ -7,15 +7,16 @@
 class Card {
 public:
     // Constructor
-    Card();
+    Card(int point);
     // Member functions
     void setPoint(int p);
     int getPoint() const;
-
+    void setType(std::string type);
+    
 private:
+
+    std::string type;
     int point;
-    std::array<std::string, 7> Special;
-    std::array<std::string, 7> Combat;
 };
 
 #endif // CARD_H

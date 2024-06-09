@@ -13,7 +13,7 @@ using namespace std;
 
 int main()
 {
-    Game game;
+    Game game; 
 
     return 0;
 }

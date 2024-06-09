@@ -1,9 +1,8 @@
 #include "Card.h"
 
 // Initialize the arrays in the constructor
-Card::Card() {
-    Special = {"ZEMESTAN", "BAHAR", "TABL-ZAN", "SHIR-ZAN", "SHAH-DOKHT", "MATARSAK", "PARCHAMDAR"};
-    Combat = {"y1", "y2", "y3", "y4", "y5", "y6", "y10"};
+Card::Card(int point) {
+    this->point = point;
 }
 
 // Set the point value
@@ -14,5 +13,9 @@ void Card::setPoint(int p) {
 // Get the point value
 int Card::getPoint() const {
     return point;
+}
+
+void Card::setType(std::string type) {
+    this->type = type;
 }
 
