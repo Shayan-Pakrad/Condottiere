@@ -14,8 +14,8 @@ public:
 
 private:
     int point;
-    std::array<std::string, 7> Mercenary;
     std::array<std::string, 7> Special;
+    std::array<std::string, 7> Combat;
 };
 
 #endif // CARD_H
