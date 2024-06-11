@@ -9,10 +9,14 @@ class Battle {
 public:
     // Constructor
     Battle(Province *province, std::vector<Player> *players);
+    void baharSwitch(); // If bahar has played
+    void zemestanSwitch(); // If Zemestan has played
 
 private:
     Province *province;
     std::vector<Player> *players;
+    bool baharHasPlayed;
+    bool ZemestanHasPlayed;
 };
 
 #endif // BATTLE_H
