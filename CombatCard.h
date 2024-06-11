@@ -5,7 +5,7 @@
 
 class CombatCard : public Card{
     public:
-    CombatCard(int point, std::string cardNumber); // Class constructor
+    CombatCard(int point); // Class constructor
     private:
 };
 
