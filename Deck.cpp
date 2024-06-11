@@ -61,5 +61,20 @@ Deck::Deck() { // Creating cards and add them to the deck
         gameCards.push_back(std::make_shared<ShahDokht>(10));
     }
 
+    shuffleCards();
+
 }
 
+void Deck::shuffleCards() {
+
+    // generating a random number
+    std::random_device rd;
+    std::mt19937 g(rd());
+
+    std::shuffle(gameCards.begin(), gameCards.end(), g);
+
+}
+
+void Deck::deal(Player &player) {
+    std::cout << ";";
+}

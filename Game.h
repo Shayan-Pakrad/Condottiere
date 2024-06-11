@@ -5,6 +5,7 @@
 #include <vector>
 #include "Player.h"
 #include "Map.h"
+#include "Deck.h"
 
 class Game {
 public:
@@ -16,10 +17,12 @@ public:
     void initPlayers();
     void addPlayer(const Player& player);
     void sortPlayers();
+    void showCards();
 
 private:
     std::vector<Player> players; // List of the game players
     Map map;
+    Deck deck;
 };
 
 #endif // GAME_H

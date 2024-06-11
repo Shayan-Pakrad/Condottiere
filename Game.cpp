@@ -9,6 +9,7 @@ Game::Game() {
 void Game::startGame() {
     initPlayers();
     sortPlayers();
+    
 }
 
 // Initialize players
@@ -55,5 +56,33 @@ void Game::sortPlayers() {
                 players[j + 1] = temp;
             }
         }
+    }
+}
+
+
+void Game::showCards() {
+    int numberOfPlayers = players.size();
+    for (int i = 0; i < numberOfPlayers; i++) {
+        std::system("cls");
+
+        std::cout << "I want to show " << players[i].getName() << "'s cards";
+        std::cout << "Press ENTER to continue!";
+
+        std::cin.get();
+        std::system("cls");
+
+        deck.deal(players[i]);
+
+        std::vector<std::shared_ptr<Card>> playerCards = players[i].getCardsInHand();
+
+        std::cout << "Here is " << players[i].getName() << "'s cards :" << std::endl << std::endl;
+
+        for(int j = 0; j < playerCards.size(); j++) {
+            std::cout << playerCards[i]->getName() << std::endl;
+        }
+
+        std::cout << std::endl << "press ENTER to continue!";
+        std::cin.get();
+
     }
 }
