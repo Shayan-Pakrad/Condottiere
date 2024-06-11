@@ -1,5 +1,5 @@
 #include "CombatCard.h"
 // Constructor
-CombatCard::CombatCard(int point, int number): Card(point), cardNumber(number) {
+CombatCard::CombatCard(int point, std::string cardNumber): Card(point, cardNumber) {
     setType("combat");
 }

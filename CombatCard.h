@@ -5,9 +5,8 @@
 
 class CombatCard : public Card{
     public:
-    CombatCard(int point, int cardNumber); // Class constructor
+    CombatCard(int point, std::string cardNumber); // Class constructor
     private:
-    const int cardNumber; // Number on the card and it's const
 };
 
 #endif // COMBATCARD_H

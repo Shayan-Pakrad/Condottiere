@@ -2,14 +2,13 @@
 #define SPECIALCARD_H
 
 #include "Card.h"
+#include "Player.h"
 
 class SpecialCard: public Card {
     public:
-    SpecialCard(int point, std::string nameVal);
-    virtual void applyEffect() = 0;
-
+    SpecialCard(int point, std::string name);
+    virtual void applyEffect(Player &player) = 0;
     private:
-    const std::string name;
 };
 
 
