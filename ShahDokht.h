@@ -7,6 +7,7 @@ class ShahDokht: public SpecialCard {
     public:
     ShahDokht();
     void applyEffect(Player &player) override {};
+    virtual void applyEffect(Battle &battle) {};
     private:
 };
 

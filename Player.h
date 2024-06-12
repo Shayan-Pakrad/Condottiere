@@ -5,16 +5,17 @@
 #include <string>
 #include <vector>
 #include <memory>
+#include <algorithm>
+
 #include "Province.h"
-#include "CombatCard.h"
-#include "SpecialCard.h"
 #include "Card.h"
 
+class Card;
 
 class Player {
 public:
     // Constructor
-    Player(const std::string& name, int age, const std::string& color);
+    Player(const std::string name, int age, const std::string color);
 
     // Member functions
     int getAge() const;
@@ -24,12 +25,12 @@ public:
     void setTotalScore(int score);
     void addProvince(const Province& province);
     int getProvincesNumber() const;
-    std::vector<CombatCard> getCombatCardsPlayed() const;
-    std::vector<std::shared_ptr<SpecialCard>> getSpecialCardsPlayed() const;
+    std::vector<std::shared_ptr<Card>> getCombatCardsPlayed() const;
+    std::vector<std::shared_ptr<Card>> getSpecialCardsPlayed() const;
     std::vector<std::shared_ptr<Card>> getCardsInHand() const;
-    void giveCard(auto &card);
+    void giveCard(std::shared_ptr<Card> &card);
     void playCard(std::string selectedCard);
-    void retakeCombatCard(auto &card);
+    void retakeCombatCard(std::shared_ptr<Card> &card);
     void tablZanSwitch();
 
 
@@ -40,8 +41,8 @@ private:
     std::string color;
     std::vector<Province> conqueredProvinces;
     bool tablZanHazPlayed; // It sets true if the player play TablZan card
-    std::vector<CombatCard> combatCardsPlayed;
-    std::vector<std::shared_ptr<SpecialCard>> specialCardsPlayed;
+    std::vector<std::shared_ptr<Card>> combatCardsPlayed;
+    std::vector<std::shared_ptr<Card>> specialCardsPlayed;
 
     std::vector<std::shared_ptr<Card>> cardsInHand;
 };

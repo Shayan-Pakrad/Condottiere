@@ -7,6 +7,7 @@ class Zemestan: public SpecialCard {
     public:
     Zemestan();
     void applyEffect(Battle &battle) override;
+    virtual void applyEffect(Player &player) {};
     private:
 };
 

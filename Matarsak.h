@@ -7,6 +7,7 @@ class Matarsak: public SpecialCard {
     public:
     Matarsak();
     void applyEffect(Player &player) override;
+    virtual void applyEffect(Battle &battle) {};
     private:
 };
 

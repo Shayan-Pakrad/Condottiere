@@ -9,6 +9,12 @@
 #include "Card.h"
 #include "Player.h"
 
+#include "CombatCard.h"
+#include "Matarsak.h"
+#include "Bahar.h"
+#include "ShahDokht.h"
+#include "TablZan.h"
+#include "Zemestan.h"
 
 class Deck {
     public:

@@ -9,7 +9,7 @@ Game::Game() {
 void Game::startGame() {
     initPlayers();
     sortPlayers();
-    
+    showCards();
 }
 
 // Initialize players
@@ -65,6 +65,8 @@ void Game::showCards() {
     for (int i = 0; i < numberOfPlayers; i++) {
         std::system("cls");
 
+        std::cin.get();
+
         std::cout << "I want to show " << players[i].getName() << "'s cards";
         std::cout << "Press ENTER to continue!";
 
@@ -78,7 +80,7 @@ void Game::showCards() {
         std::cout << "Here is " << players[i].getName() << "'s cards :" << std::endl << std::endl;
 
         for(int j = 0; j < playerCards.size(); j++) {
-            std::cout << playerCards[i]->getName() << std::endl;
+            std::cout << playerCards[j]->getName() << std::endl;
         }
 
         std::cout << std::endl << "press ENTER to continue!";

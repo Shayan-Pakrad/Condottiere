@@ -1,7 +1,7 @@
 #include "Battle.h"
 
 // Constructor
-Battle::Battle(Province *province, std::vector<Player> *players)
+Battle::Battle(Province &province, std::vector<Player> &players)
     : province(province), players(players), baharHasPlayed(false), 
     ZemestanHasPlayed(false) {}
 

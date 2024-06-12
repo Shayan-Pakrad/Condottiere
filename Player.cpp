@@ -1,9 +1,7 @@
 #include "Player.h"
-#include "SpecialCard.h"
-#include "CombatCard.h"
 
 // Constructor
-Player::Player(const std::string& name, int age, const std::string& color)
+Player::Player(const std::string name, int age, const std::string color)
     : name(name), color(color), totalScore(0) {
     if (age > 0) {
         this->age = age;
@@ -57,11 +55,11 @@ int Player::getProvincesNumber() const {
     return conqueredProvinces.size();
 }
 
-std::vector<CombatCard> Player::getCombatCardsPlayed() const {
+std::vector<std::shared_ptr<Card>> Player::getCombatCardsPlayed() const {
     return combatCardsPlayed;
 }
 
-std::vector<std::shared_ptr<SpecialCard>> Player::getSpecialCardsPlayed() const {
+std::vector<std::shared_ptr<Card>> Player::getSpecialCardsPlayed() const {
     return specialCardsPlayed;
 }
 
@@ -69,7 +67,7 @@ std::vector<std::shared_ptr<Card>> Player::getCardsInHand() const {
     return cardsInHand;
 }
 
-void Player::giveCard(auto &card) {
+void Player::giveCard(std::shared_ptr<Card> &card) {
     cardsInHand.push_back(card);
 }
 
@@ -81,14 +79,12 @@ void Player::playCard(std::string selectedCard) {
             if ((*card)->getName() == selectedCard) {
                 isFounded = true;
                 if ((*card)->getType() == "combat") {
-                    auto playedCombatCard = std::dynamic_pointer_cast<CombatCard>(*card);
-                    combatCardsPlayed.push_back(std::move(*playedCombatCard));
-                    cardsInHand.erase(card); 
+                    combatCardsPlayed.push_back(*card);
+                    cardsInHand.erase(card);
                     break; 
                 }
                 if ((*card)->getType() == "special") {
-                    auto playedSpecialCard = std::dynamic_pointer_cast<SpecialCard>(*card);
-                    specialCardsPlayed.push_back(playedSpecialCard);
+                    specialCardsPlayed.push_back(*card);
                     cardsInHand.erase(card);
                     break;
                 }
@@ -105,9 +101,11 @@ void Player::playCard(std::string selectedCard) {
     
 }
 
-void Player::retakeCombatCard(auto &card) {
-    combatCardsPlayed.erase(card);
-    giveCard(card);
+void Player::retakeCombatCard(std::shared_ptr<Card> &card) {
+    auto it = std::find(combatCardsPlayed.begin(), combatCardsPlayed.end(), card);
+    if (it != combatCardsPlayed.end()) {
+        combatCardsPlayed.erase(it);
+    }
 }
 
 void Player::tablZanSwitch() {

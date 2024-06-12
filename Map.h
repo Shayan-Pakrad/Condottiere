@@ -2,6 +2,7 @@
 #define MAP_H
 
 #include <array>
+#include "Province.h"
 
 class Map {
 public:

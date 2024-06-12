@@ -4,6 +4,9 @@
 #include <array>
 #include <string>
 
+class Battle;
+class Player;
+
 class Card {
 public:
     // Constructor
@@ -14,6 +17,8 @@ public:
     void setType(std::string type);
     std::string getType() const;
     std::string getName() const;
+    virtual void applyEffect(Player &player) = 0;
+    virtual void applyEffect(Battle &battle) = 0;
     
 private:
 

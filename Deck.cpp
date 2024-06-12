@@ -1,13 +1,5 @@
 #include "Deck.h"
 
-#include "CombatCard.h"
-#include "Matarsak.h"
-#include "Bahar.h"
-#include "ShahDokht.h"
-#include "TablZan.h"
-#include "Zemestan.h"
-
-
 // Constructor
 Deck::Deck() { // Creating cards and add them to the deck
 
@@ -58,7 +50,7 @@ Deck::Deck() { // Creating cards and add them to the deck
     }
     // ShahDokht : 3
     for (i = 0; i < 8; i++) {
-        gameCards.push_back(std::make_shared<ShahDokht>(10));
+        gameCards.push_back(std::make_shared<ShahDokht>());
     }
 
     shuffleCards();
@@ -77,7 +69,7 @@ void Deck::shuffleCards() {
 
 void Deck::deal(Player &player) {
     for (int i = 0; i < 10; i++) {
-        player.giveCard(gameCards[0]);
+        player.giveCard(*gameCards.begin());
         gameCards.erase(gameCards.begin());
     }
 }

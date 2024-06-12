@@ -7,6 +7,7 @@ class TablZan: public SpecialCard {
     public:
     TablZan();
     void applyEffect(Player &player) override;
+    virtual void applyEffect(Battle &battle) {};
     private:
 };
 
