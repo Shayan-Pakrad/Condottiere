@@ -5,3 +5,6 @@
 
 # VScode
 .vscode
+
+# Text files
+*.txt
