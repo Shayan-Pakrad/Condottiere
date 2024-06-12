@@ -76,5 +76,8 @@ void Deck::shuffleCards() {
 }
 
 void Deck::deal(Player &player) {
-    std::cout << ";";
+    for (int i = 0; i < 10; i++) {
+        player.giveCard(gameCards[0]);
+        gameCards.erase(gameCards.begin());
+    }
 }
