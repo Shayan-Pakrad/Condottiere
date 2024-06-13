@@ -5,15 +5,29 @@ Game::Game() {
     startGame();
 }
 
+void Game :: welcome(){
+        std::string welcomeText = R"(
+  __        __         _                                       _____             _____   _                 ____                       _           _     _                             
+ \ \      / /   ___  | |   ___    ___    _ __ ___     ___    |_   _|   ___     |_   _| | |__     ___     / ___|   ___    _ __     __| |   ___   | |_  (_)   ___   _ __   _ __    ___ 
+  \ \ /\ / /   / _ \ | |  / __|  / _ \  | '_ ` _ \   / _ \     | |    / _ \      | |   | '_ \   / _ \   | |      / _ \  | '_ \   / _` |  / _ \  | __| | |  / _ \ | '__| | '__|  / _ \
+   \ V  V /   |  __/ | | | (__  | (_) | | | | | | | |  __/     | |   | (_) |     | |   | | | | |  __/   | |___  | (_) | | | | | | (_| | | (_) | | |_  | | |  __/ | |    | |    |  __/
+    \_/\_/     \___| |_|  \___|  \___/  |_| |_| |_|  \___|     |_|    \___/      |_|   |_| |_|  \___|    \____|  \___/  |_| |_|  \__,_|  \___/   \__| |_|  \___| |_|    |_|     \___|
+                                                                                                                                                                                     
+     
+)";
+
+    std::cout << welcomeText << std::endl;
+    std::cout << std::endl;
+}
 // Start the game by initializing and sorting players
 void Game::startGame() {
     initPlayers();
     sortPlayers();
     showCards();
 }
-
 // Initialize players
 void Game::initPlayers() {
+
     std::cout << "Number of players: ";
     int numberOfPlayers;
     std::cin >> numberOfPlayers;
@@ -45,7 +59,7 @@ void Game::addPlayer(const Player& player) {
     players.push_back(player);
 }
 
-// Sort players vector based on their age
+// Sort players vector based on their age (for initializing the first province to attack )
 void Game::sortPlayers() {
     int n = players.size();
     for (int i = 0; i < n - 1; ++i) {
@@ -76,15 +90,27 @@ void Game::showCards() {
         deck.deal(players[i]);
 
         std::vector<std::shared_ptr<Card>> playerCards = players[i].getCardsInHand();
-
         std::cout << "Here is " << players[i].getName() << "'s cards :" << std::endl << std::endl;
-
         for(int j = 0; j < playerCards.size(); j++) {
             std::cout << playerCards[j]->getName() << std::endl;
+            
         }
 
         std::cout << std::endl << "press ENTER to continue!";
         std::cin.get();
 
     }
+    for (int i = 0; i < numberOfPlayers; i++)
+    {   
+        std::vector<std::shared_ptr<Card>> playerCards = players[i].getCardsInHand();
+        std::cout <<"\n"<<players[i].getName()<<"'s Deck(NOT THAT D*CK) : " ; 
+        for (int j = 0; j < playerCards.size(); j++)
+        {
+                std::cout<<playerCards[j]->getName()<<"  " ;
+        }
+        std::cout << "\n";
+        
+    }
+    
+
 }

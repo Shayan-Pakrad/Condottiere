@@ -13,6 +13,7 @@ public:
     Game();
 
     // Member functions
+    void welcome() ; 
     void startGame();
     void initPlayers();
     void addPlayer(const Player& player);

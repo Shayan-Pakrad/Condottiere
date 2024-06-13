@@ -18,17 +18,3 @@ Map::Map() : boarderingProvinces{{
         {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0}   // ELINA
     }} 
 {}
-
-// Member function
-bool Map::provinceOwnerDesignative() {
-    for (int i = 0; i < 14; ++i) {
-        for (int j = 0; j < 14; ++j) {
-            for (int k = 0; k < 14; ++k) {
-                if (i == 1 && j == 1 && k == 1) {
-                    return true;  
-                }
-            }
-        }
-    }
-    return false;
-}
