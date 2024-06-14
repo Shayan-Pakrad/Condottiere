@@ -6,7 +6,7 @@
 class Province {
 public:
     Province();
-
+    Province(const std::string& n ) ; 
     void setName(const std::string& n);
     std::string getName() const;
 

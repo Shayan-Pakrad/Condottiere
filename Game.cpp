@@ -17,6 +17,7 @@ void Game :: welcome(){
 )";
 
     std::cout << welcomeText << std::endl;
+    std::cout.flush(); // Flush output buffer
     std::cout << std::endl;
 }
 // Start the game by initializing and sorting players
@@ -27,7 +28,7 @@ void Game::startGame() {
 }
 // Initialize players
 void Game::initPlayers() {
-
+    welcome();
     std::cout << "Number of players: ";
     int numberOfPlayers;
     std::cin >> numberOfPlayers;
@@ -81,8 +82,8 @@ void Game::showCards() {
 
         std::cin.get();
 
-        std::cout << "I want to show " << players[i].getName() << "'s cards";
-        std::cout << "Press ENTER to continue!";
+        std::cout << "I Want Wo Show " << players[i].getName() << "'s Cards \n";
+        std::cout << "Press ENTER To Continue!";
 
         std::cin.get();
         std::system("cls");
@@ -96,21 +97,26 @@ void Game::showCards() {
             
         }
 
-        std::cout << std::endl << "press ENTER to continue!";
+        std::cout << std::endl << "Press ENTER To Continue!";
         std::cin.get();
 
     }
     for (int i = 0; i < numberOfPlayers; i++)
     {   
         std::vector<std::shared_ptr<Card>> playerCards = players[i].getCardsInHand();
-        std::cout <<"\n"<<players[i].getName()<<"'s Deck(NOT THAT D*CK) : " ; 
+        std::cout <<"\n"<<players[i].getName()<<"'s Deck Of Cards  :  "; 
         for (int j = 0; j < playerCards.size(); j++)
         {
                 std::cout<<playerCards[j]->getName()<<"  " ;
         }
         std::cout << "\n";
-        
     }
-    
+    std::cout <<std::endl <<std::endl<<std::endl;
+    sortPlayers();
+        std::cout << "The Game Is About To Start ........! \n";
+        std::cout << "The First Player Too Specify The Province To Start The War In It Is : "<<std::endl<<"("<<players[1].getName()<<") \n"<<"Please Select The Province You Want The War To Be On  : "<<std::endl;
+        std::cout << "HERE IS A LIST OF PROVNICES ----->  " ; 
+        map.provinceListPrinter() ; 
+        
 
 }

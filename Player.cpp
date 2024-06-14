@@ -1,22 +1,20 @@
 #include "Player.h"
+#include <iostream>
 
 // Constructor
 Player::Player(const std::string name, int age, const std::string color)
     : name(name), color(color), totalScore(0) {
-    if (age > 0) {
-        this->age = age;
-    } else {
-        while (true) {
-            std::cout << "Age is invalid " << std::endl
-                      << "You cannot be UNBORN --- (Enter a positive number for age): ";
-            std::cin >> age;
-            if (age > 0) {
-                this->age = age;
-                break;
-            }
+    while (age <= 0) {
+        if (age == 0) {
+            std::cin.clear(); // Clear error flags
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Clear input buffer
         }
+        std::cout << "Age is invalid" << std::endl
+                  << "You cannot be UNBORN --- (Enter a positive number for age): ";
+        std::cin >> age;
     }
-
+    
+    this->age = age;
     tablZanHazPlayed = false;
 }
 
@@ -97,8 +95,6 @@ void Player::playCard(std::string selectedCard) {
         }
 
     } while(!isFounded);
-
-    
 }
 
 void Player::retakeCombatCard(std::shared_ptr<Card> &card) {

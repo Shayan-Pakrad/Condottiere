@@ -19,11 +19,14 @@ public:
     void addPlayer(const Player& player);
     void sortPlayers();
     void showCards();
+    void neshaneJangSetter();
+    std::string getNeshaneJang();
 
 private:
     std::vector<Player> players; // List of the game players
     Map map;
     Deck deck;
+    std ::string NeshaneJang ; 
 };
 
 #endif // GAME_H

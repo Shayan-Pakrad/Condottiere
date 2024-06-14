@@ -6,6 +6,7 @@
 #include <vector>
 #include <memory>
 #include <algorithm>
+#include <limits>
 
 #include "Province.h"
 #include "Card.h"
