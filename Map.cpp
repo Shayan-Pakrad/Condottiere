@@ -1,13 +1,6 @@
 #include "Map.h"
 
 // Constructor
-void Map:: provinceListPrinter(){
-    for (int i = 0; i <provinces.size() ; i++)
-    {
-        std::cout << provinces[i].getName()<<" -- ";
-    }
-    
-}
 Map::Map()
     : boarderingProvinces{{
         {0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0},  // BELLA
@@ -45,3 +38,10 @@ Map::Map()
     // Additional initialization if necessary
 }
 
+void Map:: provinceListPrinter(){
+    for (int i = 0; i <provinces.size() ; i++)
+    {
+        std::cout << provinces[i].getName()<<" -- ";
+    }
+    
+}

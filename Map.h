@@ -8,12 +8,11 @@
 
 class Map {
 public:
-    void provinceListPrinter() ;  
-    // Enum for provinces
-
-
     // Constructor
     Map();
+
+    void provinceListPrinter() ;  
+    // Enum for provinces
 
     bool provinceOwnerDesignative();
 

@@ -11,12 +11,15 @@ public:
     Battle(Province &province, std::vector<Player> &players);
     void baharSwitch(); // If bahar has played
     void zemestanSwitch(); // If Zemestan has played
+    
 
 private:
     Province &province;
     std::vector<Player> &players;
     bool baharHasPlayed;
     bool ZemestanHasPlayed;
+
+    int lastTimeWinner;
 };
 
 #endif // BATTLE_H

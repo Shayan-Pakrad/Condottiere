@@ -6,6 +6,7 @@
 #include "Player.h"
 #include "Map.h"
 #include "Deck.h"
+#include "Province.h"
 
 class Game {
 public:
@@ -19,14 +20,14 @@ public:
     void addPlayer(const Player& player);
     void sortPlayers();
     void showCards();
-    void neshaneJangSetter();
-    std::string getNeshaneJang();
+    void setNeshaneJang();
+
 
 private:
     std::vector<Player> players; // List of the game players
     Map map;
     Deck deck;
-    std ::string NeshaneJang ; 
+    Province &NeshaneJangProvince; // The province that will be battle
 };
 
 #endif // GAME_H

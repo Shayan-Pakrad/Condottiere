@@ -5,6 +5,13 @@ Game::Game() {
     startGame();
 }
 
+// Start the game by initializing and sorting players
+void Game::startGame() {
+    welcome();
+    initPlayers();
+    sortPlayers();
+    showCards();
+}
 void Game :: welcome(){
         std::string welcomeText = R"(
   __        __         _                                       _____             _____   _                 ____                       _           _     _                             
@@ -20,15 +27,8 @@ void Game :: welcome(){
     std::cout.flush(); // Flush output buffer
     std::cout << std::endl;
 }
-// Start the game by initializing and sorting players
-void Game::startGame() {
-    initPlayers();
-    sortPlayers();
-    showCards();
-}
 // Initialize players
 void Game::initPlayers() {
-    welcome();
     std::cout << "Number of players: ";
     int numberOfPlayers;
     std::cin >> numberOfPlayers;
@@ -51,7 +51,7 @@ void Game::initPlayers() {
 
         // Add new player to players list
         Player player{name, age, color};
-        players.push_back(player);
+        addPlayer(player);
     }
 }
 
@@ -101,22 +101,11 @@ void Game::showCards() {
         std::cin.get();
 
     }
-    for (int i = 0; i < numberOfPlayers; i++)
-    {   
-        std::vector<std::shared_ptr<Card>> playerCards = players[i].getCardsInHand();
-        std::cout <<"\n"<<players[i].getName()<<"'s Deck Of Cards  :  "; 
-        for (int j = 0; j < playerCards.size(); j++)
-        {
-                std::cout<<playerCards[j]->getName()<<"  " ;
-        }
-        std::cout << "\n";
-    }
+    
     std::cout <<std::endl <<std::endl<<std::endl;
-    sortPlayers();
-        std::cout << "The Game Is About To Start ........! \n";
-        std::cout << "The First Player Too Specify The Province To Start The War In It Is : "<<std::endl<<"("<<players[1].getName()<<") \n"<<"Please Select The Province You Want The War To Be On  : "<<std::endl;
-        std::cout << "HERE IS A LIST OF PROVNICES ----->  " ; 
-        map.provinceListPrinter() ; 
-        
-
+    std::cout << "The Game Is About To Start ........! \n";
+    std::cout << "The First Player Too Specify The Province To Start The War In It Is : "<<std::endl<<"("<<players[0].getName()<<") \n"<<"Please Select The Province You Want The War To Be On  : "<<std::endl;
+    std::cout << "HERE IS A LIST OF PROVNICES ----->  "; 
+    map.provinceListPrinter(); 
+    
 }
