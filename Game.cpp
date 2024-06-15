@@ -55,7 +55,7 @@ void Game::initPlayers() {
     }
 }
 void Game::setNeshaneJang(std::string MohreSiah){
-
+    
 }
 
 // Add player to the players list
