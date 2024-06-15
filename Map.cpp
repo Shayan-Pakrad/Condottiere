@@ -43,5 +43,6 @@ void Map:: provinceListPrinter(){
     {
         std::cout << provinces[i].getName()<<" -- ";
     }
+    std::cout <<"\n" ;
     
 }

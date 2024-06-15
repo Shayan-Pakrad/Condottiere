@@ -11,6 +11,9 @@ void Game::startGame() {
     initPlayers();
     sortPlayers();
     showCards();
+    map.provinceListPrinter(); 
+    setNeshaneJangProvince();
+    
 }
 void Game :: welcome(){
         std::string welcomeText = R"(
@@ -54,15 +57,53 @@ void Game::initPlayers() {
         addPlayer(player);
     }
 }
-void Game::setNeshaneJang(std::string MohreSiah){
+// A function for getting the neshanejang from the user (independent from the case size that user enters\)
+void Game::setNeshaneJangProvince(){
+    std::cout << "Please Select The Province You Want The War To Be On  : "<<std::endl;
+
+    std::string InputProvince ;
+    // Map of province names to enum values
+    std::unordered_map<std::string, prov> provinceMap = {
+        {"bella", BELLA},
+        {"caline", CALINE},
+        {"enna", ENNA},
+        {"atela", ATELA},
+        {"pladaci", PLADACI},
+        {"borge", BORGE},
+        {"dimase", DIMASE},
+        {"morina", MORINA},
+        {"olivia", OLIVIA},
+        {"rollo", ROLLO},
+        {"talmone", TALMONE},
+        {"armento", ARMENTO},
+        {"lia", LIA},
+        {"elina", ELINA}
+    };
+
+    // Check if the provinceName exists in the map
+    bool flag = true ; 
+    while (flag)
+    {
+    std::cin>> InputProvince ;
+    std::string lowerCaseProvinceName = InputProvince;
+    std::transform(lowerCaseProvinceName.begin(), lowerCaseProvinceName.end(), lowerCaseProvinceName.begin(), ::tolower);
+    if (provinceMap.find(lowerCaseProvinceName) != provinceMap.end()) {
+        NeshaneJangProvince = provinceMap[lowerCaseProvinceName];
+        std::cout << "NeshaneJang set to province:      " << InputProvince << " \n  So Whoever Wins The Round "<<InputProvince<<"Is Gonna Be In His Conquered Province List  "<<std::endl;
+        flag = false ; 
+    } else {
+        std::cout << "Province not found. NeshaneJang not set." << std::endl;
+    }
+        
+    }
     
 }
+
 
 // Add player to the players list
 void Game::addPlayer(const Player& player) {
     players.push_back(player);
 }
-
 // Sort players vector based on their age (for initializing the first province to attack )
 void Game::sortPlayers() {
     int n = players.size();
@@ -107,8 +148,8 @@ void Game::showCards() {
     
     std::cout <<std::endl <<std::endl<<std::endl;
     std::cout << "The Game Is About To Start ........! \n";
-    std::cout << "The First Player Too Specify The Province To Start The War In It Is : "<<std::endl<<"("<<players[0].getName()<<") \n"<<"Please Select The Province You Want The War To Be On  : "<<std::endl;
+    std::cout << "The First Player Too Specify The Province To Start The War In It Is : "<<std::endl<<"("<<players[0].getName()<<") \n";
     std::cout << "HERE IS A LIST OF PROVNICES ----->  "; 
-    map.provinceListPrinter(); 
+    
     
 }
