@@ -11,8 +11,8 @@ public:
     // Constructor
     Map();
 
-    void provinceListPrinter() ;  
-    // Enum for provinces
+    void provinceListPrinter() ;  // to display a list of provinces for the player who supposed to set the province to fight on 
+    // Enum for provinces (any input as province's string will be an integer index )
 
     bool provinceOwnerDesignative();
 

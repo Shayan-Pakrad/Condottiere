@@ -20,14 +20,14 @@ public:
     void addPlayer(const Player& player);
     void sortPlayers();
     void showCards();
-    void setNeshaneJang();
+    void setNeshaneJang(std::string MohreSiah);
 
 
 private:
     std::vector<Player> players; // List of the game players
     Map map;
     Deck deck;
-    Province &NeshaneJangProvince; // The province that will be battle
+    std::string NeshaneJangProvince; 
 };
 
 #endif // GAME_H

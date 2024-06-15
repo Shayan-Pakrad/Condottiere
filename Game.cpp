@@ -14,7 +14,7 @@ void Game::startGame() {
 }
 void Game :: welcome(){
         std::string welcomeText = R"(
-  __        __         _                                       _____             _____   _                 ____                       _           _     _                             
+ __        __         _                                       _____             _____   _                 ____                       _           _     _                             
  \ \      / /   ___  | |   ___    ___    _ __ ___     ___    |_   _|   ___     |_   _| | |__     ___     / ___|   ___    _ __     __| |   ___   | |_  (_)   ___   _ __   _ __    ___ 
   \ \ /\ / /   / _ \ | |  / __|  / _ \  | '_ ` _ \   / _ \     | |    / _ \      | |   | '_ \   / _ \   | |      / _ \  | '_ \   / _` |  / _ \  | __| | |  / _ \ | '__| | '__|  / _ \
    \ V  V /   |  __/ | | | (__  | (_) | | | | | | | |  __/     | |   | (_) |     | |   | | | | |  __/   | |___  | (_) | | | | | | (_| | | (_) | | |_  | | |  __/ | |    | |    |  __/
@@ -53,6 +53,9 @@ void Game::initPlayers() {
         Player player{name, age, color};
         addPlayer(player);
     }
+}
+void Game::setNeshaneJang(std::string MohreSiah){
+
 }
 
 // Add player to the players list
