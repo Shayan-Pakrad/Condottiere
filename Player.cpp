@@ -83,14 +83,16 @@ std::shared_ptr<Card>& Player::playCard(std::string selectedCard) {
                 if ((*card)->getType() == "combat") {
                     combatCardsPlayed.push_back(*card);
                     cardsInHand.erase(card);
-                    return *card;
+                    return combatCardsPlayed[0];
                 }
                 if ((*card)->getType() == "special") {
                     specialCardsPlayed.push_back(*card);
                     cardsInHand.erase(card);
-                    return *card;
+                    return specialCardsPlayed[0];
                 }
+                
             }
+            
         }
 
         if (!isFounded) {

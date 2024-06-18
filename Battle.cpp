@@ -87,14 +87,16 @@ void Battle::startBattle() {
             std::cin >> inputCard;
 
             std::shared_ptr<Card> &selectedCard = player.playCard(inputCard);
+            
             if (selectedCard->getType() == "special") {
                 if (selectedCard->getName() == "bahar" || selectedCard->getName() == "zemestan") {
                     selectedCard->applyEffect(*this);
                 }
+                else {
+                    selectedCard->applyEffect(player);
+                }
             }
-            else {
-                selectedCard->applyEffect(player);
-            }
+            
 
 
 

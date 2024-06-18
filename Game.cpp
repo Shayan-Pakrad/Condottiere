@@ -170,7 +170,7 @@ void Game::initiateBattle() {
 
     currentBattle = new Battle(map.getProvinceByIndex(int(NeshaneJangProvince)), players);
 
-
+    currentBattle->startBattle();
 
 
 }
