@@ -73,22 +73,29 @@ void Player::giveCard(std::shared_ptr<Card> &card) {
     cardsInHand.push_back(card);
 }
 
-std::shared_ptr<Card>& Player::playCard(std::string selectedCard) {
+std::shared_ptr<Card>* Player::playCard(std::string selectedCard) {
+
+
     bool isFounded = false;
 
     do {
+
+        if (selectedCard == "pass") {
+            hasPassed = true;
+            break;
+        }
         for (auto card = cardsInHand.begin(); card != cardsInHand.end(); ++card) {
             if ((*card)->getName() == selectedCard) {
                 isFounded = true;
                 if ((*card)->getType() == "combat") {
                     combatCardsPlayed.push_back(*card);
                     cardsInHand.erase(card);
-                    return combatCardsPlayed[0];
+                    return &combatCardsPlayed[0];
                 }
                 if ((*card)->getType() == "special") {
                     specialCardsPlayed.push_back(*card);
                     cardsInHand.erase(card);
-                    return specialCardsPlayed[0];
+                    return &specialCardsPlayed[0];
                 }
                 
             }
@@ -101,21 +108,20 @@ std::shared_ptr<Card>& Player::playCard(std::string selectedCard) {
         }
 
     } while(!isFounded);
+    
+    return nullptr;
 }
 
 void Player::retakeCombatCard(std::shared_ptr<Card> &card) {
     auto it = std::find(combatCardsPlayed.begin(), combatCardsPlayed.end(), card);
     if (it != combatCardsPlayed.end()) {
+        cardsInHand.push_back(*it);
         combatCardsPlayed.erase(it);
     }
 }
 
 void Player::tablZanSwitch() {
     tablZanHazPlayed = true;
-}
-
-void Player::pass() {
-    hasPassed = true;
 }
 
 bool Player::checkPass() {

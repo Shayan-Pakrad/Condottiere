@@ -19,7 +19,7 @@ void Battle::zemestanSwitch() {
 void Battle::printInformation() {
     std::system("cls");
 
-    std::cout << "\n\n->-> Current Battle Is In : " << province.getName() << "<-<-\n\n";
+    std::cout << "\n\n->-> Current Battle Is In : " << province.getName() << " <-<-\n\n";
 
     // Players Played Cards
 
@@ -44,6 +44,12 @@ void Battle::printInformation() {
             std::cout << playedCards[j]->getName() << "   ";
         }
         std::cout << ")";
+
+        // Check Pass
+
+        if (players[i].checkPass()) {
+            std::cout << "  --> PASSED";
+        }
 
         std::cout << std::endl;
     }
@@ -70,6 +76,11 @@ void Battle::startBattle() {
 
     int passedPlayers = 0;
     while(passedPlayers != players.size()) {
+
+        if (passedPlayers == players.size()) {
+            return;
+        }
+
         for(auto &player : players) { if (!player.checkPass()) {
             std::system("cls");
             // Print general information
@@ -86,19 +97,21 @@ void Battle::startBattle() {
             std::string inputCard;
             std::cin >> inputCard;
 
-            std::shared_ptr<Card> &selectedCard = player.playCard(inputCard);
-            
-            if (selectedCard->getType() == "special") {
-                if (selectedCard->getName() == "bahar" || selectedCard->getName() == "zemestan") {
-                    selectedCard->applyEffect(*this);
-                }
-                else {
-                    selectedCard->applyEffect(player);
-                }
-            }
-            
+            std::shared_ptr<Card>* selectedCard = player.playCard(inputCard); // This returns nullptr when player choose to pass
 
 
+            if(selectedCard != nullptr) {
+
+                if ((*selectedCard)->getType() == "special") {
+                    if ((*selectedCard)->getName() == "bahar" || (*selectedCard)->getName() == "zemestan") {
+                        (*selectedCard)->applyEffect(*this);
+                    }
+                    else {
+                        (*selectedCard)->applyEffect(player);
+                    }
+                }
+
+            } else { passedPlayers++; }
 
         }}
     }
