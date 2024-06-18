@@ -73,7 +73,7 @@ void Player::giveCard(std::shared_ptr<Card> &card) {
     cardsInHand.push_back(card);
 }
 
-void Player::playCard(std::string selectedCard) {
+std::shared_ptr<Card>& Player::playCard(std::string selectedCard) {
     bool isFounded = false;
 
     do {
@@ -83,12 +83,12 @@ void Player::playCard(std::string selectedCard) {
                 if ((*card)->getType() == "combat") {
                     combatCardsPlayed.push_back(*card);
                     cardsInHand.erase(card);
-                    break; 
+                    return *card;
                 }
                 if ((*card)->getType() == "special") {
                     specialCardsPlayed.push_back(*card);
                     cardsInHand.erase(card);
-                    break;
+                    return *card;
                 }
             }
         }

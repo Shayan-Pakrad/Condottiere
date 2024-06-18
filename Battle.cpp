@@ -65,3 +65,39 @@ void Battle::printInformation() {
     std::cout << "\n----------------------------------------------------------------------\n\n";
 
 }
+
+void Battle::startBattle() {
+
+    int passedPlayers = 0;
+    while(passedPlayers != players.size()) {
+        for(auto &player : players) { if (!player.checkPass()) {
+            std::system("cls");
+            // Print general information
+            printInformation();
+            // Print players cards
+            std::cout << "Player " << player.getName() << " cards : ";
+            for (auto &card : player.getCardsInHand()) {
+                std::cout << card->getName() << "   ";
+            }
+            std::cout << std::endl;
+            
+            // Input chosen card and Apply its effect
+            std::cout << "\nPlease Enter The Card You Want To Play : ";
+            std::string inputCard;
+            std::cin >> inputCard;
+
+            std::shared_ptr<Card> &selectedCard = player.playCard(inputCard);
+            if (selectedCard->getType() == "special") {
+                if (selectedCard->getName() == "bahar" || selectedCard->getName() == "zemestan") {
+                    selectedCard->applyEffect(*this);
+                }
+            }
+            else {
+                selectedCard->applyEffect(player);
+            }
+
+
+
+        }}
+    }
+}

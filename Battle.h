@@ -12,6 +12,7 @@ public:
     void baharSwitch(); // If bahar has played
     void zemestanSwitch(); // If Zemestan has played
     void printInformation(); // Played cards and players provinces
+    void startBattle();
     
 
 private:

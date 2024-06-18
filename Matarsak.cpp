@@ -3,7 +3,8 @@
 Matarsak::Matarsak(): SpecialCard(0, "matarsak") {}
 
 void Matarsak::applyEffect(Player &player) {
-    std::cout << "Which Yellow card do you want to pick up (for example 3) : ";
+    
+    std::cout << "\nWhich Yellow card do you want to pick up (for example 3) : ";
     std::string selectedCard;
     std::cin >> selectedCard;
 

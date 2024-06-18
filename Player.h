@@ -32,7 +32,7 @@ public:
     std::vector<std::shared_ptr<Card>> getAllCardsPlayed() const;
     std::vector<std::shared_ptr<Card>> getCardsInHand() const;
     void giveCard(std::shared_ptr<Card> &card);
-    void playCard(std::string selectedCard);
+    std::shared_ptr<Card>& playCard(std::string selectedCard);
     void retakeCombatCard(std::shared_ptr<Card> &card);
     void tablZanSwitch();
 
