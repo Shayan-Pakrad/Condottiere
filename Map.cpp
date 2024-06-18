@@ -38,11 +38,15 @@ Map::Map()
     // Additional initialization if necessary
 }
 
-void Map:: provinceListPrinter(){
+void Map::provinceListPrinter(){
     for (int i = 0; i <provinces.size() ; i++)
     {
         std::cout << provinces[i].getName()<<" -- ";
     }
     std::cout <<"\n" ;
     
+}
+
+Province& Map::getProvinceByIndex(int index) {
+    return provinces[index];
 }

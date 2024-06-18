@@ -14,8 +14,9 @@
 
 class Game {
 public:
-    // Constructor
+    // Constructor and destructor
     Game();
+    ~Game();
 
     // Member functions
     void welcome() ; 
@@ -25,6 +26,7 @@ public:
     void sortPlayers();
     void showCards();
     void setNeshaneJangProvince();
+    void initiateBattle();
 
     // Enum for provinces (any input as province's string will be an integer index )
     enum prov{
@@ -49,7 +51,10 @@ private:
     std::vector<Player> players; // List of the game players
     Map map;
     Deck deck;
-    prov NeshaneJangProvince; 
+    prov NeshaneJangProvince;
+
+    Battle *currentBattle;
+    
 };
 
 #endif // GAME_H

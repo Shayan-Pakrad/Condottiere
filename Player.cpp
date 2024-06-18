@@ -3,7 +3,7 @@
 
 // Constructor
 Player::Player(const std::string name, int age, const std::string color)
-    : name(name), color(color), totalScore(0) {
+    : name(name), color(color), totalScore(0), hasPassed(false) {
     while (age <= 0) {
         if (age == 0) {
             std::cin.clear(); // Clear error flags
@@ -51,6 +51,10 @@ void Player::addProvince(const Province& province) {
 // Return number of conqueredProvinces
 int Player::getProvincesNumber() const {
     return conqueredProvinces.size();
+}
+
+std::vector<Province> Player::getConqueredProvinces() const {
+    return conqueredProvinces;
 }
 
 std::vector<std::shared_ptr<Card>> Player::getCombatCardsPlayed() const {
@@ -106,4 +110,12 @@ void Player::retakeCombatCard(std::shared_ptr<Card> &card) {
 
 void Player::tablZanSwitch() {
     tablZanHazPlayed = true;
+}
+
+void Player::pass() {
+    hasPassed = true;
+}
+
+bool Player::checkPass() {
+    return hasPassed;
 }
