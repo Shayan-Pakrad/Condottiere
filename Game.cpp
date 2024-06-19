@@ -172,5 +172,9 @@ void Game::initiateBattle() {
 
     currentBattle->startBattle();
 
+    
+
+    currentBattle->endBattle();
+
 
 }

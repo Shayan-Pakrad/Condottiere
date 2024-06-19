@@ -5,6 +5,8 @@
 #include "Player.h"
 #include "Battle.h"
 
+
+
 class SpecialCard: public Card {
     public:
     SpecialCard(int point, std::string name);

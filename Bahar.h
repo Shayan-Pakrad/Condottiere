@@ -1,7 +1,6 @@
 #ifndef BAHAR_H
 #define BAHAR_H
 
-#include "Battle.h"
 #include "SpecialCard.h"
 
 class Bahar: public SpecialCard {

@@ -6,15 +6,17 @@
 #include <algorithm>
 #include <random>
 
-#include "Card.h"
-#include "Player.h"
-
 #include "CombatCard.h"
+#include "SpecialCard.h"
 #include "Matarsak.h"
 #include "Bahar.h"
 #include "ShahDokht.h"
 #include "TablZan.h"
 #include "Zemestan.h"
+
+#include "Card.h"
+#include "Player.h"
+
 
 class Battle;
 

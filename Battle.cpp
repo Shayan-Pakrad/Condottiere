@@ -1,4 +1,5 @@
 #include "Battle.h"
+#include "Deck.h"
 
 // Constructor
 Battle::Battle(Province &province, std::vector<Player> &players, Deck &deck)
@@ -78,9 +79,9 @@ void Battle::startBattle() {
     while (true) {
         checkPlayersHands();
 
-        // if (passedPlayers == players.size()) {
-        //     return; // endBattle();
-        // }
+        if (passedPlayers == players.size()) {
+            return;
+        }
 
         for(auto &player : players) { if (!player.checkPass()) {
             // Check if Player has any card
@@ -138,3 +139,27 @@ void Battle::checkPlayersHands() { // Also deals players
         }
     }
 }
+
+void Battle::endBattle() { // It is not completed yet
+
+
+    if (ZemestanHasPlayed) {
+        for (auto &player : players) {
+            player.setPointsToZero();
+        }
+    }
+
+   auto winner = players.begin(); // set winner to the first player
+
+    for (auto player = players.begin() + 1; player != players.end(); ++player) {
+        if (player->getTotalScore() > winner->getTotalScore()) {
+            winner = player;
+        }
+    }
+
+    winner->addProvince(province);
+
+    std::cout << "\n\n\n\nThe player " << winner->getName() << " is the winner of this battle\n\n\n";
+
+}
+

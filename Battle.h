@@ -4,8 +4,10 @@
 #include <vector>
 #include "Province.h"
 #include "Player.h"
-#include "Deck.h"
 
+
+
+class Deck;
 
 
 class Battle {
@@ -16,6 +18,8 @@ public:
     void zemestanSwitch(); // If Zemestan has played
     void printInformation(); // Played cards and players provinces
     void startBattle();
+    void endBattle();
+    void resetPlayers(); // For future implementation not at midterm
 
     void checkPlayersHands(); // Check players have cards
     

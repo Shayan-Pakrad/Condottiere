@@ -35,7 +35,14 @@ std::string Player::getColor() const {
 
 // Total score getter function
 int Player::getTotalScore() const {
-    return totalScore;
+    int overall = 0;
+    for (auto combatCard = combatCardsPlayed.begin(); combatCard != combatCardsPlayed.end(); ++combatCard) {
+         overall = overall + ((*combatCard)->getPoint());
+    }
+    for (auto specialCard = specialCardsPlayed.begin(); specialCard != specialCardsPlayed.end(); ++specialCard) {
+        overall = overall + ((*specialCard)->getPoint());
+    }
+    return overall;
 }
 
 // Total score setter function
@@ -140,4 +147,10 @@ bool Player::checkPass() {
 void Player::emptyHand() {
     cardsInHand.clear();
     cardsInHand.shrink_to_fit();
+}
+
+void Player::setPointsToZero() {
+    for (auto card = combatCardsPlayed.begin(); card != combatCardsPlayed.end(); ++card) {
+        (*card)->setPoint(1);
+    }
 }

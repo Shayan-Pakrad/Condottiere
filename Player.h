@@ -41,6 +41,8 @@ public:
 
     void emptyHand();
 
+    void setPointsToZero(); // for when zemestan has played in the battle
+
 
 private:
     std::string name;
