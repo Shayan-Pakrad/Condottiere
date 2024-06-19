@@ -168,7 +168,7 @@ void Game::initiateBattle() {
         delete currentBattle;
     }
 
-    currentBattle = new Battle(map.getProvinceByIndex(int(NeshaneJangProvince)), players);
+    currentBattle = new Battle(map.getProvinceByIndex(int(NeshaneJangProvince)), players, deck);
 
     currentBattle->startBattle();
 

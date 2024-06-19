@@ -16,6 +16,8 @@
 #include "TablZan.h"
 #include "Zemestan.h"
 
+class Battle;
+
 class Deck {
     public:
     Deck();

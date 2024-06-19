@@ -55,7 +55,12 @@ int Player::getProvincesNumber() const {
 
 std::vector<Province> Player::getConqueredProvinces() const {
     return conqueredProvinces;
+
 }
+int Player::getConqueredProvincesNumber() const {
+    return conqueredProvinces.size();
+}
+
 
 std::vector<std::shared_ptr<Card>> Player::getCombatCardsPlayed() const {
     return combatCardsPlayed;
@@ -81,7 +86,7 @@ std::shared_ptr<Card>* Player::playCard(std::string selectedCard) {
     do {
 
         if (selectedCard == "pass") {
-            hasPassed = true;
+            pass();
             break;
         }
         for (auto card = cardsInHand.begin(); card != cardsInHand.end(); ++card) {
@@ -124,6 +129,15 @@ void Player::tablZanSwitch() {
     tablZanHazPlayed = true;
 }
 
+void Player::pass() {
+    hasPassed = true;
+}
+
 bool Player::checkPass() {
     return hasPassed;
+}
+
+void Player::emptyHand() {
+    cardsInHand.clear();
+    cardsInHand.shrink_to_fit();
 }

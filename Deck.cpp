@@ -68,7 +68,8 @@ void Deck::shuffleCards() {
 }
 
 void Deck::deal(Player &player) {
-    for (int i = 0; i < 10; i++) {
+    player.emptyHand();
+    for (int i = 0; i < 10 + player.getConqueredProvincesNumber(); i++) {
         player.giveCard(*gameCards.begin());
         gameCards.erase(gameCards.begin());
     }

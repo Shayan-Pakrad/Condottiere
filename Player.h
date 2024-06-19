@@ -27,16 +27,19 @@ public:
     void addProvince(const Province& province);
     int getProvincesNumber() const;
     std::vector<Province> getConqueredProvinces() const;
+    int getConqueredProvincesNumber() const;
     std::vector<std::shared_ptr<Card>> getCombatCardsPlayed() const;
     std::vector<std::shared_ptr<Card>> getSpecialCardsPlayed() const;
-    std::vector<std::shared_ptr<Card>> getAllCardsPlayed() const;
     std::vector<std::shared_ptr<Card>> getCardsInHand() const;
     void giveCard(std::shared_ptr<Card> &card);
     std::shared_ptr<Card>* playCard(std::string selectedCard);
     void retakeCombatCard(std::shared_ptr<Card> &card);
     void tablZanSwitch();
 
+    void pass();
     bool checkPass();
+
+    void emptyHand();
 
 
 private:

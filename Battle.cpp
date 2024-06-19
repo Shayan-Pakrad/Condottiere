@@ -1,8 +1,8 @@
 #include "Battle.h"
 
 // Constructor
-Battle::Battle(Province &province, std::vector<Player> &players)
-    : province(province), players(players), baharHasPlayed(false), 
+Battle::Battle(Province &province, std::vector<Player> &players, Deck &deck)
+    : province(province), players(players), deck(deck), baharHasPlayed(false), 
     ZemestanHasPlayed(false) {}
 
 // bahar and zemestan switch
@@ -75,13 +75,22 @@ void Battle::printInformation() {
 void Battle::startBattle() {
 
     int passedPlayers = 0;
-    while(passedPlayers != players.size()) {
+    while (true) {
+        checkPlayersHands();
 
-        if (passedPlayers == players.size()) {
-            return;
-        }
+        // if (passedPlayers == players.size()) {
+        //     return; // endBattle();
+        // }
 
         for(auto &player : players) { if (!player.checkPass()) {
+            // Check if Player has any card
+            if (player.getCardsInHand().empty()) {
+                player.pass();
+                passedPlayers++;
+                continue;
+            }
+
+
             std::system("cls");
             // Print general information
             printInformation();
@@ -114,5 +123,18 @@ void Battle::startBattle() {
             } else { passedPlayers++; }
 
         }}
+    }
+}
+
+void Battle::checkPlayersHands() { // Also deals players
+    int emptyPlayers = 0;
+    for (auto &player : players) {
+        if (player.getCardsInHand().empty()) emptyPlayers++;
+    }
+
+    if ( emptyPlayers >= (players.size()-1) ) {
+        for (auto &player : players) {
+            deck.deal(player);
+        }
     }
 }
