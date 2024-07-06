@@ -5,10 +5,7 @@
 #include "Province.h"
 #include "Player.h"
 
-
-
-class Deck;
-
+class Deck; // forward declaration
 
 class Battle {
 public:
@@ -33,7 +30,6 @@ private:
     bool baharHasPlayed;
     bool ZemestanHasPlayed;
 
-    int lastTimeWinner;
 };
 
 #endif // BATTLE_H

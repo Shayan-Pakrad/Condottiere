@@ -17,12 +17,12 @@ void Game::startGame() {
     initPlayers();
     sortPlayers();
     showCards();
-    map.provinceListPrinter(); 
+    map.provinceListPrinter();
     setNeshaneJangProvince();
     initiateBattle();
-    
 }
-void Game :: welcome(){
+
+void Game::welcome() {
         std::string welcomeText = R"(
  __        __         _                                       _____             _____   _                 ____                       _           _     _                             
  \ \      / /   ___  | |   ___    ___    _ __ ___     ___    |_   _|   ___     |_   _| | |__     ___     / ___|   ___    _ __     __| |   ___   | |_  (_)   ___   _ __   _ __    ___ 
@@ -37,6 +37,7 @@ void Game :: welcome(){
     std::cout.flush(); // Flush output buffer
     std::cout << std::endl;
 }
+
 // Initialize players
 void Game::initPlayers() {
     std::cout << "Number of players: ";
@@ -71,7 +72,7 @@ void Game::addPlayer(const Player& player) {
     players.push_back(player);
 }
 
-// Sort players vector based on their age (for initializing the first province to attack )
+// Sort players vector based on their age ( for initializing the first province to attack )
 void Game::sortPlayers() {
     int n = players.size();
     for (int i = 0; i < n - 1; ++i) {
@@ -84,7 +85,6 @@ void Game::sortPlayers() {
         }
     }
 }
-
 
 void Game::showCards() {
     int numberOfPlayers = players.size();

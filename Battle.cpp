@@ -145,7 +145,7 @@ void Battle::endBattle() { // It is not completed yet
 
     if (ZemestanHasPlayed) {
         for (auto &player : players) {
-            player.setPointsToZero();
+            player.setPointsToOne();
         }
     }
 

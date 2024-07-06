@@ -23,9 +23,7 @@ public:
     std::string getName() const;
     std::string getColor() const;
     int getTotalScore() const;
-    void setTotalScore(int score);
     void addProvince(const Province& province);
-    int getProvincesNumber() const;
     std::vector<Province> getConqueredProvinces() const;
     int getConqueredProvincesNumber() const;
     std::vector<std::shared_ptr<Card>> getCombatCardsPlayed() const;
@@ -41,13 +39,12 @@ public:
 
     void emptyHand();
 
-    void setPointsToZero(); // for when zemestan has played in the battle
+    void setPointsToOne(); // for when zemestan has played in the battle
 
 
 private:
     std::string name;
     int age;
-    int totalScore = 0; // Initialize total score to 0
     std::string color;
     std::vector<Province> conqueredProvinces;
     bool tablZanHazPlayed; // It sets true if the player play TablZan card

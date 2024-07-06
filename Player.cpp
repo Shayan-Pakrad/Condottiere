@@ -3,7 +3,7 @@
 
 // Constructor
 Player::Player(const std::string name, int age, const std::string color)
-    : name(name), color(color), totalScore(0), hasPassed(false) {
+    : name(name), color(color), hasPassed(false) {
     while (age <= 0) {
         if (age == 0) {
             std::cin.clear(); // Clear error flags
@@ -45,19 +45,9 @@ int Player::getTotalScore() const {
     return overall;
 }
 
-// Total score setter function
-void Player::setTotalScore(int score) {
-    totalScore = score;
-}
-
 // Add province to conqueredProvinces
 void Player::addProvince(const Province& province) {
     conqueredProvinces.push_back(province);
-}
-
-// Return number of conqueredProvinces
-int Player::getProvincesNumber() const {
-    return conqueredProvinces.size();
 }
 
 std::vector<Province> Player::getConqueredProvinces() const {
@@ -149,7 +139,7 @@ void Player::emptyHand() {
     cardsInHand.shrink_to_fit();
 }
 
-void Player::setPointsToZero() {
+void Player::setPointsToOne() {
     for (auto card = combatCardsPlayed.begin(); card != combatCardsPlayed.end(); ++card) {
         (*card)->setPoint(1);
     }
