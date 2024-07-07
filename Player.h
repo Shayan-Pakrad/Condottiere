@@ -36,6 +36,7 @@ public:
 
     void pass();
     bool checkPass();
+    void resetPass();
 
     void emptyHand();
 

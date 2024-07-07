@@ -134,6 +134,10 @@ bool Player::checkPass() {
     return hasPassed;
 }
 
+void Player::resetPass() {
+    hasPassed = false;
+}
+
 void Player::emptyHand() {
     cardsInHand.clear();
     cardsInHand.shrink_to_fit();

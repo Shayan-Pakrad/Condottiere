@@ -74,10 +74,10 @@ void Battle::printInformation() {
 }
 
 void Battle::startBattle() {
+    checkPlayersHands();
 
     int passedPlayers = 0;
     while (true) {
-        checkPlayersHands();
 
         if (passedPlayers == players.size()) {
             return;
@@ -136,6 +136,7 @@ void Battle::checkPlayersHands() { // Also deals players
     if ( emptyPlayers >= (players.size()-1) ) {
         for (auto &player : players) {
             deck.deal(player);
+            player.resetPass();
         }
     }
 }
