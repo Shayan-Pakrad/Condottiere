@@ -34,7 +34,9 @@
     Province("LIA"),
     Province("ELINA")
 }};
+Map::Map(){
 
+};
 
 void Map::provinceListPrinter(){
     for (int i = 0; i <provinces.size() ; i++)

@@ -50,7 +50,6 @@ public:
     // Constructor and destructor
     Game();
     ~Game();
-
     // Member functions
     void welcome();
     void startGame();
