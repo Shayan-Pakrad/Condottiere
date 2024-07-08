@@ -1,8 +1,7 @@
 #include "Map.h"
 
 // Constructor
-Map::Map()
-    : boarderingProvinces{{
+    std::array<std::array<int, 14>, 14> Map::boarderingProvinces{{
         {0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0},  // BELLA
         {1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0},  // CALINE
         {0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0},  // ENNA
@@ -17,26 +16,25 @@ Map::Map()
         {0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 1, 0},  // ARMENTO
         {0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0},  // LIA
         {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0}   // ELINA
-    }},
-    provinces{{
-        Province("BELLA"),
-        Province("CALINE"),
-        Province("ENNA"),
-        Province("ATELA"),
-        Province("PLADACI"),
-        Province("BORGE"),
-        Province("DIMASE"), 
-        Province("MORINA"),
-        Province("OLIVIA"),
-        Province("ROLLO"),
-        Province("TALMONE"),
-        Province("ARMENTO"),
-        Province("LIA"),
-        Province("ELINA"),
-    }}
-{
-    // Additional initialization if necessary
-}
+
+    }};
+    std::array<Province, 14> Map::provinces = {{
+    Province("BELLA"),
+    Province("CALINE"),
+    Province("ENNA"),
+    Province("ATELA"),
+    Province("PLADACI"),
+    Province("BORGE"),
+    Province("DIMASE"), 
+    Province("MORINA"),
+    Province("OLIVIA"),
+    Province("ROLLO"),
+    Province("TALMONE"),
+    Province("ARMENTO"),
+    Province("LIA"),
+    Province("ELINA")
+}};
+
 
 void Map::provinceListPrinter(){
     for (int i = 0; i <provinces.size() ; i++)
@@ -46,6 +44,7 @@ void Map::provinceListPrinter(){
     std::cout <<"\n" ;
     
 }
+
 
 Province& Map::getProvinceByIndex(int index) {
     return provinces[index];

@@ -11,23 +11,6 @@
 #include "Map.h"
 #include "Deck.h"
 #include "Province.h"
-
-class Game {
-public:
-    // Constructor and destructor
-    Game();
-    ~Game();
-
-    // Member functions
-    void welcome();
-    void startGame();
-    void initPlayers();
-    void addPlayer(const Player& player);
-    void sortPlayers();
-    void showCards();
-    void setNeshaneJangProvince();
-    void initiateBattle();
-
     // Enum for provinces (any input as province's string will be an integer index )
     enum prov {
         BELLA = 0,
@@ -45,6 +28,41 @@ public:
         LIA = 12,
         ELINA = 13  
     };
+        static std::unordered_map<std::string, prov> provinceMap = {
+        {"bella", BELLA},
+        {"caline", CALINE},
+        {"enna", ENNA},
+        {"atela", ATELA},
+        {"pladaci", PLADACI},
+        {"borge", BORGE},
+        {"dimase", DIMASE},
+        {"morina", MORINA},
+        {"olivia", OLIVIA},
+        {"rollo", ROLLO},
+        {"talmone", TALMONE},
+        {"armento", ARMENTO},
+        {"lia", LIA},
+        {"elina", ELINA}
+    };
+
+class Game {
+public:
+    // Constructor and destructor
+    Game();
+    ~Game();
+
+    // Member functions
+    void welcome();
+    void startGame();
+    void initPlayers();
+    void addPlayer(const Player& player);
+    void sortPlayers();
+    void showCards();
+    void setNeshaneJangProvince();
+    void initiateBattle();
+    std::vector<Player>& getPlayers();
+    int getNumberOfPlayers () ; 
+
 
 private:
     std::vector<Player> players; // List of the game players

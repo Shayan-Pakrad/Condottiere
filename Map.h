@@ -4,6 +4,8 @@
 
 #include <iostream>
 #include <array>
+#include "Game.h"
+#include "Player.h"
 #include "Province.h"
 
 class Map {
@@ -12,14 +14,11 @@ public:
     Map();
 
     void provinceListPrinter();  // to display a list of provinces for the player who supposed to set the province to fight on 
-    bool provinceOwnerDesignative();
 
     Province& getProvinceByIndex(int index); // using enum in game class
-
+    
+    static std::array<std::array<int, 14>, 14> boarderingProvinces;
 private:
-    std::array<Province, 14> provinces;
-    std::array<std::array<int, 14>, 14> boarderingProvinces;
+    static std::array<Province, 14> provinces;
 };
-
-
 #endif // MAP_H
