@@ -79,6 +79,8 @@ void Battle::startBattle() {
     int passedPlayers = 0;
     while (true) {
 
+        // this is a comment to be delete
+
         if (passedPlayers == players.size()) {
             return;
         }
