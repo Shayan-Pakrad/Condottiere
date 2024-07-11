@@ -4,16 +4,16 @@
 // Constructor
 Battle::Battle(Province &province, std::vector<Player> &players, Deck &deck)
     : province(province), players(players), deck(deck), baharHasPlayed(false), 
-    ZemestanHasPlayed(false) {}
+    zemestanHasPlayed(false) {}
 
 // bahar and zemestan switch
 void Battle::baharSwitch() {
     baharHasPlayed = true;
-    ZemestanHasPlayed = false;
+    zemestanHasPlayed = false;
 }
 
 void Battle::zemestanSwitch() {
-    ZemestanHasPlayed = true;
+    zemestanHasPlayed = true;
     baharHasPlayed = false;
 }
 
@@ -146,11 +146,33 @@ void Battle::checkPlayersHands() { // Also deals players
 void Battle::endBattle() { // It is not completed yet
 
 
-    if (ZemestanHasPlayed) {
+    if (zemestanHasPlayed) {
         for (auto &player : players) {
             player.setPointsToOne();
         }
     }
+    if (baharHasPlayed) {
+        int highestPoint = 0;
+
+        for (auto &player : players) {
+            std::vector<std::shared_ptr<Card>> combatCards = player.getCombatCardsPlayed();
+            for (auto &card : combatCards) {
+                if (card->getPoint() > highestPoint) {
+                    highestPoint = card->getPoint();
+                }
+            }
+        }
+        for (auto &player : players) {
+            std::vector<std::shared_ptr<Card>> combatCards = player.getCombatCardsPlayed();
+            for (auto &card : combatCards) {
+                if (card->getPoint() == highestPoint) {
+                    card->setPoint(card->getPoint() + 3);
+                }
+            }
+        } 
+    }
+
+    
 
    auto winner = players.begin(); // set winner to the first player
 

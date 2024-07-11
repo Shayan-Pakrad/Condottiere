@@ -28,7 +28,7 @@ private:
     std::vector<Player> &players;
     Deck &deck;
     bool baharHasPlayed;
-    bool ZemestanHasPlayed;
+    bool zemestanHasPlayed;
 
 };
 

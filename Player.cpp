@@ -52,6 +52,10 @@ int Player::getTotalScore() const
     {
         overall = overall + ((*specialCard)->getPoint());
     }
+
+    if (tablZanHazPlayed) {
+        overall *= 2;
+    }
     return overall;
 }
 
