@@ -36,14 +36,14 @@ public:
 
     void pass();
     bool checkPass();
-    void resetPass();
+    void resetStatus();
 
     void emptyHand();
 
     void setPointsToOne(); // for when zemestan has played in the battle
     void setNumberOfConqueredProvinces();
     int getNumberOfConqueredProvinces () ;
-        bool winnerDeterminer();
+    bool winnerDeterminer();
     
 
 

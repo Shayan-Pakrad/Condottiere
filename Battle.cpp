@@ -138,7 +138,6 @@ void Battle::checkPlayersHands() { // Also deals players
     if ( emptyPlayers >= (players.size()-1) ) {
         for (auto &player : players) {
             deck.deal(player);
-            player.resetPass();
         }
     }
 }
@@ -184,7 +183,14 @@ void Battle::endBattle() { // It is not completed yet
 
     winner->addProvince(province);
 
-    std::cout << "\n\n\n\nThe player " << winner->getName() << " is the winner of this battle\n\n\n";
+    resetPlayers();
 
+
+}
+
+void Battle::resetPlayers() {
+    for (auto &player : players) {
+        player.resetStatus();
+    }
 }
 

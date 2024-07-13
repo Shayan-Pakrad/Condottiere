@@ -163,9 +163,14 @@ bool Player::checkPass()
     return hasPassed;
 }
 
-void Player::resetPass()
+void Player::resetStatus()
 {
     hasPassed = false;
+    tablZanHazPlayed = false;
+    specialCardsPlayed.clear();
+    specialCardsPlayed.shrink_to_fit();
+    combatCardsPlayed.clear();
+    combatCardsPlayed.shrink_to_fit();
 }
 
 void Player::emptyHand()
