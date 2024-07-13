@@ -17,9 +17,15 @@ void Game::startGame() {
     initPlayers();
     sortPlayers();
     showCards();
-    map.provinceListPrinter();
-    setNeshaneJangProvince();
-    initiateBattle();
+    while (true) {
+        setNeshaneJangProvince();
+        initiateBattle();
+        // if (checkForWinner() == true){
+        //     break;
+        // }
+    }
+    // endGame();
+    
 }
 
 void Game::welcome() {
@@ -123,6 +129,7 @@ void Game::showCards() {
 void Game::setNeshaneJangProvince(){
     std::cout << "( " << NeshaneJangSetter << " )" << "should set Neshan Jang";
     std::cout << "HERE IS A LIST OF PROVNICES ----->  ";
+    map.provinceListPrinter();
     std::cout << "Please Select The Province You Want The War To Be On  : "<<std::endl;
 
     std::string InputProvince ;
