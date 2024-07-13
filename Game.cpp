@@ -84,6 +84,7 @@ void Game::sortPlayers() {
             }
         }
     }
+    NeshaneJangSetter = players[0].getName();
 }
 
 void Game::showCards() {
@@ -114,15 +115,14 @@ void Game::showCards() {
     }
     
     std::cout <<std::endl <<std::endl<<std::endl;
-    std::cout << "The Game Is About To Start ........! \n";
-    std::cout << "The First Player Too Specify The Province To Start The War In It Is : "<<std::endl<<"("<<players[0].getName()<<") \n";
-    std::cout << "HERE IS A LIST OF PROVNICES ----->  "; 
-    
+    std::cout << "The Game Is About To Start ........! \n";    
     
 }
 
 // A function for getting the neshanejang from the user (independent from the case size that user enters\)
 void Game::setNeshaneJangProvince(){
+    std::cout << "( " << NeshaneJangSetter << " )" << "should set Neshan Jang";
+    std::cout << "HERE IS A LIST OF PROVNICES ----->  ";
     std::cout << "Please Select The Province You Want The War To Be On  : "<<std::endl;
 
     std::string InputProvince ;
@@ -174,7 +174,7 @@ void Game::initiateBattle() {
 
     
 
-    currentBattle->endBattle();
+    NeshaneJangSetter = currentBattle->endBattle();
 
 
 }

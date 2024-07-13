@@ -68,6 +68,7 @@ private:
     Map map;
     Deck deck;
     prov NeshaneJangProvince;
+    std::string NeshaneJangSetter; // Player name
 
     Battle *currentBattle;
     

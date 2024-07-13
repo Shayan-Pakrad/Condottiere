@@ -15,7 +15,7 @@ public:
     void zemestanSwitch(); // If Zemestan has played
     void printInformation(); // Played cards and players provinces
     void startBattle();
-    void endBattle();
+    std::string endBattle();
     void resetPlayers(); // For future implementation not at midterm
 
     void checkPlayersHands(); // Check players have cards

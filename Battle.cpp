@@ -142,7 +142,7 @@ void Battle::checkPlayersHands() { // Also deals players
     }
 }
 
-void Battle::endBattle() { // It is not completed yet
+std::string Battle::endBattle() { // also returns the winner name
 
 
     if (zemestanHasPlayed) {
@@ -184,6 +184,8 @@ void Battle::endBattle() { // It is not completed yet
     winner->addProvince(province);
 
     resetPlayers();
+
+    return winner->getName();
 
 
 }
