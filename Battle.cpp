@@ -4,7 +4,7 @@
 // Constructor
 Battle::Battle(Province &province, std::vector<Player> &players, Deck &deck)
     : province(province), players(players), deck(deck), baharHasPlayed(false), 
-    zemestanHasPlayed(false) {}
+    zemestanHasPlayed(false), NeshaneSolhSetter("N") {}
 
 // bahar and zemestan switch
 void Battle::baharSwitch() {
@@ -15,6 +15,11 @@ void Battle::baharSwitch() {
 void Battle::zemestanSwitch() {
     zemestanHasPlayed = true;
     baharHasPlayed = false;
+}
+
+void Battle::RishSefidSwitch()
+{
+    RishSefidHasPlayed = true;
 }
 
 void Battle::printInformation() {
@@ -115,8 +120,11 @@ void Battle::startBattle() {
             if(selectedCard != nullptr) {
 
                 if ((*selectedCard)->getType() == "special") {
-                    if ((*selectedCard)->getName() == "bahar" || (*selectedCard)->getName() == "zemestan") {
+                    if ((*selectedCard)->getName() == "bahar" || (*selectedCard)->getName() == "zemestan" || (*selectedCard)->getName() == "rishsefid") {
                         (*selectedCard)->applyEffect(*this);
+                        if ((*selectedCard)->getName() == "ridhsefid") {
+                            NeshaneSolhSetter = player.getName();
+                        }
                     }
                     else {
                         (*selectedCard)->applyEffect(player);
@@ -144,6 +152,29 @@ void Battle::checkPlayersHands() { // Also deals players
 
 std::string Battle::endBattle() { // also returns the winner name
 
+    if (RishSefidHasPlayed) {
+        int highestPoint = 0;
+
+        for (auto &player : players) {
+            std::vector<std::shared_ptr<Card>> combatCards = player.getCombatCardsPlayed();
+            for (auto &card : combatCards) {
+                if (card->getPoint() > highestPoint) {
+                    highestPoint = card->getPoint();
+                }
+            }
+        }
+        for (auto &player : players) {
+            std::vector<std::shared_ptr<Card>> combatCards = player.getCombatCardsPlayed();
+            for (auto &card : combatCards) {
+                if (card->getPoint() == highestPoint) {
+                    // erase cards with the highest points
+                    auto it = std::find(combatCards.begin(), combatCards.end(), card);
+                    combatCards.erase(it);
+                }
+            }
+        } 
+
+    }
 
     if (zemestanHasPlayed) {
         for (auto &player : players) {
@@ -186,8 +217,6 @@ std::string Battle::endBattle() { // also returns the winner name
     resetPlayers();
 
     return winner->getName();
-
-
 }
 
 void Battle::resetPlayers() {
@@ -196,3 +225,8 @@ void Battle::resetPlayers() {
     }
 }
 
+
+std::string Battle::getNeshaneSolhSetter() const
+{
+    return NeshaneSolhSetter;
+}

@@ -57,7 +57,7 @@ public:
     void addPlayer(const Player& player);
     void sortPlayers();
     void showCards();
-    void setNeshaneJangProvince();
+    void setNeshaneJangProvince(); // also handle neshane solh
     void initiateBattle();
     bool checkForWinner();
     void endGame();
@@ -69,6 +69,7 @@ private:
     Deck deck;
     prov NeshaneJangProvince;
     std::string NeshaneJangSetter; // Player name
+    std::string NeshaneSolhSetter; // it would be "N" if nobody play RishSefid
 
     std::vector<std::string> totalConqueredProvinces; // provinces that has conquered by players
 

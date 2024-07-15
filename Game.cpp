@@ -127,12 +127,9 @@ void Game::showCards() {
 
 // A function for getting the neshanejang from the user (independent from the case size that user enters\)
 void Game::setNeshaneJangProvince(){
-    std::cout << "( " << NeshaneJangSetter << " )" << "should set Neshan Jang";
-    std::cout << "HERE IS A LIST OF PROVNICES ----->  ";
-    map.provinceListPrinter();
-    std::cout << "Please Select The Province You Want The War To Be On  : "<<std::endl;
 
-    std::string InputProvince ;
+    system("clear");
+
     // Map of province names to enum values
     std::unordered_map<std::string, prov> provinceMap = {
         {"bella", BELLA},
@@ -151,6 +148,49 @@ void Game::setNeshaneJangProvince(){
         {"elina", ELINA}
     };
 
+    std::string NeshaneSolhProvince = "";
+
+    if (NeshaneSolhSetter != "N") {
+
+        std::cout << "( " << NeshaneSolhSetter << " )" << "should set Neshan Solh";
+        std::cout << "HERE IS A LIST OF PROVNICES ----->  ";
+        map.provinceListPrinter();
+        std::cout << "Please Select The Province You Want The Neshane Solh To Be On  : "<<std::endl;
+        std::string InputProvince ;
+
+        // Check if the provinceName exists in the map
+        bool flag = true; 
+        while (flag)
+        {
+        std::cin>> InputProvince ;
+        std::string lowerCaseProvinceName = InputProvince;
+        std::transform(lowerCaseProvinceName.begin(), lowerCaseProvinceName.end(), lowerCaseProvinceName.begin(), ::tolower);
+        if (provinceMap.find(lowerCaseProvinceName) != provinceMap.end()) {
+
+            // check if the province has been seleted before 
+            if (std::find(totalConqueredProvinces.begin(), totalConqueredProvinces.end(), lowerCaseProvinceName) != totalConqueredProvinces.end()) {
+                std::cout << "This province has been conquered before \nTry another : ";
+                continue;
+            }
+            
+            NeshaneSolhProvince = lowerCaseProvinceName;
+            std::cout << "Neshane Solh set to province:      " << InputProvince << std::endl;
+            flag = false ; 
+        } else {
+            std::cout << "Province not found. Neshane Solh not set." << std::endl;
+        }
+            
+        }
+
+    }
+
+    std::cout << "( " << NeshaneJangSetter << " )" << "should set Neshan Jang";
+    std::cout << "HERE IS A LIST OF PROVNICES ----->  ";
+    map.provinceListPrinter();
+    std::cout << "Please Select The Province You Want The War To Be On  : "<<std::endl;
+
+    std::string InputProvince ;
+
     // Check if the provinceName exists in the map
     bool flag = true ; 
     while (flag)
@@ -162,9 +202,15 @@ void Game::setNeshaneJangProvince(){
 
         // check if the province has been seleted before 
         if (std::find(totalConqueredProvinces.begin(), totalConqueredProvinces.end(), lowerCaseProvinceName) != totalConqueredProvinces.end()) {
-            std::cout << "This province has been selected before \nTry another : ";
+            std::cout << "This province has been conquered before \nTry another : ";
             continue;
         }
+
+        if (NeshaneSolhProvince == lowerCaseProvinceName) {
+            std::cout << "Neshane Solh is the same as Neshane Jang\n";
+            continue;
+        }
+        
 
         totalConqueredProvinces.push_back(lowerCaseProvinceName);
         NeshaneJangProvince = provinceMap[lowerCaseProvinceName];
@@ -190,6 +236,8 @@ void Game::initiateBattle() {
     
 
     NeshaneJangSetter = currentBattle->endBattle();
+
+    NeshaneSolhSetter = currentBattle->getNeshaneSolhSetter();
 
 
 }
