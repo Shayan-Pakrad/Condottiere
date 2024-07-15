@@ -59,8 +59,8 @@ public:
     void showCards();
     void setNeshaneJangProvince();
     void initiateBattle();
-    std::vector<Player>& getPlayers();
-    int getNumberOfPlayers () ; 
+    bool checkForWinner();
+    void endGame();
 
 
 private:
@@ -73,6 +73,8 @@ private:
     std::vector<std::string> totalConqueredProvinces; // provinces that has conquered by players
 
     Battle *currentBattle;
+
+    Player *winner;
     
 };
 

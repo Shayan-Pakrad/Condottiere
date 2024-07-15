@@ -1,7 +1,7 @@
 #include "Game.h"
 
 // Constructor
-Game::Game(): currentBattle(nullptr) {
+Game::Game(): currentBattle(nullptr), winner(nullptr) {
     startGame();
 }
 // destructor
@@ -20,11 +20,11 @@ void Game::startGame() {
     while (true) {
         setNeshaneJangProvince();
         initiateBattle();
-        // if (checkForWinner() == true){
-        //     break;
-        // }
+        if (checkForWinner() == true){
+            break;
+        }
     }
-    // endGame();
+    endGame();
     
 }
 
@@ -192,4 +192,19 @@ void Game::initiateBattle() {
     NeshaneJangSetter = currentBattle->endBattle();
 
 
+}
+
+bool Game::checkForWinner() { 
+    for (auto &player : players) {
+        if (player.winnerDeterminer()) {
+            winner = &player;
+            return true;
+        }
+    }
+    return false;
+}
+
+void Game::endGame() {
+    system("clear");
+    std::cout << "\n\n\tPlayer " << winner->getName() << " has won the game!!";
 }
