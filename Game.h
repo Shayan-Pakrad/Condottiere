@@ -70,6 +70,8 @@ private:
     prov NeshaneJangProvince;
     std::string NeshaneJangSetter; // Player name
 
+    std::vector<std::string> totalConqueredProvinces; // provinces that has conquered by players
+
     Battle *currentBattle;
     
 };

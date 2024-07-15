@@ -159,6 +159,14 @@ void Game::setNeshaneJangProvince(){
     std::string lowerCaseProvinceName = InputProvince;
     std::transform(lowerCaseProvinceName.begin(), lowerCaseProvinceName.end(), lowerCaseProvinceName.begin(), ::tolower);
     if (provinceMap.find(lowerCaseProvinceName) != provinceMap.end()) {
+
+        // check if the province has been seleted before 
+        if (std::find(totalConqueredProvinces.begin(), totalConqueredProvinces.end(), lowerCaseProvinceName) != totalConqueredProvinces.end()) {
+            std::cout << "This province has been selected before \nTry another : ";
+            continue;
+        }
+
+        totalConqueredProvinces.push_back(lowerCaseProvinceName);
         NeshaneJangProvince = provinceMap[lowerCaseProvinceName];
         std::cout << "NeshaneJang set to province:      " << InputProvince << " \n  So Whoever Wins The Round "<<InputProvince<<"Is Gonna Be In His Conquered Province List  "<<std::endl;
         flag = false ; 
