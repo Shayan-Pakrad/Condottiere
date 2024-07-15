@@ -41,8 +41,6 @@ public:
     void emptyHand();
 
     void setPointsToOne(); // for when zemestan has played in the battle
-    void setNumberOfConqueredProvinces();
-    int getNumberOfConqueredProvinces () ;
     bool winnerDeterminer();
     
 
@@ -52,7 +50,6 @@ private:
     int age;
     std::string color;
     std::vector<Province> conqueredProvinces;
-    int numberOfconqueredProvinces ; 
     bool tablZanHazPlayed; // It sets true if the player play TablZan card
     std::vector<std::shared_ptr<Card>> combatCardsPlayed;
     std::vector<std::shared_ptr<Card>> specialCardsPlayed;

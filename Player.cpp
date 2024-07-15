@@ -186,14 +186,7 @@ void Player::setPointsToOne()
         (*card)->setPoint(1);
     }
 }
-void Player::setNumberOfConqueredProvinces()
-{ //    ***As an updater for the number of coquered provinces of each player   (would be called whenever a player gets a province )
-    numberOfconqueredProvinces++;
-}
-int Player::getNumberOfConqueredProvinces()
-{
-    return numberOfconqueredProvinces;
-}
+
 bool Player::winnerDeterminer()
 {
     std::string provinceName1 = conqueredProvinces[0].getName();
