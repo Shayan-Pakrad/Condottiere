@@ -192,18 +192,12 @@ bool Player::winnerDeterminer()
     std::string provinceName1 = conqueredProvinces[0].getName();
     std::string provinceName2 = conqueredProvinces[1].getName();
     std::string provinceName3 = conqueredProvinces[2].getName();
-    std::string provinceName4 = conqueredProvinces[3].getName();
     prov provinceEnum1 = provinceMap[provinceName1];
     prov provinceEnum2 = provinceMap[provinceName2];
     prov provinceEnum3 = provinceMap[provinceName3];
     prov provinceEnum4 = provinceMap[provinceName4];
     // Check if the provinces are bordering(MAIN PART OF THE FUNCTION )
-    if (conqueredProvinces.size() < 3)
-    {
-        return false;
-    }
-
-    else if (conqueredProvinces.size() == 3)
+    if (conqueredProvinces.size() == 3)
     {
         if (Map::boarderingProvinces[provinceEnum1][provinceEnum2] == 1)
         {
@@ -231,6 +225,8 @@ bool Player::winnerDeterminer()
 
     else if (conqueredProvinces.size() == 4)
     {
+        std::string provinceName4 = conqueredProvinces[3].getName();
+
         if (Map::boarderingProvinces[provinceEnum1][provinceEnum2] == 1)
         {
             if (Map::boarderingProvinces[provinceEnum1][provinceEnum3] == 1)
