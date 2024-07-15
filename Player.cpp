@@ -195,8 +195,9 @@ bool Player::winnerDeterminer()
     prov provinceEnum1 = provinceMap[provinceName1];
     prov provinceEnum2 = provinceMap[provinceName2];
     prov provinceEnum3 = provinceMap[provinceName3];
-    prov provinceEnum4 = provinceMap[provinceName4];
+    
     // Check if the provinces are bordering(MAIN PART OF THE FUNCTION )
+
     if (conqueredProvinces.size() == 3)
     {
         if (Map::boarderingProvinces[provinceEnum1][provinceEnum2] == 1)
@@ -207,25 +208,15 @@ bool Player::winnerDeterminer()
                 {
                     return true;
                 }
-                else
-                {
-                    return false;
-                }
             }
-            else
-            {
-                return false;
-            }
-        }
-        else
-        {
-            return false;
         }
     }
 
     else if (conqueredProvinces.size() == 4)
     {
+
         std::string provinceName4 = conqueredProvinces[3].getName();
+        prov provinceEnum4 = provinceMap[provinceName4];
 
         if (Map::boarderingProvinces[provinceEnum1][provinceEnum2] == 1)
         {
@@ -235,19 +226,7 @@ bool Player::winnerDeterminer()
                 {
                     return true;
                 }
-                else
-                {
-                    return false;
-                }
             }
-            else
-            {
-                return false;
-            }
-        }
-        else
-        {
-            return false;
         }
 
         if (Map::boarderingProvinces[provinceEnum1][provinceEnum4] == 1)
@@ -258,20 +237,9 @@ bool Player::winnerDeterminer()
                 {
                     return true;
                 }
-                else
-                {
-                    return false;
-                }
-            }
-            else
-            {
-                return false;
             }
         }
-        else
-        {
-            return false;
-        }
+
         if (Map::boarderingProvinces[provinceEnum1][provinceEnum3] == 1)
         {
             if (Map::boarderingProvinces[provinceEnum4][provinceEnum3] == 1)
@@ -280,20 +248,10 @@ bool Player::winnerDeterminer()
                 {
                     return true;
                 }
-                else
-                {
-                    return false;
-                }
-            }
-            else
-            {
-                return false;
+
             }
         }
-        else
-        {
-            return false;
-        }
+
         if (Map::boarderingProvinces[provinceEnum3][provinceEnum2] == 1)
         {
             if (Map::boarderingProvinces[provinceEnum4][provinceEnum3] == 1)
@@ -302,27 +260,14 @@ bool Player::winnerDeterminer()
                 {
                     return true;
                 }
-                else
-                {
-                    return false;
-                }
             }
-            else
-            {
-                return false;
-            }
-        }
-        else
-        {
-            return false;
         }
     }
     else if (conqueredProvinces.size() == 5)
     {
-        std ::cout << "THE GAME IS OVER AND WE HAVE A WINNER ";
+        return true;
     }
-    else
-    {
-        return false;
-    }
+
+    return false;
+
 }
