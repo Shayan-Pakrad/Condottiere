@@ -1,7 +1,7 @@
 #include "Game.h"
 
 // Constructor
-Game::Game(): currentBattle(nullptr), winner(nullptr) {
+Game::Game(): currentBattle(nullptr), winner(nullptr), NeshaneSolhSetter("N") {
     startGame();
 }
 // destructor
