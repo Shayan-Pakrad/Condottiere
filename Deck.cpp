@@ -45,12 +45,16 @@ Deck::Deck() { // Creating cards and add them to the deck
         gameCards.push_back(std::make_shared<Bahar>());
     }
     // Zemestan : 3
-    for (i = 0; i < 8; i++) {
+    for (i = 0; i < 3; i++) {
         gameCards.push_back(std::make_shared<Zemestan>());
     }
     // ShahDokht : 3
-    for (i = 0; i < 8; i++) {
+    for (i = 0; i < 3; i++) {
         gameCards.push_back(std::make_shared<ShahDokht>());
+    }
+    // RishSefid : 6
+    for (i = 0; i < 6; i++) {
+        gameCards.push_back(std::make_shared<RishSefid>());
     }
 
     shuffleCards();

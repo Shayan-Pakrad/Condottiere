@@ -13,6 +13,7 @@
 #include "ShahDokht.h"
 #include "TablZan.h"
 #include "Zemestan.h"
+#include "RishSefid.h"
 
 #include "Card.h"
 #include "Player.h"

@@ -189,6 +189,11 @@ void Player::setPointsToOne()
 
 bool Player::winnerDeterminer()
 {
+
+    if (conqueredProvinces.size() < 3) {
+        return false;
+    }
+    
     std::string provinceName1 = conqueredProvinces[0].getName();
     std::string provinceName2 = conqueredProvinces[1].getName();
     std::string provinceName3 = conqueredProvinces[2].getName();

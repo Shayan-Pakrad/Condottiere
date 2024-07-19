@@ -122,7 +122,7 @@ void Battle::startBattle() {
                 if ((*selectedCard)->getType() == "special") {
                     if ((*selectedCard)->getName() == "bahar" || (*selectedCard)->getName() == "zemestan" || (*selectedCard)->getName() == "rishsefid") {
                         (*selectedCard)->applyEffect(*this);
-                        if ((*selectedCard)->getName() == "ridhsefid") {
+                        if ((*selectedCard)->getName() == "rishsefid") {
                             NeshaneSolhSetter = player.getName();
                         }
                     }
