@@ -31,4 +31,5 @@ void Matarsak::applyEffect(Player &player) {
     } while (!isFounded);
 
 
+
 }
