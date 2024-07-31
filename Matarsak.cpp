@@ -5,12 +5,15 @@ Matarsak::Matarsak(): SpecialCard(0, "matarsak") {}
 void Matarsak::applyEffect(Player &player) {
 
     if (player.getCombatCardsPlayed().empty()) {
-        std::cout << "No combat cards have been played.\n";
+        std::cout << "No COMBAT cards have been played.\n";
         std::cin.get();
         return;
     }
     
-    std::cout << "\nWhich Yellow card do you want to pick up (for example 3) : ";
+    std::cout << "\nWhich Combat card do you want to pick up ? \nYour played COMBAT cards are : \n";
+        for (const auto &card : player.getCombatCardsPlayed()) {
+        std::cout << "---> " << card->getName() << "\n";
+    }
     std::string selectedCard;
     std::cin >> selectedCard;
 
@@ -25,11 +28,10 @@ void Matarsak::applyEffect(Player &player) {
         }
 
         if (!isFounded) {
-            std::cout << "Invalid card, choose another card : ";
+            std::cout <<"!!!You have not played " <<selectedCard<<"yet please choose another card : ";
             std::cin >> selectedCard;
         }
     } while (!isFounded);
-
 
 
 }
