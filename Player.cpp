@@ -27,10 +27,19 @@ int Player::getAge() const
 {
     return age;
 }
+int Player::getShirZanCounter(){
+    return shirzanCounter ;
+}
+void Player::setTablzanCounter(){
+     tablzanCounter ++;
+}
 // ShirZan counter setter function
 void Player::setShirzanCounter()
 {
     shirzanCounter++;
+}
+int Player:: getTablzanCounter () {
+    return tablzanCounter ; 
 }
 
 // Name getter function
