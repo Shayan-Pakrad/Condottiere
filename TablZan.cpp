@@ -4,4 +4,5 @@ TablZan::TablZan(): SpecialCard(0, "tablzan") {}
 
 void TablZan::applyEffect(Player &player) {
     player.tablZanSwitch();
+    player.setTablzanCounter ();
 }

@@ -1,3 +1,5 @@
+#include <cmath>
+
 #include "Player.h"
 #include <iostream>
 #include "Map.h"
@@ -69,7 +71,7 @@ int Player::getTotalScore() const
 
     if (tablZanHazPlayed)
     {
-        overall *= 2;
+        overall = (overall*(pow(1.5,tablzanCounter))) ; 
     }
     return overall;
 }

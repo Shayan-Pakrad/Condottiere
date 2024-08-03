@@ -138,7 +138,7 @@ void Battle::startBattle()
                     {
                         if ((*selectedCard)->getName() == "parchamdar")
                         {
-                            endBattle();
+                            (*selectedCard)->applyEffect(*this);
                         }
 
                         if ((*selectedCard)->getName() == "bahar" || (*selectedCard)->getName() == "zemestan" || (*selectedCard)->getName() == "rishsefid")

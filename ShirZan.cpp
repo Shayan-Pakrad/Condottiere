@@ -4,6 +4,5 @@ ShirZan::ShirZan() : SpecialCard(1, "shirzan") {}
 
 void ShirZan::applyEffect(Player &player)
 {
-    player.setShirzanCounter();
-    // player.getShirZan(); 
+    player.setShirzanCounter(); 
 }
