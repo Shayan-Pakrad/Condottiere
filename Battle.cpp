@@ -119,7 +119,12 @@ void Battle::startBattle() {
 
             if(selectedCard != nullptr) {
 
-                if ((*selectedCard)->getType() == "special") {
+                if ((*selectedCard)->getType() == "special"){
+                    if ((*selectedCard)->getName()=="")
+                    {
+                        /* code */
+                    }
+                    
                     if ((*selectedCard)->getName() == "bahar" || (*selectedCard)->getName() == "zemestan" || (*selectedCard)->getName() == "rishsefid") {
                         (*selectedCard)->applyEffect(*this);
                         if ((*selectedCard)->getName() == "rishsefid") {

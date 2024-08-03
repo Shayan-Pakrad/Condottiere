@@ -234,8 +234,10 @@ void Game::initiateBattle() {
     currentBattle->startBattle();
 
     
-
+    if (true )//  in bayad baraye ShirZan edit beshe 
+    {
     NeshaneJangSetter = currentBattle->endBattle();
+    }
 
     NeshaneSolhSetter = currentBattle->getNeshaneSolhSetter();
 

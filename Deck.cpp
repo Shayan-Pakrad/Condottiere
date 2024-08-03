@@ -56,9 +56,17 @@ Deck::Deck() { // Creating cards and add them to the deck
     for (i = 0; i < 6; i++) {
         gameCards.push_back(std::make_shared<RishSefid>());
     }
+    for (i = 0; i < 3; i++)
+    {
+        gameCards.push_back(std::make_shared<ParchamDar>());
+    }
+    for (i = 0; i < 12; i++)
+    {
+        gameCards.push_back(std::make_shared<ShirZan>());
+    }
+    
 
     shuffleCards();
-
 }
 
 void Deck::shuffleCards() {

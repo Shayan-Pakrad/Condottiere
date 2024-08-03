@@ -14,6 +14,8 @@
 #include "TablZan.h"
 #include "Zemestan.h"
 #include "RishSefid.h"
+#include "ParchamDar.h"
+#include "ShirZan.h"
 
 #include "Card.h"
 #include "Player.h"
