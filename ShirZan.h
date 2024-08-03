@@ -3,15 +3,14 @@
 #include "SpecialCard.h"
 #include "Player.h"
 
-class ShirZan: public SpecialCard{
-public : 
+class ShirZan : public SpecialCard
+{
+public:
+    ShirZan();
+    void applyEffect(Player &player) override;
+    virtual void applyEffect(Battle &battle) {};
 
-    ShirZan () ;
-    void applyEffect (Player &player)override ;
-    virtual void applyEffect (Battle &battle){};
-
-private : 
-
+private:
 };
 
 #endif // SHIRZAN_H

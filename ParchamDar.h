@@ -3,12 +3,14 @@
 
 #include "SpecialCard.h"
 
-class ParchamDar: public SpecialCard {
-    public:
+class ParchamDar : public SpecialCard
+{
+public:
     ParchamDar();
-    void applyEffect(Player &player)override ; 
+    void applyEffect(Player &player) override;
     virtual void applyEffect(Battle &battle) {};
-    private:
+
+private:
 };
 
 #endif // PARCHAMDAR_H

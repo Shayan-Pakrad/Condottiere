@@ -3,11 +3,12 @@
 
 #include <string>
 
-class Province {
+class Province
+{
 public:
     Province();
-    Province(const std::string& n ) ; 
-    void setName(const std::string& n);
+    Province(const std::string &n);
+    void setName(const std::string &n);
     std::string getName() const;
 
 private:

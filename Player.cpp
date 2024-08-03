@@ -30,7 +30,7 @@ int Player::getAge() const
 // ShirZan counter setter function
 void Player::setShirzanCounter()
 {
-    shirzanCounter++ ; 
+    shirzanCounter++;
 }
 
 // Name getter function
@@ -58,7 +58,8 @@ int Player::getTotalScore() const
         overall = overall + ((*specialCard)->getPoint());
     }
 
-    if (tablZanHazPlayed) {
+    if (tablZanHazPlayed)
+    {
         overall *= 2;
     }
     return overall;
@@ -195,17 +196,18 @@ void Player::setPointsToOne()
 bool Player::winnerDeterminer()
 {
 
-    if (conqueredProvinces.size() < 3) {
+    if (conqueredProvinces.size() < 3)
+    {
         return false;
     }
-    
+
     std::string provinceName1 = conqueredProvinces[0].getName();
     std::string provinceName2 = conqueredProvinces[1].getName();
     std::string provinceName3 = conqueredProvinces[2].getName();
     prov provinceEnum1 = provinceMap[provinceName1];
     prov provinceEnum2 = provinceMap[provinceName2];
     prov provinceEnum3 = provinceMap[provinceName3];
-    
+
     // Check if the provinces are bordering(MAIN PART OF THE FUNCTION )
 
     if (conqueredProvinces.size() == 3)
@@ -258,7 +260,6 @@ bool Player::winnerDeterminer()
                 {
                     return true;
                 }
-
             }
         }
 
@@ -279,5 +280,4 @@ bool Player::winnerDeterminer()
     }
 
     return false;
-
 }
