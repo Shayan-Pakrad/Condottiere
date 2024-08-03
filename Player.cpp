@@ -27,6 +27,11 @@ int Player::getAge() const
 {
     return age;
 }
+// ShirZan counter setter function
+void Player::setShirzanCounter()
+{
+    shirzanCounter++ ; 
+}
 
 // Name getter function
 std::string Player::getName() const

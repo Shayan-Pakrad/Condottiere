@@ -23,6 +23,7 @@ public:
     std::string getName() const;
     std::string getColor() const;
     int getTotalScore() const;
+    void  setShirzanCounter () ;
     void addProvince(const Province& province);
     std::vector<Province> getConqueredProvinces() const;
     int getConqueredProvincesNumber() const;
@@ -42,12 +43,13 @@ public:
 
     void setPointsToOne(); // for when zemestan has played in the battle
     bool winnerDeterminer();
-    
+
 
 
 private:
     std::string name;
     int age;
+    int shirzanCounter = 0 ; 
     std::string color;
     std::vector<Province> conqueredProvinces;
     bool tablZanHazPlayed; // It sets true if the player play TablZan card
