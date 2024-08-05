@@ -1,35 +1,41 @@
 #include "Game.h"
 
 // Constructor
-Game::Game(): currentBattle(nullptr), winner(nullptr), NeshaneSolhSetter("N") {
+Game::Game() : currentBattle(nullptr), winner(nullptr), NeshaneSolhSetter("N")
+{
     startGame();
 }
 // destructor
-Game::~Game() {
-    if (currentBattle) {
+Game::~Game()
+{
+    if (currentBattle)
+    {
         delete currentBattle;
     }
 }
 
 // Start the game by initializing and sorting players
-void Game::startGame() {
+void Game::startGame()
+{
     welcome();
     initPlayers();
     sortPlayers();
     showCards();
-    while (true) {
+    while (true)
+    {
         setNeshaneJangProvince();
         initiateBattle();
-        if (checkForWinner() == true){
+        if (checkForWinner() == true)
+        {
             break;
         }
     }
     endGame();
-    
 }
 
-void Game::welcome() {
-        std::string welcomeText = R"(
+void Game::welcome()
+{
+    std::string welcomeText = R"(
  __        __         _                                       _____             _____   _                 ____                       _           _     _                             
  \ \      / /   ___  | |   ___    ___    _ __ ___     ___    |_   _|   ___     |_   _| | |__     ___     / ___|   ___    _ __     __| |   ___   | |_  (_)   ___   _ __   _ __    ___ 
   \ \ /\ / /   / _ \ | |  / __|  / _ \  | '_ ` _ \   / _ \     | |    / _ \      | |   | '_ \   / _ \   | |      / _ \  | '_ \   / _` |  / _ \  | __| | |  / _ \ | '__| | '__|  / _ \
@@ -45,12 +51,14 @@ void Game::welcome() {
 }
 
 // Initialize players
-void Game::initPlayers() {
+void Game::initPlayers()
+{
     std::cout << "Number of players: ";
     int numberOfPlayers;
     std::cin >> numberOfPlayers;
 
-    for (int i = 0; i < numberOfPlayers; ++i) {
+    for (int i = 0; i < numberOfPlayers; ++i)
+    {
         // Get player name
         std::cout << "Player " << i + 1 << " name: ";
         std::string name;
@@ -72,18 +80,22 @@ void Game::initPlayers() {
     }
 }
 
-
 // Add player to the players list
-void Game::addPlayer(const Player& player) {
+void Game::addPlayer(const Player &player)
+{
     players.push_back(player);
 }
 
 // Sort players vector based on their age ( for initializing the first province to attack )
-void Game::sortPlayers() {
+void Game::sortPlayers()
+{
     int n = players.size();
-    for (int i = 0; i < n - 1; ++i) {
-        for (int j = 0; j < n - i - 1; ++j) {
-            if (players[j].getAge() > players[j + 1].getAge()) {
+    for (int i = 0; i < n - 1; ++i)
+    {
+        for (int j = 0; j < n - i - 1; ++j)
+        {
+            if (players[j].getAge() > players[j + 1].getAge())
+            {
                 Player temp = players[j];
                 players[j] = players[j + 1];
                 players[j + 1] = temp;
@@ -93,9 +105,11 @@ void Game::sortPlayers() {
     NeshaneJangSetter = players[0].getName();
 }
 
-void Game::showCards() {
+void Game::showCards()
+{
     int numberOfPlayers = players.size();
-    for (int i = 0; i < numberOfPlayers; i++) {
+    for (int i = 0; i < numberOfPlayers; i++)
+    {
         std::system("cls");
 
         std::cin.get();
@@ -109,24 +123,27 @@ void Game::showCards() {
         deck.deal(players[i]);
 
         std::vector<std::shared_ptr<Card>> playerCards = players[i].getCardsInHand();
-        std::cout << "Here is " << players[i].getName() << "'s cards :" << std::endl << std::endl;
-        for(int j = 0; j < playerCards.size(); j++) {
+        std::cout << "Here is " << players[i].getName() << "'s cards :" << std::endl
+                  << std::endl;
+        for (int j = 0; j < playerCards.size(); j++)
+        {
             std::cout << playerCards[j]->getName() << std::endl;
-            
         }
 
-        std::cout << std::endl << "Press ENTER To Continue!";
+        std::cout << std::endl
+                  << "Press ENTER To Continue!";
         std::cin.get();
-
     }
-    
-    std::cout <<std::endl <<std::endl<<std::endl;
-    std::cout << "The Game Is About To Start ........! \n";    
-    
+
+    std::cout << std::endl
+              << std::endl
+              << std::endl;
+    std::cout << "The Game Is About To Start ........! \n";
 }
 
 // A function for getting the neshanejang from the user (independent from the case size that user enters\)
-void Game::setNeshaneJangProvince(){
+void Game::setNeshaneJangProvince()
+{
 
     system("clear");
 
@@ -145,87 +162,130 @@ void Game::setNeshaneJangProvince(){
         {"talmone", TALMONE},
         {"armento", ARMENTO},
         {"lia", LIA},
-        {"elina", ELINA}
-    };
+        {"elina", ELINA}};
 
     std::string NeshaneSolhProvince = "";
 
-    if (NeshaneSolhSetter != "N") {
+    if (NeshaneSolhSetter != "N")
+    {
 
         std::cout << "( " << NeshaneSolhSetter << " )" << "should set Neshan Solh";
         std::cout << "HERE IS A LIST OF PROVNICES ----->  ";
         map.provinceListPrinter();
-        std::cout << "Please Select The Province You Want The Neshane Solh To Be On  : "<<std::endl;
-        std::string InputProvince ;
+        std::cout << "Please Select The Province You Want The Neshane Solh To Be On  : " << std::endl;
+        std::string InputProvince;
 
         // Check if the provinceName exists in the map
-        bool flag = true; 
+        bool flag = true;
         while (flag)
         {
-        std::cin>> InputProvince ;
-        std::string lowerCaseProvinceName = InputProvince;
-        std::transform(lowerCaseProvinceName.begin(), lowerCaseProvinceName.end(), lowerCaseProvinceName.begin(), ::tolower);
-        if (provinceMap.find(lowerCaseProvinceName) != provinceMap.end()) {
+            std::cin >> InputProvince;
+            std::string lowerCaseProvinceName = InputProvince;
+            std::transform(lowerCaseProvinceName.begin(), lowerCaseProvinceName.end(), lowerCaseProvinceName.begin(), ::tolower);
+            if (provinceMap.find(lowerCaseProvinceName) != provinceMap.end())
+            {
 
-            // check if the province has been seleted before 
-            if (std::find(totalConqueredProvinces.begin(), totalConqueredProvinces.end(), lowerCaseProvinceName) != totalConqueredProvinces.end()) {
-                std::cout << "This province has been conquered before \nTry another : ";
-                continue;
+                // check if the province has been seleted before
+                if (std::find(totalConqueredProvinces.begin(), totalConqueredProvinces.end(), lowerCaseProvinceName) != totalConqueredProvinces.end())
+                {
+                    std::cout << "This province has been conquered before \nTry another : ";
+                    continue;
+                }
+
+                NeshaneSolhProvince = lowerCaseProvinceName;
+                std::cout << "Neshane Solh set to province:      " << InputProvince << std::endl;
+                flag = false;
             }
-            
-            NeshaneSolhProvince = lowerCaseProvinceName;
-            std::cout << "Neshane Solh set to province:      " << InputProvince << std::endl;
-            flag = false ; 
-        } else {
-            std::cout << "Province not found. Neshane Solh not set." << std::endl;
+            else
+            {
+                std::cout << "Province not found. Neshane Solh not set." << std::endl;
+            }
         }
-            
-        }
-
     }
 
     std::cout << "( " << NeshaneJangSetter << " )" << "should set Neshan Jang";
     std::cout << "HERE IS A LIST OF PROVNICES ----->  ";
     map.provinceListPrinter();
-    std::cout << "Please Select The Province You Want The War To Be On  : "<<std::endl;
+    std::cout << "Please Select The Province You Want The War To Be On  : " << std::endl;
 
-    std::string InputProvince ;
+    std::string InputProvince;
 
     // Check if the provinceName exists in the map
-    bool flag = true ; 
+    bool flag = true;
     while (flag)
     {
-    std::cin>> InputProvince ;
-    std::string lowerCaseProvinceName = InputProvince;
-    std::transform(lowerCaseProvinceName.begin(), lowerCaseProvinceName.end(), lowerCaseProvinceName.begin(), ::tolower);
-    if (provinceMap.find(lowerCaseProvinceName) != provinceMap.end()) {
+        std::cin >> InputProvince;
+        std::string lowerCaseProvinceName = InputProvince;
+        std::transform(lowerCaseProvinceName.begin(), lowerCaseProvinceName.end(), lowerCaseProvinceName.begin(), ::tolower);
+        if (provinceMap.find(lowerCaseProvinceName) != provinceMap.end())
+        {
 
-        // check if the province has been seleted before 
-        if (std::find(totalConqueredProvinces.begin(), totalConqueredProvinces.end(), lowerCaseProvinceName) != totalConqueredProvinces.end()) {
-            std::cout << "This province has been conquered before \nTry another : ";
-            continue;
+            // check if the province has been seleted before
+            if (std::find(totalConqueredProvinces.begin(), totalConqueredProvinces.end(), lowerCaseProvinceName) != totalConqueredProvinces.end())
+            {
+                std::cout << "This province has been conquered before \nTry another : ";
+                continue;
+            }
+
+            if (NeshaneSolhProvince == lowerCaseProvinceName)
+            {
+                std::cout << "Neshane Solh is the same as Neshane Jang\n";
+                continue;
+            }
+
+            totalConqueredProvinces.push_back(lowerCaseProvinceName);
+            NeshaneJangProvince = provinceMap[lowerCaseProvinceName];
+            std::cout << "NeshaneJang set to province:      " << InputProvince << " \n  So Whoever Wins The Round " << InputProvince << "Is Gonna Be In His Conquered Province List  " << std::endl;
+            flag = false;
         }
-
-        if (NeshaneSolhProvince == lowerCaseProvinceName) {
-            std::cout << "Neshane Solh is the same as Neshane Jang\n";
-            continue;
+        else
+        {
+            std::cout << "Province not found. NeshaneJang not set." << std::endl;
         }
-        
-
-        totalConqueredProvinces.push_back(lowerCaseProvinceName);
-        NeshaneJangProvince = provinceMap[lowerCaseProvinceName];
-        std::cout << "NeshaneJang set to province:      " << InputProvince << " \n  So Whoever Wins The Round "<<InputProvince<<"Is Gonna Be In His Conquered Province List  "<<std::endl;
-        flag = false ; 
-    } else {
-        std::cout << "Province not found. NeshaneJang not set." << std::endl;
     }
-        
-    }
+}
+bool Game ::shirzanCounterIterator()
+{
+    int greatest;
+    bool isUnique;
 
+    greatest = players[0].getShirZanCounter();
+    bool isUnique = true;
+    for (int i = 0; i < players.size(); i++)
+    {
+        if (players[i].getShirZanCounter() != 0)
+        {
+            return false;
+        }
+        else
+        {
+            for (int i = 1; i < players.size(); i++)
+            {
+                if (players[i].getShirZanCounter() > greatest)
+                {
+                    greatest = players[i].getShirZanCounter();
+                }
+            }
+            for (int i = 0; i < players.size(); i++)
+            {
+                if (greatest == players[i].getShirZanCounter())
+                {
+                    return false ;
+                }
+                else
+                {
+                    return true ; 
+                }
+            }
+
+        }
+    }
 }
 
-void Game::initiateBattle() {
-    if (currentBattle) {
+void Game::initiateBattle()
+{
+    if (currentBattle)
+    {
         delete currentBattle;
     }
 
@@ -233,20 +293,20 @@ void Game::initiateBattle() {
 
     currentBattle->startBattle();
 
-    
-    if (true )//  in bayad baraye ShirZan edit beshe 
+    if (true) //  in bayad baraye ShirZan edit beshe
     {
-    NeshaneJangSetter = currentBattle->endBattle();
+        NeshaneJangSetter = currentBattle->endBattle();
     }
 
     NeshaneSolhSetter = currentBattle->getNeshaneSolhSetter();
-
-
 }
 
-bool Game::checkForWinner() { 
-    for (auto &player : players) {
-        if (player.winnerDeterminer()) {
+bool Game::checkForWinner()
+{
+    for (auto &player : players)
+    {
+        if (player.winnerDeterminer())
+        {
             winner = &player;
             return true;
         }
@@ -254,7 +314,8 @@ bool Game::checkForWinner() {
     return false;
 }
 
-void Game::endGame() {
+void Game::endGame()
+{
     system("clear");
     std::cout << "\n\n\tPlayer " << winner->getName() << " has won the game!!";
 }

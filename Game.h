@@ -61,7 +61,7 @@ public:
     void initiateBattle();
     bool checkForWinner();
     void endGame();
-
+    bool shirzanCounterIterator(); 
 
 private:
     std::vector<Player> players; // List of the game players
