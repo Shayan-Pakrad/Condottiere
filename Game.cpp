@@ -103,6 +103,8 @@ void Game::sortPlayers()
         }
     }
     NeshaneJangSetter = players[0].getName();
+    khoshShansiNumberSetter = players[0].getName();
+    badShansiNumberSetter = players[0].getName();
 }
 
 void Game::showCards()
@@ -286,7 +288,12 @@ bool Game::shirzanCounterIterator()
         }
     }
 }
-
+int Game::getKhoshShansiNumber(){
+    return khoshShansiNumber ;
+}
+int Game::getBadShansiNumber(){
+    return badShansiNumber ; 
+}
 void Game::initiateBattle()
 {
     if (currentBattle)

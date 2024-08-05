@@ -62,12 +62,18 @@ public:
     bool checkForWinner();
     void endGame();
     bool shirzanCounterIterator(); 
+    int getKhoshShansiNumber();
+    int getBadShansiNumber();
 
 private:
     std::vector<Player> players; // List of the game players
     Map map;
     Deck deck;
+    int khoshShansiNumber ; 
+    int badShansiNumber;
     prov NeshaneJangProvince;
+    std::string khoshShansiNumberSetter;
+    std::string badShansiNumberSetter;
     std::string NeshaneJangSetter; // Player name
     std::string NeshaneSolhSetter; // it would be "N" if nobody play RishSefid
     int greatestShirZan;
