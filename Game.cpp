@@ -149,7 +149,7 @@ void Game::showCards()
 void Game::setNeshaneJangProvince()
 {
 
-    system("clear");
+    system("cls");
 
     // Map of province names to enum values
     std::unordered_map<std::string, prov> provinceMap = {
@@ -239,7 +239,7 @@ void Game::setNeshaneJangProvince()
 
             totalConqueredProvinces.push_back(lowerCaseProvinceName);
             NeshaneJangProvince = provinceMap[lowerCaseProvinceName];
-            std::cout<< std::endl<< std::endl << "NeshaneJang set to province:   " << std::endl<< InputProvince << " \n  So Whoever Wins The Round " << InputProvince << " Is Gonna Be In His Conquered Province List  " << std::endl<< std::endl<< std::endl;
+            std::cout<< std::endl<< std::endl << "NeshaneJang set to province:   " << std::endl<< InputProvince << " \nSo Whoever Wins The Round " << InputProvince << " Is Gonna Be In His Conquered Province List  " << std::endl<< std::endl<< std::endl;
             flag = false;
         }
         else
@@ -268,7 +268,7 @@ void Game::setKhoshShansiNumber()
 }
 void Game::setBadShansiNumber(){
 
-    std::cout << "HINT----------> whatever point you get ....   if it is multiple of BADSHANSI number you are gonna be eliminated from current battle  \n "<< std::endl;
+    std::cout <<std::endl<< "HINT----------> whatever point you get ....   if it is multiple of BADSHANSI number you are gonna be eliminated from current battle  \n "<< std::endl;
     std::cout << "((" << badShansiNumberSetter << "))" << "should set bad-shansi number \n  Remember that the range of this number is (10) to (99) : \n"<< std::endl;
     bool flag = true;
     while (flag)
@@ -382,6 +382,6 @@ bool Game::checkForWinner()
 
 void Game::endGame()
 {
-    system("clear");
+    system("cls") ; 
     std::cout << "\n\n\tPlayer " << winner->getName() << " has won the game!!";
 }

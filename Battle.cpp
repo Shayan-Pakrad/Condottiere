@@ -2,7 +2,7 @@
 #include "Deck.h"
 
 // Constructor
-Battle::Battle(Province &province, std::vector<Player> &players, Deck &deck)
+Battle::Battle(Province &province, std::vector<Player> &players, Deck &deck,Game &game)
     : province(province), players(players), deck(deck), baharHasPlayed(false),
       zemestanHasPlayed(false), NeshaneSolhSetter("N") {}
 
@@ -255,6 +255,10 @@ std::string Battle::endBattle()
     for (auto player = players.begin() + 1; player != players.end(); ++player)
     {   
 
+        // if (player->getName()==game->getKhoshShansiNumberSetter())
+        // {
+        //     /* code */
+        // }
         
         if (player->getTotalScore() > winner->getTotalScore())
         {
