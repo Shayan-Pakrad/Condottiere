@@ -253,7 +253,12 @@ std::string Battle::endBattle()
     auto winner = players.begin(); // set winner to the first player
 
     for (auto player = players.begin() + 1; player != players.end(); ++player)
-    {
+     {   
+    //     if ()
+    //     {
+    //         /* code */
+    //     }
+        
         if (player->getTotalScore() > winner->getTotalScore())
         {
             winner = player;

@@ -246,19 +246,53 @@ void Game::setNeshaneJangProvince()
         }
     }
 }
+void Game::setKhoshShansiNumber()
+{
+    std::cout << "( " << khoshShansiNumberSetter << " )" << "should set khosh-shansi number \n  Remember that the range of this number is (10) to (99)\n";
+    bool flag = true;
+    while (flag)
+    {
+        std::cin >> khoshShansiNumber;
+        if (khoshShansiNumber < 10 || khoshShansiNumber > 99)
+        {
+            std::cout << "WRONG NUMBER !!!!";
+        }
+        else
+        {
+            std::cout << "HINT----------> whatever point you get ....  if it is multiple of KHOSHSHANI number your point will be doubled and th eend of the battle /n ";
+            flag = false;
+        }
+    }
+    bool Flag = true;
+    while (flag)
+    {
+        std::cin >> badShansiNumber;
+        if (badShansiNumber < 10 || badShansiNumber > 99)
+        {
+            std::cout << "WRONG NUMBER !!!!";
+        }
+        else
+        {
+            std::cout << "HINT----------> whatever point you get ....   if it is multiple of BADSHANSI number you are gonna be eliminated form current battle  ";
+            flag = false;
+        }
+    }
+
+    std::cout << "( " << badShansiNumberSetter << " )" << "should set bad-shansi number \n  Remember that the range of this number is (10) to (99)\n";
+}
 bool Game::shirzanCounterIterator()
 {
-    
+
     greatestShirZan = players[0].getShirZanCounter();
 
-    // for (int i = 0; i < players.size(); i++)//checks that has anyone played shirzan yet or not    if no so winner of the battle would set the neshane jang   if yes   it has to check that who has played the  
+    // for (int i = 0; i < players.size(); i++)//checks that has anyone played shirzan yet or not    if no so winner of the battle would set the neshane jang   if yes   it has to check that who has played the
     // {
     //     if (players[i].getShirZanCounter() != 0)
     //     {
     //         break;
     //     }
     //     else {
-    //         return false ; 
+    //         return false ;
     //     }
     // }
 
@@ -268,8 +302,8 @@ bool Game::shirzanCounterIterator()
         {
             greatestShirZan = players[i].getShirZanCounter();
         }
-        else {
-
+        else
+        {
         }
     }
     for (int i = 0; i < players.size(); i++)
@@ -280,19 +314,26 @@ bool Game::shirzanCounterIterator()
         }
         else
         {
-            if (i==players.size () -1)
+            if (i == players.size() - 1)
             {
-                return true ;
+                return true;
             }
-            
         }
     }
 }
-int Game::getKhoshShansiNumber(){
-    return khoshShansiNumber ;
+int Game::getKhoshShansiNumber()
+{
+    return khoshShansiNumber;
 }
-int Game::getBadShansiNumber(){
-    return badShansiNumber ; 
+int Game::getBadShansiNumber()
+{
+    return badShansiNumber;
+}
+std::string Game::getBadShansiNumberSetter(){
+    return badShansiNumberSetter ;
+}
+std::string Game::getKhoshShansiNumberSetter(){
+    return khoshShansiNumberSetter ;
 }
 void Game::initiateBattle()
 {
@@ -304,21 +345,21 @@ void Game::initiateBattle()
     currentBattle = new Battle(map.getProvinceByIndex(int(NeshaneJangProvince)), players, deck);
 
     currentBattle->startBattle();
-
-    if (!shirzanCounterIterator()) 
+        khoshShansiNumberSetter=currentBattle->endBattle() ;
+        badShansiNumberSetter=currentBattle->endBattle() ;
+    if (!shirzanCounterIterator())
     {
         NeshaneJangSetter = currentBattle->endBattle();
     }
-    else{
-        for (int i = 0; i < players.size (); i++)
+    else
+    {
+        for (int i = 0; i < players.size(); i++)
         {
-            if (greatestShirZan==players[i].getShirZanCounter())
+            if (greatestShirZan == players[i].getShirZanCounter())
             {
-                NeshaneJangSetter = players[i].getName ();
+                NeshaneJangSetter = players[i].getName();
             }
-            
         }
-        
     }
 
     NeshaneSolhSetter = currentBattle->getNeshaneSolhSetter();
