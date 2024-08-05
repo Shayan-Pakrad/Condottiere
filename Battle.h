@@ -6,6 +6,7 @@
 #include "Player.h"
 
 class Deck; // forward declaration
+class Game ;// forward declaration
 
 class Battle {
 public:

@@ -45,13 +45,15 @@ public:
     void setPointsToOne(); // for when zemestan has played in the battle
     bool winnerDeterminer();
     void  setTablzanCounter () ; 
-    int getKhoshShansiNumber() ; 
-    int getBadShansiNumber() ; 
+    
+    // std::string getKhoshShansiNumberSetter() ; 
+    // std::string getBadShansiNumberSetter() ; 
 private:
     std::string name;
     int age;
     int shirzanCounter = 0 ; 
     int tablzanCounter = 0 ;
+    
     
     std::string color;
     std::vector<Province> conqueredProvinces;

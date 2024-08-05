@@ -24,6 +24,8 @@ void Game::startGame()
     while (true)
     {
         setNeshaneJangProvince();
+        setKhoshShansiNumber();
+        setBadShansiNumber();
         initiateBattle();
         if (checkForWinner() == true)
         {
@@ -237,7 +239,7 @@ void Game::setNeshaneJangProvince()
 
             totalConqueredProvinces.push_back(lowerCaseProvinceName);
             NeshaneJangProvince = provinceMap[lowerCaseProvinceName];
-            std::cout << "NeshaneJang set to province:      " << InputProvince << " \n  So Whoever Wins The Round " << InputProvince << "Is Gonna Be In His Conquered Province List  " << std::endl;
+            std::cout<< std::endl<< std::endl << "NeshaneJang set to province:   " << std::endl<< InputProvince << " \n  So Whoever Wins The Round " << InputProvince << " Is Gonna Be In His Conquered Province List  " << std::endl<< std::endl<< std::endl;
             flag = false;
         }
         else
@@ -248,22 +250,27 @@ void Game::setNeshaneJangProvince()
 }
 void Game::setKhoshShansiNumber()
 {
-    std::cout << "( " << khoshShansiNumberSetter << " )" << "should set khosh-shansi number \n  Remember that the range of this number is (10) to (99)\n";
+    std::cout << "HINT----------> whatever point you get ....  if it is multiple of KHOSHSHANI number your point will be doubled and th eend of the battle \n "<< std::endl;
+    std::cout << "((" << khoshShansiNumberSetter << "))" << "should set khosh-shansi number \n  Remember that the range of this number is (10) to (99) : \n"<< std::endl;
     bool flag = true;
     while (flag)
     {
         std::cin >> khoshShansiNumber;
         if (khoshShansiNumber < 10 || khoshShansiNumber > 99)
         {
-            std::cout << "WRONG NUMBER !!!!";
+            std::cout << "WRONG NUMBER !!!!\n";
         }
         else
         {
-            std::cout << "HINT----------> whatever point you get ....  if it is multiple of KHOSHSHANI number your point will be doubled and th eend of the battle /n ";
             flag = false;
         }
     }
-    bool Flag = true;
+}
+void Game::setBadShansiNumber(){
+
+    std::cout << "HINT----------> whatever point you get ....   if it is multiple of BADSHANSI number you are gonna be eliminated from current battle  \n "<< std::endl;
+    std::cout << "((" << badShansiNumberSetter << "))" << "should set bad-shansi number \n  Remember that the range of this number is (10) to (99) : \n"<< std::endl;
+    bool flag = true;
     while (flag)
     {
         std::cin >> badShansiNumber;
@@ -273,13 +280,13 @@ void Game::setKhoshShansiNumber()
         }
         else
         {
-            std::cout << "HINT----------> whatever point you get ....   if it is multiple of BADSHANSI number you are gonna be eliminated form current battle  ";
             flag = false;
         }
     }
 
-    std::cout << "( " << badShansiNumberSetter << " )" << "should set bad-shansi number \n  Remember that the range of this number is (10) to (99)\n";
+    
 }
+
 bool Game::shirzanCounterIterator()
 {
 
@@ -329,12 +336,7 @@ int Game::getBadShansiNumber()
 {
     return badShansiNumber;
 }
-std::string Game::getBadShansiNumberSetter(){
-    return badShansiNumberSetter ;
-}
-std::string Game::getKhoshShansiNumberSetter(){
-    return khoshShansiNumberSetter ;
-}
+
 void Game::initiateBattle()
 {
     if (currentBattle)
@@ -345,8 +347,8 @@ void Game::initiateBattle()
     currentBattle = new Battle(map.getProvinceByIndex(int(NeshaneJangProvince)), players, deck);
 
     currentBattle->startBattle();
-        khoshShansiNumberSetter=currentBattle->endBattle() ;
-        badShansiNumberSetter=currentBattle->endBattle() ;
+    khoshShansiNumberSetter = currentBattle->endBattle();
+    badShansiNumberSetter = currentBattle->endBattle();
     if (!shirzanCounterIterator())
     {
         NeshaneJangSetter = currentBattle->endBattle();

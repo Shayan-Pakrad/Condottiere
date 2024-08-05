@@ -55,6 +55,13 @@ std::string Player::getColor() const
 {
     return color;
 }
+// std::string Player::getBadShansiNumberSetter(){
+//     return badShansiNumberSetter ;
+// }
+// std::string Player::getKhoshShansiNumberSetter(){
+//     return khoshShansiNumberSetter ;
+// }
+
 // Total score getter function
 int Player::getTotalScore() const
 {

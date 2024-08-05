@@ -58,20 +58,20 @@ public:
     void sortPlayers();
     void showCards();
     void setNeshaneJangProvince(); // also handle neshane solh
-    void setKhoshShansiNumber () ; // also handle badShansiNumber 
+    void setKhoshShansiNumber () ; 
+    void setBadShansiNumber() ;
     void initiateBattle();
     bool checkForWinner();
     void endGame();
     bool shirzanCounterIterator(); 
     int getKhoshShansiNumber();
     int getBadShansiNumber();
-    std::string getKhoshShansiNumberSetter() ; 
-    std::string getBadShansiNumberSetter() ; 
 
 private:
     std::vector<Player> players; // List of the game players
     Map map;
     Deck deck;
+
     int khoshShansiNumber ; 
     int badShansiNumber;
     prov NeshaneJangProvince;
