@@ -244,40 +244,45 @@ void Game::setNeshaneJangProvince()
         }
     }
 }
-bool Game ::shirzanCounterIterator()
+bool Game::shirzanCounterIterator()
 {
-    int greatest;
-    bool isUnique;
+    
+    greatestShirZan = players[0].getShirZanCounter();
 
-    greatest = players[0].getShirZanCounter();
-    bool isUnique = true;
+    // for (int i = 0; i < players.size(); i++)//checks that has anyone played shirzan yet or not    if no so winner of the battle would set the neshane jang   if yes   it has to check that who has played the  
+    // {
+    //     if (players[i].getShirZanCounter() != 0)
+    //     {
+    //         break;
+    //     }
+    //     else {
+    //         return false ; 
+    //     }
+    // }
+
+    for (int i = 1; i < players.size(); i++)
+    {
+        if (players[i].getShirZanCounter() > greatestShirZan)
+        {
+            greatestShirZan = players[i].getShirZanCounter();
+        }
+        else {
+
+        }
+    }
     for (int i = 0; i < players.size(); i++)
     {
-        if (players[i].getShirZanCounter() != 0)
+        if (greatestShirZan == players[i].getShirZanCounter())
         {
             return false;
         }
         else
         {
-            for (int i = 1; i < players.size(); i++)
+            if (i==players.size () -1)
             {
-                if (players[i].getShirZanCounter() > greatest)
-                {
-                    greatest = players[i].getShirZanCounter();
-                }
+                return true ;
             }
-            for (int i = 0; i < players.size(); i++)
-            {
-                if (greatest == players[i].getShirZanCounter())
-                {
-                    return false ;
-                }
-                else
-                {
-                    return true ; 
-                }
-            }
-
+            
         }
     }
 }
@@ -293,9 +298,20 @@ void Game::initiateBattle()
 
     currentBattle->startBattle();
 
-    if (true) //  in bayad baraye ShirZan edit beshe
+    if (!shirzanCounterIterator()) 
     {
         NeshaneJangSetter = currentBattle->endBattle();
+    }
+    else{
+        for (int i = 0; i < players.size (); i++)
+        {
+            if (greatestShirZan==players[i].getShirZanCounter())
+            {
+                NeshaneJangSetter = players[i].getName ();
+            }
+            
+        }
+        
     }
 
     NeshaneSolhSetter = currentBattle->getNeshaneSolhSetter();

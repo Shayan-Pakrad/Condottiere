@@ -70,7 +70,7 @@ private:
     prov NeshaneJangProvince;
     std::string NeshaneJangSetter; // Player name
     std::string NeshaneSolhSetter; // it would be "N" if nobody play RishSefid
-
+    int greatestShirZan;
     std::vector<std::string> totalConqueredProvinces; // provinces that has conquered by players
 
     Battle *currentBattle;
