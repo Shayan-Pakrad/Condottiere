@@ -45,13 +45,15 @@ public:
     void setPointsToOne(); // for when zemestan has played in the battle
     bool winnerDeterminer();
     void  setTablzanCounter () ; 
-
-
+    int getKhoshShansiNumber() ; 
+    int getBadShansiNumber() ; 
 private:
     std::string name;
     int age;
     int shirzanCounter = 0 ; 
     int tablzanCounter = 0 ;
+    int khoshShansiNumber ; 
+    int badShansiNumber;
     std::string color;
     std::vector<Province> conqueredProvinces;
     bool tablZanHazPlayed; // It sets true if the player play TablZan card
