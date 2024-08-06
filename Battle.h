@@ -11,7 +11,7 @@ class Game ;// forward declaration
 class Battle {
 public:
     // Constructor
-    Battle(Province &province, std::vector<Player> &players, Deck &deck,Game &game);
+    Battle(Province &province, std::vector<Player> &players, Deck &deck);
     void baharSwitch(); // If bahar has played
     void zemestanSwitch(); // If Zemestan has played
     void RishSefidSwitch(); // If Rishsefid has played
