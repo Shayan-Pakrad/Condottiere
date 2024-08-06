@@ -46,6 +46,8 @@ public:
     bool winnerDeterminer();
     void  setTablzanCounter () ; 
     void halvePoint () ;
+    int getMatarsakCounter();
+    void setMatarsakCounter();
     
     // std::string getKhoshShansiNumberSetter() ; 
     // std::string getBadShansiNumberSetter() ; 
@@ -54,8 +56,7 @@ private:
     int age;
     int shirzanCounter = 0 ; 
     int tablzanCounter = 0 ;
-    
-    
+    int matarsakCounter = 0 ;
     std::string color;
     std::vector<Province> conqueredProvinces;
     bool tablZanHazPlayed; // It sets true if the player play TablZan card

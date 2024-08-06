@@ -33,6 +33,9 @@ int Player::getShirZanCounter()
 {
     return shirzanCounter;
 }
+void Player::setMatarsakCounter(){
+    matarsakCounter++ ; 
+}
 void Player::setTablzanCounter()
 {
     tablzanCounter++;
@@ -45,6 +48,10 @@ void Player::setShirzanCounter()
 int Player::getTablzanCounter()
 {
     return tablzanCounter;
+}
+int Player::getMatarsakCounter()
+{
+    return matarsakCounter ; 
 }
 
 // Name getter function
@@ -220,8 +227,9 @@ void Player::setPointsToOne()
         (*card)->setPoint(1);
     }
 }
-void Player::halvePoint(){
-    
+void Player::halvePoint()
+{
+
     for (auto card = combatCardsPlayed.begin(); card != combatCardsPlayed.end(); ++card)
     {
         (*card)->halveThePoint();

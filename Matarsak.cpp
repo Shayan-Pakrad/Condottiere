@@ -9,7 +9,7 @@ void Matarsak::applyEffect(Player &player) {
         std::cin.get();
         return;
     }
-    
+    player.setMatarsakCounter();
     std::cout << "\nWhich Combat card do you want to pick up ? \nYour played COMBAT cards are : \n";
         for (const auto &card : player.getCombatCardsPlayed()) {
         std::cout << "---> " << card->getName() << "\n";

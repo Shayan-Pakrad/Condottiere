@@ -289,7 +289,14 @@ void Game::setBadShansiNumber(){
 
 bool Game::shirzanCounterIterator()
 {
-
+//check the warnign 
+//check the warnign 
+//check the warnign 
+//check the warnign 
+//check the warnign 
+//check the warnign 
+//check the warnign 
+//check the warnign 
     greatestShirZan = players[0].getShirZanCounter();
 
     // for (int i = 0; i < players.size(); i++)//checks that has anyone played shirzan yet or not    if no so winner of the battle would set the neshane jang   if yes   it has to check that who has played the
@@ -344,15 +351,7 @@ void Game::initiateBattle()
         delete currentBattle;
     }
 
-    currentBattle = new Battle(map.getProvinceByIndex(int(NeshaneJangProvince)), players, deck,khoshShansiNumber ,badShansiNumber ,khoshShansiNumberSetter);//inja bayad edit bese 
-//inja bayad edit bese 
-//inja bayad edit bese 
-//inja bayad edit bese 
-//inja bayad edit bese 
-//inja bayad edit bese 
-//inja bayad edit bese 
-//inja bayad edit bese 
-//inja bayad edit bese 
+    currentBattle = new Battle(map.getProvinceByIndex(int(NeshaneJangProvince)), players, deck,khoshShansiNumber ,badShansiNumber ,khoshShansiNumberSetter);
     currentBattle->startBattle();
     khoshShansiNumberSetter = currentBattle->endBattle();
     badShansiNumberSetter = currentBattle->endBattle();

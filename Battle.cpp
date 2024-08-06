@@ -226,7 +226,7 @@ std::string Battle::endBattle()
     {
         int highestPoint = 0;
 
-        for (auto &player : players)
+        for (auto &player : players) // bahar bayad inja update beshe 
         {
             std::vector<std::shared_ptr<Card>> combatCards = player.getCombatCardsPlayed();
             for (auto &card : combatCards)

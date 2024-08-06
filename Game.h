@@ -44,7 +44,7 @@ static std::unordered_map<std::string, prov> provinceMap =
         {"armento", ARMENTO},
         {"lia", LIA},
         {"elina", ELINA},
-        {"HEMEDAN", HEMEDAN}};
+        {"hemedan", HEMEDAN}};
 
 class Game
 {
