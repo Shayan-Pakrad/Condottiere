@@ -1,7 +1,7 @@
 #include "Map.h"
 
 // Constructor
-    std::array<std::array<int, 15>, 15> Map::boarderingProvinces{{
+    std::array<std::array<int, 15>, 15> Map::borderingProvinces{{
         {0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0},  // BELLA
         {1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0},  // CALINE
         {0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0},  // ENNA

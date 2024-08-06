@@ -229,11 +229,11 @@ bool Player::winnerDeterminer()
 
     if (conqueredProvinces.size() == 3)
     {
-        if (Map::boarderingProvinces[provinceEnum1][provinceEnum2] == 1)
+        if (Map::borderingProvinces[provinceEnum1][provinceEnum2] == 1)
         {
-            if (Map::boarderingProvinces[provinceEnum1][provinceEnum3] == 1)
+            if (Map::borderingProvinces[provinceEnum1][provinceEnum3] == 1)
             {
-                if (Map::boarderingProvinces[provinceEnum3][provinceEnum2] == 1)
+                if (Map::borderingProvinces[provinceEnum3][provinceEnum2] == 1)
                 {
                     return true;
                 }
@@ -247,44 +247,44 @@ bool Player::winnerDeterminer()
         std::string provinceName4 = conqueredProvinces[3].getName();
         prov provinceEnum4 = provinceMap[provinceName4];
 
-        if (Map::boarderingProvinces[provinceEnum1][provinceEnum2] == 1)
+        if (Map::borderingProvinces[provinceEnum1][provinceEnum2] == 1)
         {
-            if (Map::boarderingProvinces[provinceEnum1][provinceEnum3] == 1)
+            if (Map::borderingProvinces[provinceEnum1][provinceEnum3] == 1)
             {
-                if (Map::boarderingProvinces[provinceEnum3][provinceEnum2] == 1)
+                if (Map::borderingProvinces[provinceEnum3][provinceEnum2] == 1)
                 {
                     return true;
                 }
             }
         }
 
-        if (Map::boarderingProvinces[provinceEnum1][provinceEnum4] == 1)
+        if (Map::borderingProvinces[provinceEnum1][provinceEnum4] == 1)
         {
-            if (Map::boarderingProvinces[provinceEnum2][provinceEnum4] == 1)
+            if (Map::borderingProvinces[provinceEnum2][provinceEnum4] == 1)
             {
-                if (Map::boarderingProvinces[provinceEnum1][provinceEnum2] == 1)
+                if (Map::borderingProvinces[provinceEnum1][provinceEnum2] == 1)
                 {
                     return true;
                 }
             }
         }
 
-        if (Map::boarderingProvinces[provinceEnum1][provinceEnum3] == 1)
+        if (Map::borderingProvinces[provinceEnum1][provinceEnum3] == 1)
         {
-            if (Map::boarderingProvinces[provinceEnum4][provinceEnum3] == 1)
+            if (Map::borderingProvinces[provinceEnum4][provinceEnum3] == 1)
             {
-                if (Map::boarderingProvinces[provinceEnum3][provinceEnum4] == 1)
+                if (Map::borderingProvinces[provinceEnum3][provinceEnum4] == 1)
                 {
                     return true;
                 }
             }
         }
 
-        if (Map::boarderingProvinces[provinceEnum3][provinceEnum2] == 1)
+        if (Map::borderingProvinces[provinceEnum3][provinceEnum2] == 1)
         {
-            if (Map::boarderingProvinces[provinceEnum4][provinceEnum3] == 1)
+            if (Map::borderingProvinces[provinceEnum4][provinceEnum3] == 1)
             {
-                if (Map::boarderingProvinces[provinceEnum2][provinceEnum4] == 1)
+                if (Map::borderingProvinces[provinceEnum2][provinceEnum4] == 1)
                 {
                     return true;
                 }

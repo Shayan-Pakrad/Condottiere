@@ -16,7 +16,7 @@ public:
 
     Province& getProvinceByIndex(int index); // using enum in game class
     
-    static std::array<std::array<int, 15>, 15> boarderingProvinces;
+    static std::array<std::array<int, 15>, 15> borderingProvinces;
 private:
     static std::array<Province, 15> provinces;
 };
