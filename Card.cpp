@@ -10,7 +10,9 @@ Card::Card(int point, std::string name) {
 void Card::setPoint(int p) {
     point = p;
 }
-
+void Card::halveThePoint(){
+    point/=2;
+}
 // Get the point value
 int Card::getPoint() const {
     return point;

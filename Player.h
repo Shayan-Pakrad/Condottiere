@@ -22,7 +22,7 @@ public:
     int getAge() const;
     std::string getName() const;
     std::string getColor() const;
-    int getTotalScore() const;
+    int getTotalScore(int khosh ,int bad) const;
     void  setShirzanCounter () ;
     void addProvince(const Province& province);
     std::vector<Province> getConqueredProvinces() const;
@@ -45,6 +45,7 @@ public:
     void setPointsToOne(); // for when zemestan has played in the battle
     bool winnerDeterminer();
     void  setTablzanCounter () ; 
+    void halvePoint () ;
     
     // std::string getKhoshShansiNumberSetter() ; 
     // std::string getBadShansiNumberSetter() ; 

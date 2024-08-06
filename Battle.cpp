@@ -2,7 +2,7 @@
 #include "Deck.h"
 
 // Constructor
-Battle::Battle(Province &province, std::vector<Player> &players, Deck &deck)
+Battle::Battle(Province &province, std::vector<Player> &players, Deck &deck,int khoshShansi,int badShansi , std::string khoshShansiBadShansiSetter)
     : province(province), players(players), deck(deck), baharHasPlayed(false),
       zemestanHasPlayed(false), NeshaneSolhSetter("N") {}
 
@@ -219,7 +219,7 @@ std::string Battle::endBattle()
     {
         for (auto &player : players)
         {
-            player.setPointsToOne();
+            player.halvePoint();
         }
     }
     if (baharHasPlayed)
@@ -257,10 +257,10 @@ std::string Battle::endBattle()
 
         // if (player->getName()==game->getKhoshShansiNumberSetter())
         // {
-        //     /* code */
+        //     player->getTotalScore(khoshShansi,badShansi) ;
         // }
-        
-        if (player->getTotalScore() > winner->getTotalScore())
+
+        if (player->getTotalScore(khoshShansi , badShansi) > winner->getTotalScore(khoshShansi , badShansi))
         {
             winner = player;
         }

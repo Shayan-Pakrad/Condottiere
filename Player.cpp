@@ -29,19 +29,22 @@ int Player::getAge() const
 {
     return age;
 }
-int Player::getShirZanCounter(){
-    return shirzanCounter ;
+int Player::getShirZanCounter()
+{
+    return shirzanCounter;
 }
-void Player::setTablzanCounter(){
-     tablzanCounter ++;
+void Player::setTablzanCounter()
+{
+    tablzanCounter++;
 }
 // ShirZan counter setter function
 void Player::setShirzanCounter()
 {
     shirzanCounter++;
 }
-int Player:: getTablzanCounter () {
-    return tablzanCounter ; 
+int Player::getTablzanCounter()
+{
+    return tablzanCounter;
 }
 
 // Name getter function
@@ -63,7 +66,7 @@ std::string Player::getColor() const
 // }
 
 // Total score getter function
-int Player::getTotalScore() const
+int Player::getTotalScore(int khosh, int bad) const
 {
     int overall = 0;
     for (auto combatCard = combatCardsPlayed.begin(); combatCard != combatCardsPlayed.end(); ++combatCard)
@@ -77,7 +80,15 @@ int Player::getTotalScore() const
 
     if (tablZanHazPlayed)
     {
-        overall = (overall*(pow(1.5,tablzanCounter))) ; 
+        overall = (overall * (pow(1.5, tablzanCounter)));
+    }
+    if (overall % khosh == 0)
+    {
+        overall *= 2;
+        if (overall % bad == 0)
+        {
+            overall *= 0;
+        }
     }
     return overall;
 }
@@ -209,7 +220,13 @@ void Player::setPointsToOne()
         (*card)->setPoint(1);
     }
 }
-
+void Player::halvePoint(){
+    
+    for (auto card = combatCardsPlayed.begin(); card != combatCardsPlayed.end(); ++card)
+    {
+        (*card)->halveThePoint();
+    }
+}
 bool Player::winnerDeterminer()
 {
 

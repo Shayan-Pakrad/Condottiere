@@ -344,8 +344,15 @@ void Game::initiateBattle()
         delete currentBattle;
     }
 
-    currentBattle = new Battle(map.getProvinceByIndex(int(NeshaneJangProvince)), players, deck);
-
+    currentBattle = new Battle(map.getProvinceByIndex(int(NeshaneJangProvince)), players, deck,khoshShansiNumber ,badShansiNumber ,khoshShansiNumberSetter);//inja bayad edit bese 
+//inja bayad edit bese 
+//inja bayad edit bese 
+//inja bayad edit bese 
+//inja bayad edit bese 
+//inja bayad edit bese 
+//inja bayad edit bese 
+//inja bayad edit bese 
+//inja bayad edit bese 
     currentBattle->startBattle();
     khoshShansiNumberSetter = currentBattle->endBattle();
     badShansiNumberSetter = currentBattle->endBattle();

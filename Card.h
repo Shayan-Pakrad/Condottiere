@@ -13,6 +13,7 @@ public:
     Card(int point, std::string name);
     // Member functions
     void setPoint(int p);
+    void halveThePoint();
     int getPoint() const;
     void setType(std::string type);
     std::string getType() const;
