@@ -157,13 +157,13 @@ std::shared_ptr<Card> *Player::playCard(std::string selectedCard)
                 {
                     combatCardsPlayed.push_back(*card);
                     cardsInHand.erase(card);
-                    return &combatCardsPlayed[0];
+                    return &combatCardsPlayed.back();
                 }
                 if ((*card)->getType() == "special")
                 {
                     specialCardsPlayed.push_back(*card);
                     cardsInHand.erase(card);
-                    return &specialCardsPlayed[0];
+                    return &specialCardsPlayed.back();
                 }
             }
         }

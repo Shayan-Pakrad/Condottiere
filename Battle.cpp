@@ -94,8 +94,6 @@ void Battle::startBattle()
     while (true)
     {
 
-        // this is a comment to be delete
-
         if (passedPlayers == players.size())
         {
             return;
@@ -138,7 +136,7 @@ void Battle::startBattle()
                     {
                         if ((*selectedCard)->getName() == "parchamdar")
                         {
-                            (*selectedCard)->applyEffect(*this);
+                            return;
                         }
 
                         if ((*selectedCard)->getName() == "bahar" || (*selectedCard)->getName() == "zemestan" || (*selectedCard)->getName() == "rishsefid")

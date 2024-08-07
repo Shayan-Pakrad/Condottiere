@@ -6,7 +6,6 @@ void Matarsak::applyEffect(Player &player) {
 
     if (player.getCombatCardsPlayed().empty()) {
         std::cout << "No COMBAT cards have been played.\n";
-        std::cin.get();
         return;
     }
     player.setMatarsakCounter();
@@ -24,6 +23,7 @@ void Matarsak::applyEffect(Player &player) {
             if (selectedCard == card->getName()) {
                 isFounded = true;
                 player.retakeCombatCard(card);
+                break;
             }
         }
 
