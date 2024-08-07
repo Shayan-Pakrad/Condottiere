@@ -88,3 +88,14 @@ void Deck::deal(Player &player) {
         gameCards.erase(gameCards.begin());
     }
 }
+
+void Deck::dealCrad(Player &player, std::string cardName) 
+{
+    for (auto card = gameCards.begin(); card != gameCards.end(); card++) {
+        if ((*card)->getName() == cardName) {
+            player.giveCard(*card);
+            gameCards.erase(card);
+            break;
+        }
+    }
+}

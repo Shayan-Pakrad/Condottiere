@@ -54,9 +54,9 @@ public:
     ~Game();
     // Member functions
     void welcome();
-    void startGame();
+    void startGame(int n);
     void initPlayers();
-    void addPlayer(const Player &player);
+    void addPlayer(const Player player);
     void sortPlayers();
     void showCards();
     void setNeshaneJangProvince(); // also handle neshane solh
@@ -68,6 +68,10 @@ public:
     bool shirzanCounterIterator();
     int getKhoshShansiNumber();
     int getBadShansiNumber();
+
+    void saveGame();
+    void loadGame();
+
 
 private:
     std::vector<Player> players; // List of the game players

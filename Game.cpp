@@ -1,9 +1,30 @@
 #include "Game.h"
+#include <fstream>
 
 // Constructor
 Game::Game() : currentBattle(nullptr), winner(nullptr), NeshaneSolhSetter("N")
 {
-    startGame();
+    welcome();
+
+    std::cout << "1. New Game \n";
+    std::cout << "2. Load Game \n";
+    std::cout << "3. Exit \n\n";
+    std::cout << "Your choice : ";
+    
+    int userInput;
+
+    std::cin >> userInput;
+
+    if (userInput == 1) {
+        startGame(1);
+    }
+    else if (userInput == 2) {
+        startGame(2);
+    }
+    else {
+        exit(0);
+    }
+
 }
 // destructor
 Game::~Game()
@@ -15,24 +36,39 @@ Game::~Game()
 }
 
 // Start the game by initializing and sorting players
-void Game::startGame()
+void Game::startGame(int n)
 {
-    welcome();
-    initPlayers();
-    sortPlayers();
-    showCards();
-    while (true)
-    {
-        setNeshaneJangProvince();
-        setKhoshShansiNumber();
-        setBadShansiNumber();
-        initiateBattle();
-        if (checkForWinner() == true)
-        {
-            break;
+
+    if (n == 1) {
+        initPlayers();
+        sortPlayers();
+        showCards();
+        while (true) {
+            setNeshaneJangProvince();
+            setKhoshShansiNumber();
+            setBadShansiNumber();
+            initiateBattle();
+            if (checkForWinner() == true){
+                break;
+            }
         }
+        endGame();
     }
-    endGame();
+
+    else if (n == 2) {
+        loadGame();
+        while (true) {
+            setNeshaneJangProvince();
+            setKhoshShansiNumber();
+            setBadShansiNumber();
+            initiateBattle();
+            if (checkForWinner() == true){
+                break;
+            }
+        }
+        endGame();
+    }
+    
 }
 
 void Game::welcome()
@@ -83,7 +119,7 @@ void Game::initPlayers()
 }
 
 // Add player to the players list
-void Game::addPlayer(const Player &player)
+void Game::addPlayer(const Player player)
 {
     players.push_back(player);
 }
@@ -370,6 +406,8 @@ void Game::initiateBattle()
         }
     }
 
+    saveGame();
+
     NeshaneSolhSetter = currentBattle->getNeshaneSolhSetter();
 }
 
@@ -390,4 +428,116 @@ void Game::endGame()
 {
     system("cls") ; 
     std::cout << "\n\n\tPlayer " << winner->getName() << " has won the game!!";
+}
+
+
+void Game::saveGame()
+{
+
+    std::ofstream fout("game.txt");
+
+    // number of players
+    fout << players.size() << std::endl;
+
+    // players names, ages, colors
+    for (int i = 0; i < players.size(); i++) {
+        fout << players[i].getName() << std::endl;
+        fout << players[i].getAge() << std::endl;
+        fout << players[i].getColor() << std::endl;
+    }
+
+    // number of player cards in hand
+    for (int i = 0; i < players.size(); i++) {
+        std::vector<std::shared_ptr<Card>> cards = players[i].getCardsInHand();
+        int numberOfCards = cards.size();
+        fout << numberOfCards << std::endl;
+        for (int j = 0; j < numberOfCards; j++) {
+            fout << cards[j]->getName() << std::endl;
+        }
+    }
+    // players provinces
+    for (int i = 0; i < players.size(); i++) {
+        std::vector<Province> provinces = players[i].getConqueredProvinces();
+        int numberOfProvinces = provinces.size();
+        fout << numberOfProvinces << std::endl;
+        for (int j = 0; j < numberOfProvinces; j++) {
+            std::string lowerCaseProvinceName = provinces[j].getName();
+            std::transform(lowerCaseProvinceName.begin(), lowerCaseProvinceName.end(), lowerCaseProvinceName.begin(), ::tolower);
+            fout << provinceMap[lowerCaseProvinceName] << std::endl;
+        }
+    }
+
+    // NeshaneJangSetter
+    fout << NeshaneJangSetter << std::endl;
+    
+    fout.close();
+
+}
+
+void Game::loadGame()
+{
+
+    std::ifstream fin("game.txt");
+
+    int NumberOfPlayers;
+
+    if (fin.is_open()) {
+
+        // number of players
+        fin >> NumberOfPlayers;
+
+        // some variables to use in for loops
+        std::string name, color;
+        int age;
+        int numberOfCards;
+        std::string cardName;
+        int numberOfProvinces, province;
+
+        // players names, ages, colors
+        for (int i = 0; i < NumberOfPlayers; i++) {
+            fin >> name;
+            fin >> age;
+            fin >> color;
+            Player player{name, age, color};
+            addPlayer(player);
+        }
+
+        // cards in hand
+        for (int i = 0; i < NumberOfPlayers; i++) {
+            fin >> numberOfCards;
+            for (int j = 0; j < numberOfCards; j++) {
+                fin >> cardName;
+                deck.dealCrad(players[i], cardName);
+                
+            }
+        }
+
+        // provinces
+        for (int i = 0; i < NumberOfPlayers; i++) {
+            fin >> numberOfProvinces;
+            for (int j = 0; j < numberOfProvinces; j++) {
+                fin >> province;
+                std::cout << std::endl << province << std::endl;
+                players[i].addProvince(map.getProvinceByIndex(int(province)));
+
+                std::string lowerCaseProvinceName = map.getProvinceByIndex(int(province)).getName();
+                std::transform(lowerCaseProvinceName.begin(), lowerCaseProvinceName.end(), lowerCaseProvinceName.begin(), ::tolower);
+                totalConqueredProvinces.push_back(lowerCaseProvinceName);
+            }
+        }
+
+        // NeshaneJangSetter
+        fin >> NeshaneJangSetter;
+        
+        fin.close();
+
+    }
+
+    else{
+        std::cout << "there is no saved game!! play a new game";
+        exit(0);
+        
+    }
+
+
 }

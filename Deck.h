@@ -29,6 +29,7 @@ class Deck {
 
     void shuffleCards();
     void deal(Player &player);
+    void dealCrad(Player &player, std::string cardName);
 
     private:
     std::vector<std::shared_ptr<Card>> gameCards;
