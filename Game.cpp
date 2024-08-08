@@ -307,6 +307,8 @@ void Game::setNeshaneJangProvince()
             std::cout << "Province not found. NeshaneJang not set." << std::endl;
         }
     }
+
+    khoshShansiNumberSetter = NeshaneJangSetter;
 }
 void Game::setKhoshShansiNumber()
 {
