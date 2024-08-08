@@ -89,16 +89,21 @@ int Player::getTotalScore(int khosh, int bad , bool khoshBadSetted) const
     {
         overall = (overall * (pow(1.5, tablzanCounter)));
     }
-    if (overall % khosh == 0)
+    if (khoshBadSetted)
     {
-        overall *= 2;
+        if (overall % khosh == 0)//no difference between khosh and bad algorithm execution order 
+        {
+            overall *= 2;
+        }
         if (overall % bad == 0)
         {
             overall *= 0;
         }
     }
+
     return overall;
 }
+
 
 // Add province to conqueredProvinces
 void Player::addProvince(const Province &province)
