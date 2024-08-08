@@ -10,21 +10,23 @@ Game::Game() : currentBattle(nullptr), winner(nullptr), NeshaneSolhSetter("N")
     std::cout << "2. Load Game \n";
     std::cout << "3. Exit \n\n";
     std::cout << "Your choice : ";
-    
+
     int userInput;
 
     std::cin >> userInput;
 
-    if (userInput == 1) {
+    if (userInput == 1)
+    {
         startGame(1);
     }
-    else if (userInput == 2) {
+    else if (userInput == 2)
+    {
         startGame(2);
     }
-    else {
+    else
+    {
         exit(0);
     }
-
 }
 // destructor
 Game::~Game()
@@ -39,36 +41,41 @@ Game::~Game()
 void Game::startGame(int n)
 {
 
-    if (n == 1) {
+    if (n == 1)
+    {
         initPlayers();
         sortPlayers();
         showCards();
-        while (true) {
+        while (true)
+        {
             setNeshaneJangProvince();
             setKhoshShansiNumber();
             setBadShansiNumber();
             initiateBattle();
-            if (checkForWinner() == true){
+            if (checkForWinner() == true)
+            {
                 break;
             }
         }
         endGame();
     }
 
-    else if (n == 2) {
+    else if (n == 2)
+    {
         loadGame();
-        while (true) {
+        while (true)
+        {
             setNeshaneJangProvince();
             setKhoshShansiNumber();
             setBadShansiNumber();
             initiateBattle();
-            if (checkForWinner() == true){
+            if (checkForWinner() == true)
+            {
                 break;
             }
         }
         endGame();
     }
-    
 }
 
 void Game::welcome()
@@ -275,7 +282,12 @@ void Game::setNeshaneJangProvince()
 
             totalConqueredProvinces.push_back(lowerCaseProvinceName);
             NeshaneJangProvince = provinceMap[lowerCaseProvinceName];
-            std::cout<< std::endl<< std::endl << "NeshaneJang set to province:   " << std::endl<< InputProvince << " \nSo Whoever Wins The Round " << InputProvince << " Is Gonna Be In His Conquered Province List  " << std::endl<< std::endl<< std::endl;
+            std::cout << std::endl
+                      << std::endl
+                      << "NeshaneJang set to province:   " << std::endl
+                      << InputProvince << " \nSo Whoever Wins The Round " << InputProvince << " Is Gonna Be In His Conquered Province List  " << std::endl
+                      << std::endl
+                      << std::endl;
             flag = false;
         }
         else
@@ -286,8 +298,9 @@ void Game::setNeshaneJangProvince()
 }
 void Game::setKhoshShansiNumber()
 {
-    std::cout << "HINT----------> whatever point you get ....  if it is multiple of KHOSHSHANI number your point will be doubled and th eend of the battle \n "<< std::endl;
-    std::cout << "((" << khoshShansiNumberSetter << "))" << "should set khosh-shansi number \n  Remember that the range of this number is (10) to (99) : \n"<< std::endl;
+    std::cout << "HINT----------> whatever point you get ....  if it is multiple of KHOSHSHANI number your point will be doubled and th eend of the battle \n " << std::endl;
+    std::cout << "((" << khoshShansiNumberSetter << "))" << "should set khosh-shansi number \n  Remember that the range of this number is (10) to (99) : \n"
+              << std::endl;
     bool flag = true;
     while (flag)
     {
@@ -302,10 +315,13 @@ void Game::setKhoshShansiNumber()
         }
     }
 }
-void Game::setBadShansiNumber(){
+void Game::setBadShansiNumber()
+{
 
-    std::cout <<std::endl<< "HINT----------> whatever point you get ....   if it is multiple of BADSHANSI number you are gonna be eliminated from current battle  \n "<< std::endl;
-    std::cout << "((" << badShansiNumberSetter << "))" << "should set bad-shansi number \n  Remember that the range of this number is (10) to (99) : \n"<< std::endl;
+    std::cout << std::endl
+              << "HINT----------> whatever point you get ....   if it is multiple of BADSHANSI number you are gonna be eliminated from current battle  \n " << std::endl;
+    std::cout << "((" << badShansiNumberSetter << "))" << "should set bad-shansi number \n  Remember that the range of this number is (10) to (99) : \n"
+              << std::endl;
     bool flag = true;
     while (flag)
     {
@@ -319,32 +335,19 @@ void Game::setBadShansiNumber(){
             flag = false;
         }
     }
-
-    
 }
 
 bool Game::shirzanCounterIterator()
 {
-//check the warnign 
-//check the warnign 
-//check the warnign 
-//check the warnign 
-//check the warnign 
-//check the warnign 
-//check the warnign 
-//check the warnign 
+    // check the warnign
+    // check the warnign
+    // check the warnign
+    // check the warnign
+    // check the warnign
+    // check the warnign
+    // check the warnign
+    // check the warnign
     greatestShirZan = players[0].getShirZanCounter();
-
-    // for (int i = 0; i < players.size(); i++)//checks that has anyone played shirzan yet or not    if no so winner of the battle would set the neshane jang   if yes   it has to check that who has played the
-    // {
-    //     if (players[i].getShirZanCounter() != 0)
-    //     {
-    //         break;
-    //     }
-    //     else {
-    //         return false ;
-    //     }
-    // }
 
     for (int i = 1; i < players.size(); i++)
     {
@@ -352,24 +355,16 @@ bool Game::shirzanCounterIterator()
         {
             greatestShirZan = players[i].getShirZanCounter();
         }
-        else
-        {
-        }
     }
+    bool isUnique = true;
     for (int i = 0; i < players.size(); i++)
     {
         if (greatestShirZan == players[i].getShirZanCounter())
         {
-            return false;
-        }
-        else
-        {
-            if (i == players.size() - 1)
-            {
-                return true;
-            }
+            isUnique = false;
         }
     }
+    return isUnique;
 }
 int Game::getKhoshShansiNumber()
 {
@@ -387,7 +382,7 @@ void Game::initiateBattle()
         delete currentBattle;
     }
 
-    currentBattle = new Battle(map.getProvinceByIndex(int(NeshaneJangProvince)), players, deck,khoshShansiNumber ,badShansiNumber ,khoshShansiNumberSetter);
+    currentBattle = new Battle(map.getProvinceByIndex(int(NeshaneJangProvince)), players, deck, khoshShansiNumber, badShansiNumber, khoshShansiNumberSetter);
     currentBattle->startBattle();
     khoshShansiNumberSetter = currentBattle->endBattle();
     badShansiNumberSetter = currentBattle->endBattle();
@@ -426,10 +421,9 @@ bool Game::checkForWinner()
 
 void Game::endGame()
 {
-    system("cls") ; 
+    system("cls");
     std::cout << "\n\n\tPlayer " << winner->getName() << " has won the game!!";
 }
-
 
 void Game::saveGame()
 {
@@ -440,27 +434,32 @@ void Game::saveGame()
     fout << players.size() << std::endl;
 
     // players names, ages, colors
-    for (int i = 0; i < players.size(); i++) {
+    for (int i = 0; i < players.size(); i++)
+    {
         fout << players[i].getName() << std::endl;
         fout << players[i].getAge() << std::endl;
         fout << players[i].getColor() << std::endl;
     }
 
     // number of player cards in hand
-    for (int i = 0; i < players.size(); i++) {
+    for (int i = 0; i < players.size(); i++)
+    {
         std::vector<std::shared_ptr<Card>> cards = players[i].getCardsInHand();
         int numberOfCards = cards.size();
         fout << numberOfCards << std::endl;
-        for (int j = 0; j < numberOfCards; j++) {
+        for (int j = 0; j < numberOfCards; j++)
+        {
             fout << cards[j]->getName() << std::endl;
         }
     }
     // players provinces
-    for (int i = 0; i < players.size(); i++) {
+    for (int i = 0; i < players.size(); i++)
+    {
         std::vector<Province> provinces = players[i].getConqueredProvinces();
         int numberOfProvinces = provinces.size();
         fout << numberOfProvinces << std::endl;
-        for (int j = 0; j < numberOfProvinces; j++) {
+        for (int j = 0; j < numberOfProvinces; j++)
+        {
             std::string lowerCaseProvinceName = provinces[j].getName();
             std::transform(lowerCaseProvinceName.begin(), lowerCaseProvinceName.end(), lowerCaseProvinceName.begin(), ::tolower);
             fout << provinceMap[lowerCaseProvinceName] << std::endl;
@@ -469,9 +468,8 @@ void Game::saveGame()
 
     // NeshaneJangSetter
     fout << NeshaneJangSetter << std::endl;
-    
-    fout.close();
 
+    fout.close();
 }
 
 void Game::loadGame()
@@ -481,7 +479,8 @@ void Game::loadGame()
 
     int NumberOfPlayers;
 
-    if (fin.is_open()) {
+    if (fin.is_open())
+    {
 
         // number of players
         fin >> NumberOfPlayers;
@@ -494,7 +493,8 @@ void Game::loadGame()
         int numberOfProvinces, province;
 
         // players names, ages, colors
-        for (int i = 0; i < NumberOfPlayers; i++) {
+        for (int i = 0; i < NumberOfPlayers; i++)
+        {
             fin >> name;
             fin >> age;
             fin >> color;
@@ -503,21 +503,25 @@ void Game::loadGame()
         }
 
         // cards in hand
-        for (int i = 0; i < NumberOfPlayers; i++) {
+        for (int i = 0; i < NumberOfPlayers; i++)
+        {
             fin >> numberOfCards;
-            for (int j = 0; j < numberOfCards; j++) {
+            for (int j = 0; j < numberOfCards; j++)
+            {
                 fin >> cardName;
                 deck.dealCrad(players[i], cardName);
-                
             }
         }
 
         // provinces
-        for (int i = 0; i < NumberOfPlayers; i++) {
+        for (int i = 0; i < NumberOfPlayers; i++)
+        {
             fin >> numberOfProvinces;
-            for (int j = 0; j < numberOfProvinces; j++) {
+            for (int j = 0; j < numberOfProvinces; j++)
+            {
                 fin >> province;
-                std::cout << std::endl << province << std::endl;
+                std::cout << std::endl
+                          << province << std::endl;
                 players[i].addProvince(map.getProvinceByIndex(int(province)));
 
                 std::string lowerCaseProvinceName = map.getProvinceByIndex(int(province)).getName();
@@ -528,16 +532,13 @@ void Game::loadGame()
 
         // NeshaneJangSetter
         fin >> NeshaneJangSetter;
-        
-        fin.close();
 
+        fin.close();
     }
 
-    else{
+    else
+    {
         std::cout << "there is no saved game!! play a new game";
         exit(0);
-        
     }
-
-
 }
