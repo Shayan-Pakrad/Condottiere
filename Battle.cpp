@@ -2,7 +2,7 @@
 #include "Deck.h"
 
 // Constructor
-Battle::Battle(Province &province, std::vector<Player> &players, Deck &deck,int khoshShansi,int badShansi , std::string khoshShansiBadShansiSetter)
+Battle::Battle(Province &province, std::vector<Player> &players, Deck &deck,int khoshShansi,int badShansi , std::string khoshShansiBadShansiSetter , bool khoshBadSetted)
     : province(province), players(players), deck(deck), baharHasPlayed(false),
       zemestanHasPlayed(false), NeshaneSolhSetter("N") {}
 

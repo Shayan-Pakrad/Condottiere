@@ -382,7 +382,7 @@ void Game::initiateBattle()
         delete currentBattle;
     }
 
-    currentBattle = new Battle(map.getProvinceByIndex(int(NeshaneJangProvince)), players, deck, khoshShansiNumber, badShansiNumber, khoshShansiNumberSetter);
+    currentBattle = new Battle(map.getProvinceByIndex(int(NeshaneJangProvince)), players, deck, khoshShansiNumber, badShansiNumber, khoshShansiNumberSetter , KhoshBadSetted);
     currentBattle->startBattle();
     khoshShansiNumberSetter = currentBattle->endBattle();
     badShansiNumberSetter = currentBattle->endBattle();

@@ -87,7 +87,7 @@ private:
     std::string NeshaneSolhSetter; // it would be "N" if nobody play RishSefid
     int greatestShirZan;
     std::vector<std::string> totalConqueredProvinces; // provinces that has conquered by players
-
+bool KhoshBadSetted ;
     Battle *currentBattle;
 
     Player *winner;
