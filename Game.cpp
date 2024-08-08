@@ -12,21 +12,31 @@ Game::Game() : currentBattle(nullptr), winner(nullptr), NeshaneSolhSetter("N")
     std::cout << "Your choice : ";
 
     int userInput;
-
+bool Flag = true ; 
+while (Flag)
+{
     std::cin >> userInput;
 
     if (userInput == 1)
     {
         startGame(1);
+        Flag = false ; 
     }
     else if (userInput == 2)
     {
         startGame(2);
+        Flag = false ; 
     }
-    else
+    else if (userInput == 3)
     {
         exit(0);
+        Flag = false ; 
     }
+    else{ 
+        std::cout << "wrong input !!" <<std::endl; 
+    }
+}
+
 }
 // destructor
 Game::~Game()
@@ -209,7 +219,9 @@ void Game::setNeshaneJangProvince()
         {"talmone", TALMONE},
         {"armento", ARMENTO},
         {"lia", LIA},
-        {"elina", ELINA}};
+        {"elina", ELINA},
+        {"hemedan", HEMEDAN},
+        };
 
     std::string NeshaneSolhProvince = "";
 

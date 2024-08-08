@@ -46,7 +46,20 @@ void Battle::printInformation()
             std::cout << playedCards[j]->getName() << "   ";
         }
         std::cout << ")  ";
+        // here needs to be editted 
+        // here needs to be editted 
+        // here needs to be editted 
+        // here needs to be editted 
+        // here needs to be editted 
+        // here needs to be editted 
+        // here needs to be editted 
+        // here needs to be editted 
+        // here needs to be editted 
+        // here needs to be editted 
 
+
+
+        
         // Special Cards Played
 
         std::cout << "Special-Cards (   ";
