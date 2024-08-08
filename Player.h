@@ -64,7 +64,7 @@ private:
     bool tablZanHazPlayed; // It sets true if the player play TablZan card
     std::vector<std::shared_ptr<Card>> combatCardsPlayed;
     std::vector<std::shared_ptr<Card>> specialCardsPlayed;
-    bool khoshBadSetted;
+    bool khoshBadSetted= false ;
     std::vector<std::shared_ptr<Card>> cardsInHand;
 
     bool hasPassed;

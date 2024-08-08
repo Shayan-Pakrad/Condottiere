@@ -216,6 +216,7 @@ void Player::resetStatus()
 {
     hasPassed = false;
     tablZanHazPlayed = false;
+    khoshBadSetted =  false ;
     specialCardsPlayed.clear();
     specialCardsPlayed.shrink_to_fit();
     combatCardsPlayed.clear();

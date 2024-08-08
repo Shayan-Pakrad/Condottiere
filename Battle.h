@@ -32,11 +32,10 @@ private:
     Province &province;
     std::vector<Player> &players;
     Deck &deck;
-    // Game &game;
     bool baharHasPlayed;
     bool zemestanHasPlayed;
     bool RishSefidHasPlayed;
-    bool khoshBadsetted;
+    bool khoshBadsetted = false;
     std::string NeshaneSolhSetter; // the last player name who played RishSefid would have the NeshaneSolh
 };
 
