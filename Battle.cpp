@@ -2,9 +2,9 @@
 #include "Deck.h"
 
 // Constructor
-Battle::Battle(Province &province, std::vector<Player> &players, Deck &deck,int khoshShansi,int badShansi , std::string khoshShansiBadShansiSetter , bool khoshBadSetted)
-    : province(province), players(players), deck(deck), baharHasPlayed(false),
-      zemestanHasPlayed(false), NeshaneSolhSetter("N") {}
+Battle::Battle(Province &province, std::vector<Player> &players, Deck &deck, int khoshShansi, int badShansi, std::string khoshShansiBadShansiSetter, bool khoshBadSetted)
+    : province(province), players(players), deck(deck), khoshShansi(khoshShansi), badShansi(badShansi), khoshShansiBadShansiSetter(khoshShansiBadShansiSetter), khoshBadsetted(khoshBadSetted), baharHasPlayed(false), zemestanHasPlayed(false), NeshaneSolhSetter("N") {}
+
 
 // bahar and zemestan switch
 void Battle::baharSwitch()
@@ -28,7 +28,7 @@ void Battle::printInformation()
 {
     std::system("cls");
 
-    std::cout << "\n\n->-> Current Battle Is In : " << province.getName() << " <-<-\n\n";
+    std::cout << "\n\n->-> Current Battle Is In : " << province.getName() <<"    Khosh-Shansi : "<< khoshShansi<<"   Bad-Shansi : "<<badShansi<< " <-<-\n\n";
 
     // Players Played Cards
 
