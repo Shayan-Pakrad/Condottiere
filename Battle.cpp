@@ -28,10 +28,9 @@ void Battle::printInformation()
 {
     std::system("cls");
 
-    std::cout << "\n\n->-> Current Battle Is In : " << province.getName() <<"    Khosh-Shansi : "<< khoshShansi<<"   Bad-Shansi : "<<badShansi<< " <-<-\n\n";
+    std::cout << "\n\n->-> Current Battle Is In : "<<" <-<-" << province.getName()<<"    Khosh-Shansi Number : "<< khoshShansi<<"   Bad-Shansi Number : "<<badShansi<<" \n\n" ;
 
     // Players Played Cards
-
     std::cout << "Players Played Cards:" << std::endl;
     for (int i = 0; i < players.size(); i++)
     {
@@ -46,20 +45,6 @@ void Battle::printInformation()
             std::cout << playedCards[j]->getName() << "   ";
         }
         std::cout << ")  ";
-        // here needs to be editted 
-        // here needs to be editted 
-        // here needs to be editted 
-        // here needs to be editted 
-        // here needs to be editted 
-        // here needs to be editted 
-        // here needs to be editted 
-        // here needs to be editted 
-        // here needs to be editted 
-        // here needs to be editted 
-
-
-
-
         // Special Cards Played
 
         std::cout << "Special-Cards (   ";

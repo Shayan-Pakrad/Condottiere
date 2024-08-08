@@ -311,7 +311,7 @@ void Game::setNeshaneJangProvince()
 void Game::setKhoshShansiNumber()
 {
     std::cout << "HINT----------> whatever point you get ....  if it is multiple of KHOSHSHANI number your point will be doubled and the end of the battle \n " << std::endl;
-    std::cout << "((" << khoshShansiNumberSetter << "))" << "should set khosh-shansi number \n  Remember that the range of this number is (10) to (99) : \n"
+    std::cout << "((" << khoshShansiNumberSetter << "))" << " should set khosh-shansi number \n  Remember that the range of this number is (10) to (99) : \n"
               << std::endl;
     bool flag = true;
     while (flag)
