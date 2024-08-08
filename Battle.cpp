@@ -59,7 +59,7 @@ void Battle::printInformation()
 
 
 
-        
+
         // Special Cards Played
 
         std::cout << "Special-Cards (   ";
@@ -263,19 +263,31 @@ std::string Battle::endBattle()
 
     auto winner = players.begin(); // set winner to the first player
 
-    for (auto player = players.begin() + 1; player != players.end(); ++player)
-    {   
+     for (auto player = players.begin() + 1; player != players.end(); ++player)
+    {
 
-
-        if (player->getTotalScore(khoshShansi , badShansi , khoshBadsetted) > winner->getTotalScore(khoshShansi , badShansi , khoshBadsetted))
+        if (player->getName() == khoshShansiBadShansiSetter)
         {
-            winner = player;
+            player->getTotalScore(khoshShansi, badShansi, khoshBadsetted);
+            if (player->getTotalScore(khoshShansi, badShansi, khoshBadsetted) > winner->getTotalScore(khoshShansi, badShansi, khoshBadsetted))
+            {
+                winner = player;
+            }
         }
-    }
+        else
+        {
+            player->getTotalScore(khoshShansi, khoshShansi, khoshBadsetted);
+            if (player->getTotalScore(khoshShansi, badShansi, khoshBadsetted) > winner->getTotalScore(khoshShansi, badShansi, khoshBadsetted))
+            {
+                winner = player;
+            }
+        }
+
 
     winner->addProvince(province);
 
     resetPlayers();
+    }
 
     return winner->getName();
 }

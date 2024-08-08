@@ -134,6 +134,9 @@ std::vector<std::shared_ptr<Card>> Player::getCardsInHand() const
 {
     return cardsInHand;
 }
+void Player::khoshBadSwitch(){
+    khoshBadSetted=true ; 
+}
 
 void Player::giveCard(std::shared_ptr<Card> &card)
 {
