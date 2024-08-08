@@ -253,12 +253,8 @@ std::string Battle::endBattle()
     for (auto player = players.begin() + 1; player != players.end(); ++player)
     {   
 
-        // if (player->getName()==game->getKhoshShansiNumberSetter())
-        // {
-        //     player->getTotalScore(khoshShansi,badShansi) ;
-        // }
 
-        if (player->getTotalScore(khoshShansi , badShansi) > winner->getTotalScore(khoshShansi , badShansi))
+        if (player->getTotalScore(khoshShansi , badShansi , khoshBadsetted) > winner->getTotalScore(khoshShansi , badShansi , khoshBadsetted))
         {
             winner = player;
         }

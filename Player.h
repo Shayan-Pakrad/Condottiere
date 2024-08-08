@@ -22,7 +22,7 @@ public:
     int getAge() const;
     std::string getName() const;
     std::string getColor() const;
-    int getTotalScore(int khosh ,int bad) const;
+    int getTotalScore(int khosh ,int bad , bool khoshBadSetted) const;
     void  setShirzanCounter () ;
     void addProvince(const Province& province);
     std::vector<Province> getConqueredProvinces() const;
@@ -62,7 +62,7 @@ private:
     bool tablZanHazPlayed; // It sets true if the player play TablZan card
     std::vector<std::shared_ptr<Card>> combatCardsPlayed;
     std::vector<std::shared_ptr<Card>> specialCardsPlayed;
-
+bool khoshBadSetted;
     std::vector<std::shared_ptr<Card>> cardsInHand;
 
     bool hasPassed;

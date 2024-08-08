@@ -73,7 +73,7 @@ std::string Player::getColor() const
 // }
 
 // Total score getter function
-int Player::getTotalScore(int khosh, int bad) const
+int Player::getTotalScore(int khosh, int bad , bool khoshBadSetted) const
 {
     int overall = 0;
     for (auto combatCard = combatCardsPlayed.begin(); combatCard != combatCardsPlayed.end(); ++combatCard)
