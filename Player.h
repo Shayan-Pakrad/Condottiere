@@ -23,7 +23,7 @@ public:
     int getAge() const;
     std::string getName() const;
     std::string getColor() const;
-    int getTotalScore(int khosh, int bad, bool khoshBadSetted) const;
+    int getTotalScore(int khosh, int bad, std::string koshSetter) const;
     void setShirzanCounter();
     void addProvince(const Province &province);
     std::vector<Province> getConqueredProvinces() const;

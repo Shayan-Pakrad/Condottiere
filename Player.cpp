@@ -73,7 +73,7 @@ std::string Player::getColor() const
 // }
 
 // Total score getter function
-int Player::getTotalScore(int khosh, int bad , bool khoshBadSetted) const
+int Player::getTotalScore(int khosh, int bad , std::string koshSetter) const
 {
     int overall = 0;
     for (auto combatCard = combatCardsPlayed.begin(); combatCard != combatCardsPlayed.end(); ++combatCard)
@@ -89,7 +89,7 @@ int Player::getTotalScore(int khosh, int bad , bool khoshBadSetted) const
     {
         overall = (overall * (pow(1.5, tablzanCounter)));
     }
-    if (khoshBadSetted)
+    if (koshSetter == this->name)
     {
         if (overall % khosh == 0)//no difference between khosh and bad algorithm execution order 
         {
