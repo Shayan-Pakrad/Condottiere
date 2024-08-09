@@ -248,31 +248,21 @@ std::string Battle::endBattle()
 
     auto winner = players.begin(); // set winner to the first player
 
-     for (auto player = players.begin() + 1; player != players.end(); ++player)
+    int winnerScore = winner->getTotalScore(khoshShansi, badShansi, khoshShansiBadShansiSetter);
+
+    for (auto player = players.begin() + 1; player != players.end(); ++player)
     {
 
-        if (player->getName() == khoshShansiBadShansiSetter)
-        {
-            player->getTotalScore(khoshShansi, badShansi, khoshBadsetted);
-            if (player->getTotalScore(khoshShansi, badShansi, khoshBadsetted) > winner->getTotalScore(khoshShansi, badShansi, khoshBadsetted))
-            {
-                winner = player;
-            }
-        }
-        else
-        {
-            player->getTotalScore(khoshShansi, khoshShansi, khoshBadsetted);
-            if (player->getTotalScore(khoshShansi, badShansi, khoshBadsetted) > winner->getTotalScore(khoshShansi, badShansi, khoshBadsetted))
-            {
-                winner = player;
-            }
+        if (player->getTotalScore(khoshShansi, badShansi, khoshShansiBadShansiSetter) > winnerScore) {
+            winner = player;
+            winnerScore = player->getTotalScore(khoshShansi, badShansi, khoshShansiBadShansiSetter);
         }
 
 
+    }
     winner->addProvince(province);
 
     resetPlayers();
-    }
 
     return winner->getName();
 }
