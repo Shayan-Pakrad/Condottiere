@@ -389,6 +389,8 @@ void Game::initiateBattle()
         delete currentBattle;
     }
 
+    saveGame();
+    
     currentBattle = new Battle(map.getProvinceByIndex(int(NeshaneJangProvince)), players, deck, khoshShansiNumber, badShansiNumber, khoshShansiNumberSetter , KhoshBadSetted);
     currentBattle->startBattle();
     khoshShansiNumberSetter = currentBattle->endBattle();
@@ -408,7 +410,6 @@ void Game::initiateBattle()
         }
     }
 
-    saveGame();
 
     NeshaneSolhSetter = currentBattle->getNeshaneSolhSetter();
 }
