@@ -364,13 +364,18 @@ bool Game::shirzanCounterIterator()
         }
     }
     bool isUnique = true;
+    int n = 0;
     for (int i = 0; i < players.size(); i++)
     {
         if (greatestShirZan == players[i].getShirZanCounter())
         {
-            isUnique = false;
+            n += 1;
         }
     }
+    if (n > 1) {
+        isUnique = false;
+    }
+
     return isUnique;
 }
 int Game::getKhoshShansiNumber()
@@ -393,21 +398,22 @@ void Game::initiateBattle()
     
     currentBattle = new Battle(map.getProvinceByIndex(int(NeshaneJangProvince)), players, deck, khoshShansiNumber, badShansiNumber, khoshShansiNumberSetter , KhoshBadSetted);
     currentBattle->startBattle();
-    khoshShansiNumberSetter = currentBattle->endBattle();
-    badShansiNumberSetter = currentBattle->endBattle();
-    if (!shirzanCounterIterator())
+
+    bool shirzanFlag = shirzanCounterIterator();
+    std::string shirzanPlayer;
+
+    for (int i = 0; i < players.size(); i++)
     {
-        NeshaneJangSetter = currentBattle->endBattle();
-    }
-    else
-    {
-        for (int i = 0; i < players.size(); i++)
+        if (greatestShirZan == players[i].getShirZanCounter())
         {
-            if (greatestShirZan == players[i].getShirZanCounter())
-            {
-                NeshaneJangSetter = players[i].getName();
-            }
+            shirzanPlayer = players[i].getName();
         }
+    }
+
+    NeshaneJangSetter = currentBattle->endBattle();
+
+    if (shirzanFlag) {
+        NeshaneJangSetter = shirzanPlayer;
     }
 
 
