@@ -120,7 +120,7 @@ int Player::getConqueredProvincesNumber() const
     return conqueredProvinces.size();
 }
 
-std::vector<std::shared_ptr<Card>> Player::getCombatCardsPlayed() const
+std::vector<std::shared_ptr<Card>> &Player::getCombatCardsPlayed()
 {
     return combatCardsPlayed;
 }

@@ -28,7 +28,7 @@ public:
     void addProvince(const Province &province);
     std::vector<Province> getConqueredProvinces() const;
     int getConqueredProvincesNumber() const;
-    std::vector<std::shared_ptr<Card>> getCombatCardsPlayed() const;
+    std::vector<std::shared_ptr<Card>> &getCombatCardsPlayed();
     std::vector<std::shared_ptr<Card>> getSpecialCardsPlayed() const;
     std::vector<std::shared_ptr<Card>> getCardsInHand() const;
     void giveCard(std::shared_ptr<Card> &card);

@@ -143,6 +143,7 @@ void Battle::startBattle()
                             if ((*selectedCard)->getName() == "rishsefid")
                             {
                                 NeshaneSolhSetter = player.getName();
+                                applyRishSefidEffect();
                             }
                         }
                         else
@@ -178,38 +179,41 @@ void Battle::checkPlayersHands()
     }
 }
 
-std::string Battle::endBattle()
-{ // also returns the winner name
+void Battle::applyRishSefidEffect() {
 
-    if (RishSefidHasPlayed)
+    int highestPoint = 0;
+
+    for (auto &player : players)
     {
-        int highestPoint = 0;
-
-        for (auto &player : players)
+        std::vector<std::shared_ptr<Card>> combatCards = player.getCombatCardsPlayed();
+        for (auto &card : combatCards)
         {
-            std::vector<std::shared_ptr<Card>> combatCards = player.getCombatCardsPlayed();
-            for (auto &card : combatCards)
+            if (card->getPoint() > highestPoint)
             {
-                if (card->getPoint() > highestPoint)
-                {
-                    highestPoint = card->getPoint();
-                }
-            }
-        }
-        for (auto &player : players)
-        {
-            std::vector<std::shared_ptr<Card>> combatCards = player.getCombatCardsPlayed();
-            for (auto &card : combatCards)
-            {
-                if (card->getPoint() == highestPoint)
-                {
-                    // erase cards with the highest points
-                    auto it = std::find(combatCards.begin(), combatCards.end(), card);
-                    combatCards.erase(it);
-                }
+                highestPoint = card->getPoint();
             }
         }
     }
+
+    for (auto &player : players)
+    {
+        std::vector<std::shared_ptr<Card>>& combatCards = player.getCombatCardsPlayed();
+        for (auto it = combatCards.begin(); it != combatCards.end();)
+        {
+            if ((*it)->getPoint() == highestPoint)
+            {
+                it = combatCards.erase(it); // erase the card and get the new iterator
+            }
+            else
+            {
+                ++it;
+            }
+        }
+    }
+}
+
+std::string Battle::endBattle()
+{ // also returns the winner name
 
     if (zemestanHasPlayed)
     {
