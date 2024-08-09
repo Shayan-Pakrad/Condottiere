@@ -155,6 +155,14 @@ void Battle::startBattle()
                 else
                 {
                     passedPlayers++;
+                    continue;
+                }
+
+                if (player.getCardsInHand().empty())
+                {
+                    player.pass();
+                    passedPlayers++;
+                    continue;
                 }
             }
         }
