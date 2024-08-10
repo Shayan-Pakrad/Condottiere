@@ -101,13 +101,6 @@ void Battle::startBattle()
         {
             if (!player.checkPass())
             {
-                // Check if Player has any card
-                if (player.getCardsInHand().empty())
-                {
-                    player.pass();
-                    passedPlayers++;
-                    continue;
-                }
 
                 std::system("cls");
                 // Print general information
@@ -146,6 +139,9 @@ void Battle::startBattle()
                                 applyRishSefidEffect();
                             }
                         }
+                        else if ((*selectedCard)->getName() == "matarsak") {
+                            player.setMatarsakCounter();
+                        }
                         else
                         {
                             (*selectedCard)->applyEffect(player);
@@ -155,6 +151,7 @@ void Battle::startBattle()
                 else
                 {
                     passedPlayers++;
+                    applyMatarsakEffect(player);
                     continue;
                 }
 
@@ -162,9 +159,73 @@ void Battle::startBattle()
                 {
                     player.pass();
                     passedPlayers++;
+                    applyMatarsakEffect(player);
                     continue;
                 }
             }
+        }
+    }
+}
+
+void Battle::applyMatarsakEffect(Player &player) {
+    if (player.checkPass()) {
+        std::cout << "\n\nYou played " << player.getMatarsakCounter() << " matarsak cards\n";
+        if (player.getMatarsakCounter() >= 1) {
+            for (int k = 0; k < player.getMatarsakCounter(); k++) {
+                std::cout << "\n\nwhich cards you want to pick ?\n\n";
+                std::cout << "1. From your combat cards :\n";
+                std::cout << "2. Bahar and Zemestan :\n\nYour choice : ";
+                int playerChoice;
+                std::cin >> playerChoice;
+
+                Matarsak m;
+                
+                if (playerChoice == 1) {
+                    m.applyEffect(player);
+                }
+                else if (playerChoice == 2) {
+                    std::cout << "\n Bahar or Zemestan ?\n";
+                    std::cout << "1. Bahar\n";
+                    std::cout << "2. Zemestan :\nYour choice : ";
+                    int n;
+                    std::cin >> n;
+                    if (n == 1) {
+                        for (auto &p : players) {
+                            for (auto it = p.getSpecialCardsPlayed().begin(); it != p.getSpecialCardsPlayed().end();) {
+                                if ((*it)->getName() == "bahar") {
+                                    player.retakeSpecialCard(*it, p);
+                                    // it = p.getSpecialCardsPlayed().erase(it);  // Erase and advance iterator
+                                } else {
+                                    ++it;
+                                }
+                            }
+                        }
+                    }
+                    if (n == 2) {
+                        bool flag = true;
+                        for (auto &p : players) {
+                            for (auto it = p.getSpecialCardsPlayed().begin(); it != p.getSpecialCardsPlayed().end();) {
+                                if ((*it)->getName() == "zemestan") {
+                                    player.retakeSpecialCard(*it, p);
+                                    flag = false;
+                                    break;
+                                    // it = p.getSpecialCardsPlayed().erase(it);  // Erase and advance iterator
+                                } else {
+                                    ++it;
+                                }
+                            }
+                            if (flag == false) {
+                                break;
+                            }
+                        }
+                    }
+                }
+                else {
+                    k--;
+                }
+
+            }
+
         }
     }
 }

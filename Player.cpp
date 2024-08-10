@@ -125,7 +125,7 @@ std::vector<std::shared_ptr<Card>> &Player::getCombatCardsPlayed()
     return combatCardsPlayed;
 }
 
-std::vector<std::shared_ptr<Card>> Player::getSpecialCardsPlayed() const
+std::vector<std::shared_ptr<Card>> &Player::getSpecialCardsPlayed()
 {
     return specialCardsPlayed;
 }
@@ -194,6 +194,15 @@ void Player::retakeCombatCard(std::shared_ptr<Card> &card)
     {
         cardsInHand.push_back(*it);
         combatCardsPlayed.erase(it);
+    }
+}
+void Player::retakeSpecialCard(std::shared_ptr<Card> &card, Player &p)
+{
+    auto it = std::find(p.getSpecialCardsPlayed().begin(), p.getSpecialCardsPlayed().end(), card);
+    if (it != p.getSpecialCardsPlayed().end())
+    {
+        this->cardsInHand.push_back(*it);
+        p.getSpecialCardsPlayed().erase(it);
     }
 }
 

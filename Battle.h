@@ -26,6 +26,7 @@ public:
     std::string getNeshaneSolhSetter() const;
 
     void applyRishSefidEffect();
+    void applyMatarsakEffect(Player &player);
 
 private:
     int khoshShansi;
