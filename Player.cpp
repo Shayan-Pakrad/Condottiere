@@ -147,6 +147,14 @@ std::shared_ptr<Card> *Player::playCard(std::string selectedCard)
 {
 
     bool isFounded = false;
+        if (selectedCard == "help"||selectedCard == "HELP")
+        {
+            std ::cout <<"ZEMESTAN : When you use this card all of the Combat-Card points will be halved (for odd points it will be divided by 2 and substracted by 0.5 ) until no BAHAR played .\n\n";
+            std ::cout <<"BAHAR : When you use this card the sum of the player point who has highest point by played cards on the ground would be added by 3 until no ZEMESTAN played .\n\n";
+            std ::cout <<"SHAHDOKHT : This is the most powerful Special Card in the game . It is only affected by BAHAR . When you play this Special Card the points of all combat cards will be 1 and if you play ZEMESTAN .\n\n";
+            std ::cout <<"TABLZAN : However many times you play this card the point of played card on the ground will be multiplied by 1.5 to the power of number o ftimes you played this card  .\n\n";
+            std ::cout <<"MATARSAK : However many times you play this card you can pick your combat or special cards (only bahar or zemestan can be picked up from other players played cards) of your played cards.\n\n";
+        }
 
     do
     {

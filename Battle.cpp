@@ -87,7 +87,7 @@ void Battle::printInformation()
 void Battle::startBattle()
 {
     checkPlayersHands();
-    std::cout << "\n\n,dsjfhsdkjh";
+    std::cout << "\n\n";
 
     int passedPlayers = 0;
     while (true)
@@ -119,11 +119,13 @@ void Battle::startBattle()
                 std::string inputCard;
                 std::cin >> inputCard;
 
+                
+
                 std::shared_ptr<Card> *selectedCard = player.playCard(inputCard); // This returns nullptr when player choose to pass
 
                 if (selectedCard != nullptr)
                 {
-
+                    
                     if ((*selectedCard)->getType() == "special")
                     {
                         if ((*selectedCard)->getName() == "parchamdar")
@@ -149,6 +151,7 @@ void Battle::startBattle()
                         }
                     }
                 }
+                
                 else
                 {
                     passedPlayers++;
