@@ -147,7 +147,7 @@ std::shared_ptr<Card> *Player::playCard(std::string selectedCard)
 {
 
     bool isFounded = false;
-        if (selectedCard == "help"||selectedCard == "HELP")
+        if (selectedCard == "help"||selectedCard == "HELP"||selectedCard == "help "||selectedCard == "HELP ")
         {
             std ::cout <<"ZEMESTAN : When you use this card all of the Combat-Card points will be halved (for odd points it will be divided by 2 and substracted by 0.5 ) until no BAHAR played .\n\n";
             std ::cout <<"BAHAR : When you use this card the sum of the player point who has highest point by played cards on the ground would be added by 3 until no ZEMESTAN played .\n\n";
