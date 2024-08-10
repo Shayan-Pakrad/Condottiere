@@ -204,25 +204,6 @@ void Game::setNeshaneJangProvince()
 
     system("cls");
 
-    // Map of province names to enum values
-    std::unordered_map<std::string, prov> provinceMap = {
-        {"bella", BELLA},
-        {"caline", CALINE},
-        {"enna", ENNA},
-        {"atela", ATELA},
-        {"pladaci", PLADACI},
-        {"borge", BORGE},
-        {"dimase", DIMASE},
-        {"morina", MORINA},
-        {"olivia", OLIVIA},
-        {"rollo", ROLLO},
-        {"talmone", TALMONE},
-        {"armento", ARMENTO},
-        {"lia", LIA},
-        {"elina", ELINA},
-        {"hemedan", HEMEDAN},
-        };
-
     std::string NeshaneSolhProvince = "";
 
     if (NeshaneSolhSetter != "N")
@@ -240,7 +221,7 @@ void Game::setNeshaneJangProvince()
         {
             std::cin >> InputProvince;
             std::string lowerCaseProvinceName = InputProvince;
-            std::transform(lowerCaseProvinceName.begin(), lowerCaseProvinceName.end(), lowerCaseProvinceName.begin(), ::tolower);
+            std::transform(lowerCaseProvinceName.begin(), lowerCaseProvinceName.end(), lowerCaseProvinceName.begin(), ::toupper);
             if (provinceMap.find(lowerCaseProvinceName) != provinceMap.end())
             {
 
@@ -275,7 +256,7 @@ void Game::setNeshaneJangProvince()
     {
         std::cin >> InputProvince;
         std::string lowerCaseProvinceName = InputProvince;
-        std::transform(lowerCaseProvinceName.begin(), lowerCaseProvinceName.end(), lowerCaseProvinceName.begin(), ::tolower);
+        std::transform(lowerCaseProvinceName.begin(), lowerCaseProvinceName.end(), lowerCaseProvinceName.begin(), ::toupper);
         if (provinceMap.find(lowerCaseProvinceName) != provinceMap.end())
         {
 
@@ -475,7 +456,7 @@ void Game::saveGame()
         for (int j = 0; j < numberOfProvinces; j++)
         {
             std::string lowerCaseProvinceName = provinces[j].getName();
-            std::transform(lowerCaseProvinceName.begin(), lowerCaseProvinceName.end(), lowerCaseProvinceName.begin(), ::tolower);
+            std::transform(lowerCaseProvinceName.begin(), lowerCaseProvinceName.end(), lowerCaseProvinceName.begin(), ::toupper);
             fout << provinceMap[lowerCaseProvinceName] << std::endl;
         }
     }
@@ -539,7 +520,7 @@ void Game::loadGame()
                 players[i].addProvince(map.getProvinceByIndex(int(province)));
 
                 std::string lowerCaseProvinceName = map.getProvinceByIndex(int(province)).getName();
-                std::transform(lowerCaseProvinceName.begin(), lowerCaseProvinceName.end(), lowerCaseProvinceName.begin(), ::tolower);
+                std::transform(lowerCaseProvinceName.begin(), lowerCaseProvinceName.end(), lowerCaseProvinceName.begin(), ::toupper);
                 totalConqueredProvinces.push_back(lowerCaseProvinceName);
             }
         }

@@ -30,21 +30,21 @@ enum prov
 };
 static std::unordered_map<std::string, prov> provinceMap =
     {
-        {"bella", BELLA},
-        {"caline", CALINE},
-        {"enna", ENNA},
-        {"atela", ATELA},
-        {"pladaci", PLADACI},
-        {"borge", BORGE},
-        {"dimase", DIMASE},
-        {"morina", MORINA},
-        {"olivia", OLIVIA},
-        {"rollo", ROLLO},
-        {"talmone", TALMONE},
-        {"armento", ARMENTO},
-        {"lia", LIA},
-        {"elina", ELINA},
-        {"hemedan", HEMEDAN}};
+        {"BELLA", BELLA},
+        {"CALINE", CALINE},
+        {"ENNA", ENNA},
+        {"ATELA", ATELA},
+        {"PLADACI", PLADACI},
+        {"BORGE", BORGE},
+        {"DIMASE", DIMASE},
+        {"MORINA", MORINA},
+        {"OLIVIA", OLIVIA},
+        {"ROLLO", ROLLO},
+        {"TALMONE", TALMONE},
+        {"ARMENTO", ARMENTO},
+        {"LIA", LIA},
+        {"ELINA", ELINA},
+        {"HEMEDAN", HEMEDAN}};
 
 class Game
 {

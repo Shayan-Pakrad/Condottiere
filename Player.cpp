@@ -271,6 +271,7 @@ bool Player::winnerDeterminer()
     prov provinceEnum2 = provinceMap[provinceName2];
     prov provinceEnum3 = provinceMap[provinceName3];
 
+
     // Check if the provinces are bordering(MAIN PART OF THE FUNCTION )
 
     if (conqueredProvinces.size() == 3)
