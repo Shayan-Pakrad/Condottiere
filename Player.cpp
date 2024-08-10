@@ -221,6 +221,11 @@ bool Player::checkPass()
     return hasPassed;
 }
 
+void Player::resetPass()
+{
+    hasPassed = false;
+}
+
 void Player::resetStatus()
 {
     hasPassed = false;

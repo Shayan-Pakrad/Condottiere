@@ -87,6 +87,7 @@ void Battle::printInformation()
 void Battle::startBattle()
 {
     checkPlayersHands();
+    std::cout << "\n\n,dsjfhsdkjh";
 
     int passedPlayers = 0;
     while (true)
@@ -284,60 +285,83 @@ void Battle::applyRishSefidEffect() {
 std::string Battle::endBattle()
 { // also returns the winner name
 
-    if (zemestanHasPlayed)
-    {
-        for (auto &player : players)
+    while (true) {
+        if (zemestanHasPlayed)
         {
-            player.halvePoint();
-        }
-    }
-    if (baharHasPlayed)
-    {
-        int highestPoint = 0;
-
-        for (auto &player : players) // bahar bayad inja update beshe 
-        {
-            std::vector<std::shared_ptr<Card>> combatCards = player.getCombatCardsPlayed();
-            for (auto &card : combatCards)
+            for (auto &player : players)
             {
-                if (card->getPoint() > highestPoint)
+                player.halvePoint();
+            }
+        }
+        if (baharHasPlayed)
+        {
+            int highestPoint = 0;
+
+            for (auto &player : players) // bahar bayad inja update beshe 
+            {
+                std::vector<std::shared_ptr<Card>> combatCards = player.getCombatCardsPlayed();
+                for (auto &card : combatCards)
                 {
-                    highestPoint = card->getPoint();
+                    if (card->getPoint() > highestPoint)
+                    {
+                        highestPoint = card->getPoint();
+                    }
+                }
+            }
+            for (auto &player : players)
+            {
+                std::vector<std::shared_ptr<Card>> combatCards = player.getCombatCardsPlayed();
+                for (auto &card : combatCards)
+                {
+                    if (card->getPoint() == highestPoint)
+                    {
+                        card->setPoint(card->getPoint() + 3);
+                    }
                 }
             }
         }
-        for (auto &player : players)
+
+        auto winner = players.begin(); // set winner to the first player
+
+        int winnerScore = winner->getTotalScore(khoshShansi, badShansi, khoshShansiBadShansiSetter);
+
+        for (auto player = players.begin() + 1; player != players.end(); ++player)
         {
-            std::vector<std::shared_ptr<Card>> combatCards = player.getCombatCardsPlayed();
-            for (auto &card : combatCards)
-            {
-                if (card->getPoint() == highestPoint)
-                {
-                    card->setPoint(card->getPoint() + 3);
-                }
+
+            if (player->getTotalScore(khoshShansi, badShansi, khoshShansiBadShansiSetter) > winnerScore) {
+                winner = player;
+                winnerScore = player->getTotalScore(khoshShansi, badShansi, khoshShansiBadShansiSetter);
+            }
+
+
+        }
+
+        // check if two player have same score
+        int n = 0;
+        for (auto &player : players) {
+            if (winnerScore == player.getTotalScore(khoshShansi, badShansi, khoshShansiBadShansiSetter)) {
+                n++;
             }
         }
-    }
-
-    auto winner = players.begin(); // set winner to the first player
-
-    int winnerScore = winner->getTotalScore(khoshShansi, badShansi, khoshShansiBadShansiSetter);
-
-    for (auto player = players.begin() + 1; player != players.end(); ++player)
-    {
-
-        if (player->getTotalScore(khoshShansi, badShansi, khoshShansiBadShansiSetter) > winnerScore) {
-            winner = player;
-            winnerScore = player->getTotalScore(khoshShansi, badShansi, khoshShansiBadShansiSetter);
+        if (n > 1) {
+            std::cout << "\n\nsdkjbdsjhjs";
+            for (auto &player : players) {
+                player.resetPass();
+            }
+            startBattle();
+            continue;
         }
-
-
+        else {
+            winner->addProvince(province);
+            resetPlayers();
+            return winner->getName();
+            break;
+        }
     }
-    winner->addProvince(province);
 
-    resetPlayers();
+    
 
-    return winner->getName();
+    
 }
 
 void Battle::resetPlayers()

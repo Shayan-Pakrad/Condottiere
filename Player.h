@@ -39,6 +39,7 @@ public:
 
     void pass();
     bool checkPass();
+    void resetPass();
     void resetStatus();
 
     void emptyHand();
